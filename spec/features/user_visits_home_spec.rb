@@ -8,7 +8,7 @@ feature 'User visits home' do
 
     expect(page).to have_content pet.name
     expect(page).to have_content pet.age
-    expect(page).to have_content pet.genre
+    expect(page).to have_content pet.gender
     expect(page).to have_content pet.size
   end
 end
