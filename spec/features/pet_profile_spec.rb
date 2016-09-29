@@ -1,21 +1,18 @@
 require 'rails_helper'
 
 feature 'visitor see the pet profile' do
-  scenario 'user navigates to create pet page' do
-    pending
-  end
   scenario 'successfully' do
     pet = build(:pet)
     visit new_pet_path
     fill_in 'Nome', with: pet.name
     fill_in 'Idade', with: pet.age
     select 'Grande', from: 'Porte'
-    select 'Cachorro', from: 'Tipo'
+    choose 'Cachorro'
     fill_in 'Raça', with: pet.breed
-    select 'Macho', from: 'Genero'
-    select 'Sim', from: 'Vacinado'
+    choose 'Macho'
+    check 'Vacinado'
     fill_in 'Deficiencia', with: pet.deficiency
-    check 'Sim', from: 'Castrado'
+    check 'Castrado'
     fill_in 'Descrição', with: pet.description
 
     click_on 'Enviar'
@@ -26,9 +23,18 @@ feature 'visitor see the pet profile' do
     expect(page).to have_content('Cachorro')
     expect(page).to have_content(pet.breed)
     expect(page).to have_content(pet.gender)
-    expect(page).to have_content(pet.vaccines)
     expect(page).to have_content(pet.deficiency)
     expect(page).to have_content(pet.description)
-
+    expect(page).to have_xpath("//img")
   end
+
+  scenario 'should fill mandatory fields' do
+    pet = build(:pet)
+    visit new_pet_path
+    fill_in 'Nome', with: pet.name
+    fill_in 'Raça', with: pet.breed
+    click_on 'Enviar'
+    expect(page).to have_content('Campos com (*) são obrigatórios')
+  end
+
 end

@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'simple_form'
 gem 'bootstrap-sass'
 gem 'sass-rails'
+gem 'paperclip'
 
 group :development, :test do
   gem 'rspec-rails'

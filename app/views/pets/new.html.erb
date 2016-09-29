@@ -1,13 +1,14 @@
 <%= simple_form_for @pet do |f| %>
   <%= f.input :name, label: 'Nome' %>
+  <%= f.input :avatar, as: :file %>
   <%= f.input :age, label: 'Idade' %>
   <%= f.input :size, collection: @sizes, label: 'Porte', as: :select%>
   <%= f.input :pet_type, collection: @pet_types, label: 'Tipo', as: :radio_buttons %>
   <%= f.input :breed, label: 'Raça' %>
   <%= f.input :gender, collection: @genders, label: 'Genero', as: :radio_buttons %>
-  #Vacinado
+  <%= f.input :vaccined, label: 'Vacinado' %>
   <%= f.input :deficiency, label: 'Deficiencia' %>
-  #Castrado
+  <%= f.input :castrated, label: 'Castrado' %>
   <%= f.input :description, label: 'Descrição' %>
-  <%= f.button :submit %>
+  <%= f.button :submit, 'Enviar' %>
 <% end %>
