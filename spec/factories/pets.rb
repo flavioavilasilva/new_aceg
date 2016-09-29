@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :pet do
-    name 'MyString'
+    name 'Bob'
     avatar { File.new("#{Rails.root}/spec/support/fixtures/image.jpg") }
     age 1
     size 'Grande'

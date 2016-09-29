@@ -25,7 +25,7 @@ feature 'visitor see the pet profile' do
     expect(page).to have_content(pet.gender)
     expect(page).to have_content(pet.deficiency)
     expect(page).to have_content(pet.description)
-    expect(page).to have_xpath("//img")
+    expect(page).to have_xpath('//img')
   end
 
   scenario 'should fill mandatory fields' do
@@ -36,5 +36,4 @@ feature 'visitor see the pet profile' do
     click_on 'Enviar'
     expect(page).to have_content('Campos com (*) são obrigatórios')
   end
-
 end

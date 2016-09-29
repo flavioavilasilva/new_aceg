@@ -1,4 +1,4 @@
-class PetsController <  ApplicationController
+class PetsController < ApplicationController
   before_action :load_constants, only: [:new, :create]
 
   def new
@@ -7,14 +7,15 @@ class PetsController <  ApplicationController
 
   def create
     @pet = Pet.new(params.require(:pet).permit(:name, :age, :size, :pet_type,
-      :breed, :gender, :vaccined, :deficiency, :castrated, :description,:avatar))
+                                               :breed, :gender, :vaccined,
+                                               :deficiency, :castrated,
+                                               :description, :avatar))
     if @pet.save
       redirect_to @pet
     else
       flash[:error] = 'Campos com (*) são obrigatórios'
       render :new
     end
-
   end
 
   def show
@@ -28,6 +29,4 @@ class PetsController <  ApplicationController
     @pet_types = PetType::TYPES
     @genders = Gender::GENDERS
   end
-
-
 end
