@@ -1,3 +1,3 @@
 class Gender
-  GENDERS = ['Macho', 'Fêmea']
+  GENDERS = %w[Macho \ Fêmea].freeze
 end

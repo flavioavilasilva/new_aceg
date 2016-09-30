@@ -1,3 +1,3 @@
 class PetType
-  TYPES = ['Cachorro', 'Gato']
+  TYPES = ['Cachorro', 'Gato'].freeze
 end

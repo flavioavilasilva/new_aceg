@@ -9,7 +9,7 @@ class PetsController < ApplicationController
     @pet = Pet.new(params.require(:pet).permit(:name, :age, :size, :pet_type,
                                                :breed, :gender, :vaccined,
                                                :deficiency, :castrated,
-                                               :description, :avatar))
+                                               :description, :avatar, :ong_id))
     if @pet.save
       redirect_to @pet
     else
