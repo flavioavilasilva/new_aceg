@@ -1,9 +1,16 @@
 FactoryGirl.define do
   factory :pet do
     name 'Bob'
-    age '9'
-    gender 'Macho'
-    size 'pequeno'
     ong
+    avatar { File.new("#{Rails.root}/spec/support/fixtures/image.jpg") }
+    age 1
+    size 'Grande'
+    pet_type 'MyString'
+    breed 'MyString'
+    gender 'MyString'
+    vaccined false
+    deficiency 'MyText'
+    castrated false
+    description 'MyText'
   end
 end

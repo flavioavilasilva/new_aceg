@@ -24,11 +24,21 @@ ActiveRecord::Schema.define(version: 20160929225746) do
 
   create_table "pets", force: :cascade do |t|
     t.string   "name"
-    t.string   "age"
+    t.integer  "age"
     t.string   "size"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "pet_type"
+    t.string   "breed"
     t.string   "gender"
+    t.boolean  "vaccined"
+    t.text     "deficiency"
+    t.boolean  "castrated"
+    t.text     "description"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.integer  "ong_id"
     t.index ["ong_id"], name: "index_pets_on_ong_id"
   end
