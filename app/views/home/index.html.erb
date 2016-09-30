@@ -1,7 +1,7 @@
 <h1>Adote um Pet</h1>
 
 <% @pets.each do |pet| %>
-  <p> Nome: <%= pet.name %> </p>
+  <p> Nome: <%= link_to pet.name, pet %> </p>
   <p> Idade: <%= pet.age %> </p>
   <p> Gênero: <%= pet.gender %> </p>
   <p> Porte: <%= pet.size %> </p>

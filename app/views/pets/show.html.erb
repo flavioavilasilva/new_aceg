@@ -30,4 +30,17 @@
     <dt>Descrição</dt>
     <dd><%= @pet.description %></dd>
   </dl>
+  <hr>
+  <h2>ONG Responsável</h2>
+  <dl>
+    <dd><%= @pet.ong.name %></dd>
+    <dt>Endereço</dt>
+    <dd><%= @pet.ong.location %></dd>
+    <dt>Email</dt>
+    <dd><%= @pet.ong.mail %></dd>
+    <dt>Telefone</dt>
+    <dd><%= @pet.ong.phone %></dd>
+    <dt>Contato</dt>
+    <dd><%= @pet.ong.contact %></dd>
+  </dl>
 </article>
