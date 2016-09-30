@@ -4,5 +4,6 @@ FactoryGirl.define do
     age '9'
     gender 'Macho'
     size 'pequeno'
+    ong
   end
 end
