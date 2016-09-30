@@ -1,8 +1,18 @@
 <h1>Adote um Pet</h1>
 
+<section>
+    <% @ongs.each do |ong| %>
+    <div class="ong">
+      <h2><%= link_to ong.name, ong %></h2>
+    </div>
+    <% end %>
+</section>
+
+<section>
 <% @pets.each do |pet| %>
   <p> Nome: <%= pet.name %> </p>
   <p> Idade: <%= pet.age %> </p>
   <p> Gênero: <%= pet.gender %> </p>
   <p> Porte: <%= pet.size %> </p>
 <% end %>
+</section>
