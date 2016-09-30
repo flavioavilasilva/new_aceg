@@ -10,16 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160929225746) do
+ActiveRecord::Schema.define(version: 20160930195143) do
 
   create_table "ongs", force: :cascade do |t|
     t.string   "name"
-    t.string   "location"
     t.string   "phone"
-    t.string   "mail"
     t.string   "site"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "cnpj"
+    t.string   "address"
+    t.string   "email"
+    t.string   "contact"
+    t.text     "about_us"
+    t.string   "logo"
+    t.boolean  "acept_pets"
   end
 
   create_table "pets", force: :cascade do |t|
