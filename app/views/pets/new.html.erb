@@ -10,5 +10,6 @@
   <%= f.input :deficiency, label: 'Deficiencia' %>
   <%= f.input :castrated, label: 'Castrado' %>
   <%= f.input :description, label: 'Descrição' %>
+  <%= f.association :ong, label: 'Ong'%>
   <%= f.button :submit, 'Enviar' %>
 <% end %>
