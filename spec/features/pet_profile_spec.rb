@@ -17,7 +17,7 @@ feature 'visitor see the pet profile' do
     fill_in 'Deficiencia', with: pet.deficiency
     check 'Castrado'
     fill_in 'Descrição', with: pet.description
-    select 'ong-diadema', from: 'Ong'
+    select ong.name, from: 'Ong'
 
     click_on 'Enviar'
 

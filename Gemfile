@@ -18,6 +18,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rubocop', require: false
   gem 'pry-byebug'
+  gem 'faker'
 end
 
 group :test do
