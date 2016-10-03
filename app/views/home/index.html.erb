@@ -6,21 +6,13 @@
     <div class="ong">
       <h2><%= link_to ong.name, ong %></h2>
       <% ong.featured_pets.each do |pet| %>
-        <div class="pet">
+        <div class="pets">
             <h2><%= link_to pet.name, pet %></h2>
+            Idade: <%= pet.age %>
+            Gênero: <%= pet.gender %>
+            Porte: <%= pet.size %>
         </div>
       <% end %>
     </div>
     <% end %>
-</section>
-
-<section id="pets">
-  <h2>Pets</h2>
-
-<% @pets.each do |pet| %>
-  <p> Nome: <%= link_to pet.name, pet %> </p>
-  <p> Idade: <%= pet.age %> </p>
-  <p> Gênero: <%= pet.gender %> </p>
-  <p> Porte: <%= pet.size %> </p>
-<% end %>
 </section>

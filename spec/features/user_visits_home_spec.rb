@@ -5,7 +5,7 @@ feature 'User visits home' do
     pet = create(:pet)
 
     visit root_path
-    within '#pets' do
+    within '.pets' do
       expect(page).to have_content pet.name
       expect(page).to have_content pet.age
       expect(page).to have_content pet.gender
@@ -24,7 +24,7 @@ feature 'User visits home' do
       expect(page).to have_selector('.ong', count: 5)
 
       within(:xpath, '//div[@class="ong"][1]') do
-        expect(page).to have_selector('.pet', count: 5)
+        expect(page).to have_selector('.pets', count: 5)
       end
     end
   end
