@@ -1,3 +1,3 @@
 class Size
-  SIZES = ['Pequeno', 'Médio', 'Grande']
+  SIZES = %w(Pequeno Médio Grande).freeze
 end

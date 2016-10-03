@@ -2,8 +2,11 @@ require 'rails_helper'
 
 feature 'visitor see the pet profile' do
   scenario 'successfully' do
-    pet = build(:pet)
+    ong = create(:ong)
+    pet = build(:pet, ong: ong)
+
     visit new_pet_path
+
     fill_in 'Nome', with: pet.name
     fill_in 'Idade', with: pet.age
     select 'Grande', from: 'Porte'
@@ -14,6 +17,7 @@ feature 'visitor see the pet profile' do
     fill_in 'Deficiencia', with: pet.deficiency
     check 'Castrado'
     fill_in 'Descrição', with: pet.description
+    select ong.name, from: 'Ong'
 
     click_on 'Enviar'
 
