@@ -1,5 +1,13 @@
 <h1>Adote um Pet</h1>
 
+<aside>
+  <%= form_tag(ongs_path, method: :get, class: "form-inline") do %>
+    <%=label_tag(:city, "Cidade") %>
+    <%= select_tag(:city, options_for_select(@cities)) %>
+    <%= submit_tag("Filtrar") %>
+  <% end %>
+</aside>
+
 <section id="ongs">
   <h2>ONGs</h2>
     <% @ongs.each do |ong| %>
