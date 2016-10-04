@@ -12,5 +12,6 @@ FactoryGirl.define do
     about_us 'bla.. bla'
     logo 'imagemLogo'
     acept_pets 1
+    city 'São Paulo'
   end
 end
