@@ -25,6 +25,7 @@ feature 'User visits home' do
 
       within(:xpath, '//div[@class="ong"][1]') do
         expect(page).to have_selector('.pets', count: 5)
+        expect(page).to have_selector('img')
       end
     end
   end

@@ -27,4 +27,14 @@ feature 'user filters ongs' do
 
     expect(page).to have_content('Nenhuma ONG encontrada para esta cidade')
   end
+
+  scenario 'when user dont specify a city it should show all ONGs' do
+    ongs = create_list(:ong, 3)
+    visit ongs_path
+    expect(page).to have_selector('.ong', count: 3)
+
+    ongs.each do |ong|
+      expect(page).to have_content(ong.name)
+    end
+  end
 end
