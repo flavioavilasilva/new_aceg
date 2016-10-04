@@ -23,5 +23,8 @@ feature 'User visits pet with ong info' do
     expect(page).to have_content ong.email
     expect(page).to have_content ong.phone
     expect(page).to have_content ong.contact
+    expect(page).to have_content ong.city
+    expect(page).to have_content ong.state
+    expect(page).to have_content ong.street
   end
 end

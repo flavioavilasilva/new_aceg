@@ -34,7 +34,6 @@ feature 'User create ong' do
     expect(page).to have_content ong.contact
     expect(page).to have_content ong.site
     expect(page).to have_content 'Aceita Pets'
-
   end
 
   scenario 'nao aceita Pet' do
@@ -56,11 +55,9 @@ feature 'User create ong' do
 
     click_on 'Cadastrar Ong'
 
-    expect(page).to have_content 'Nao Aceita Pets'
-
+    expect(page).to have_content 'Não aceita Pets'
   end
   scenario 'unsuccessfuly' do
-    ong = create(:ong)
     visit new_ong_path
 
     fill_in 'Cnpj', with: ''

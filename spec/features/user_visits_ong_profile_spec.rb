@@ -14,6 +14,5 @@ feature 'user visits ong profiles' do
     expect(page).to have_content ong.pets.name
     expect(page).to have_content ong.city
     expect(page).to have_content ong.state
-
   end
 end

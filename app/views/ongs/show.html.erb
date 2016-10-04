@@ -1,20 +1,36 @@
+<article>
 <h1>Dados da Ong</h1>
-
-<p>Nome: <%= @ong.name %></p>
-<p>Cnpj: <%= @ong.cnpj %></p>
-<p>Telefone: <%= @ong.phone %></p>
-<p>Email: <%= @ong.email %></p>
-<p>Email: <%= @ong.zipcode %></p>
-<p>Site: <%= @ong.site %></p>
-<p>Pets: <%= @ong.pets.name %></p>
-<p>Estado: <%= @ong.state %></p>
-<p>Cidade: <%= @ong.city %></p>
-<p>Rua: <%= @ong.street %></p>
-<p>Bairro: <%= @ong.neighborhood %></p>
-<p>Numero: <%= @ong.number %></p>
-<p>Numero: <%= @ong.contact %></p>
+<dl>
+<dt>Nome: </dt>
+<dd><%= @ong.name %></dd>
+<dt>Cnpj: </dt>
+<dd><%= @ong.cnpj %></dd>
+<dt>Telefone: </dt>
+<dd><%= @ong.phone %></dd>
+<dt>Email: </dt>
+<dd><%= @ong.email %></dd>
+<dt>Email: </dt>
+<dd><%= @ong.zipcode %></dd>
+<dt>Site: <dt>
+<dd><%= @ong.site %></dd>
+<dt>Pets: </dt>
+<dd><%= @ong.pets.name %></dd>
+<dt>Estado: </dt>
+<dd><%= @ong.state %></dd>
+<dt>Cidade: </dt>
+<dd><%= @ong.city %></dd>
+<dt>Rua: </dt>
+<dd><%= @ong.street %></dd>
+<dt>Bairro: </dt>
+<dd><%= @ong.neighborhood %></dd>
+<dt>Numero: </dt>
+<dd><%= @ong.number %></dd>
+<dt>Numero: </dt>
+<dd><%= @ong.contact %></dd>
 <% if @ong.acept_pets %>
-  <p>Aceita Pets</p>
+  <dd>Aceita Pets</dd>
 <% else %>
-  <p>Nao Aceita Pets</p>
-  <% end %>
+  <dd>Não aceita Pets</dd>
+<% end %>
+</dl>
+</article>

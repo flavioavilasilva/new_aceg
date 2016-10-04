@@ -17,6 +17,5 @@ FactoryGirl.define do
     number 15
     neighborhood 'Santo Amaro'
     zipcode '12345-123'
-
   end
 end
