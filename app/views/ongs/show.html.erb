@@ -3,13 +3,13 @@
 <h1><%= @ong.name %></h1>
 <%= image_tag @ong.avatar.url(:medium) %>
 <dl>
-<dt>Cnpj: </dt>
+<dt>CNPJ: </dt>
 <dd><%= @ong.cnpj %></dd>
 <dt>Telefone: </dt>
 <dd><%= @ong.phone %></dd>
 <dt>Email: </dt>
 <dd><%= @ong.email %></dd>
-<dt>Email: </dt>
+<dt>CEP: </dt>
 <dd><%= @ong.zipcode %></dd>
 <dt>Site: <dt>
 <dd><%= @ong.site %></dd>
@@ -23,14 +23,15 @@
 <dd><%= @ong.street %></dd>
 <dt>Bairro: </dt>
 <dd><%= @ong.neighborhood %></dd>
-<dt>Numero: </dt>
+<dt>Número: </dt>
 <dd><%= @ong.number %></dd>
-<dt>Numero: </dt>
+<dt>Contatos: </dt>
 <dd><%= @ong.contact %></dd>
+<dt>ONG aceitas Pets?</dt>
 <% if @ong.acept_pets %>
-  <dd>Aceita Pets</dd>
+  <dd>Sim</dd>
 <% else %>
-  <dd>Não aceita Pets</dd>
+  <dd>Não</dd>
 <% end %>
 </dl>
 
