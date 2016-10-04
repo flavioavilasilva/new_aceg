@@ -1,8 +1,41 @@
-<h1>Dados da Ong</h1>
 
-<p>Nome: <%= @ong.name %></p>
-<p>Localização: <%= @ong.address %></p>
-<p>Telefone: <%= @ong.phone %></p>
-<p>Email: <%= @ong.email %></p>
-<p>Site: <%= @ong.site %></p>
-<p>Pets: <%= @ong.pets.name %></p>
+<article>
+<h1><%= @ong.name %></h1>
+<%= image_tag @ong.avatar.url(:medium) %>
+<dl>
+<dt>Cnpj: </dt>
+<dd><%= @ong.cnpj %></dd>
+<dt>Telefone: </dt>
+<dd><%= @ong.phone %></dd>
+<dt>Email: </dt>
+<dd><%= @ong.email %></dd>
+<dt>Email: </dt>
+<dd><%= @ong.zipcode %></dd>
+<dt>Site: <dt>
+<dd><%= @ong.site %></dd>
+<dt>Pets: </dt>
+<dd><%= @ong.pets.name %></dd>
+<dt>Estado: </dt>
+<dd><%= @ong.state %></dd>
+<dt>Cidade: </dt>
+<dd><%= @ong.city %></dd>
+<dt>Rua: </dt>
+<dd><%= @ong.street %></dd>
+<dt>Bairro: </dt>
+<dd><%= @ong.neighborhood %></dd>
+<dt>Numero: </dt>
+<dd><%= @ong.number %></dd>
+<dt>Numero: </dt>
+<dd><%= @ong.contact %></dd>
+<% if @ong.acept_pets %>
+  <dd>Aceita Pets</dd>
+<% else %>
+  <dd>Não aceita Pets</dd>
+<% end %>
+</dl>
+
+<section>
+  <h1>PETs disponíveis para adoção</h1>
+  <%= render @ong.pets %>
+</section>
+</article>

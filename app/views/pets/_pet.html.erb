@@ -1,0 +1,12 @@
+<div class="pets">
+    <h2><%= link_to pet.name, pet %></h2>
+    <%= image_tag pet.avatar.url(:thumb) %>
+    <dl>
+      <dt>Idade</dt>
+      <dd><%= pet.age %></dd>
+      <dt>Gênero</dt>
+      <dd><%= pet.gender %></dd>
+      <dt>Porte</dt>
+      <dd><%= pet.size %></dd>
+    </dl>
+</div>

@@ -1,0 +1,17 @@
+<h1>Cadastrar Ong</h1>
+<%= simple_form_for @ong do |f| %>
+  <p><%= f.input :cnpj, label: 'Cnpj' %></p>
+  <p><%= f.input :name, label: 'Nome' %></p>
+  <p><%= f.input :street, label: 'Rua' %></p>
+  <p><%= f.input :number, label: 'Numero' %></p>
+  <p><%= f.input :neighborhood, label: 'Bairro' %></p>
+  <p><%= f.input :zipcode, label: 'Cep' %></p>
+  <p><%= f.input :state, label: 'Estado' %></p>
+  <p><%= f.input :city, label: 'Cidade' %></p>
+  <p><%= f.input :email, label: 'Email' %></p>
+  <p><%= f.input :phone, label: 'Telefone' %></p>
+  <p><%= f.input :contact, label: 'Contato' %></p>
+  <p><%= f.input :acept_pets, label: 'Recebe Pets' %></p>
+  <p><%= f.input :site, label: 'Site' %></p>
+  <p><%= f.button :submit, 'Cadastrar Ong' %></p>
+<% end %>
