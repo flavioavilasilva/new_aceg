@@ -1,8 +1,20 @@
 <h1>Dados da Ong</h1>
 
 <p>Nome: <%= @ong.name %></p>
-<p>Localização: <%= @ong.address %></p>
+<p>Cnpj: <%= @ong.cnpj %></p>
 <p>Telefone: <%= @ong.phone %></p>
 <p>Email: <%= @ong.email %></p>
+<p>Email: <%= @ong.zipcode %></p>
 <p>Site: <%= @ong.site %></p>
 <p>Pets: <%= @ong.pets.name %></p>
+<p>Estado: <%= @ong.state %></p>
+<p>Cidade: <%= @ong.city %></p>
+<p>Rua: <%= @ong.street %></p>
+<p>Bairro: <%= @ong.neighborhood %></p>
+<p>Numero: <%= @ong.number %></p>
+<p>Numero: <%= @ong.contact %></p>
+<% if @ong.acept_pets %>
+  <p>Aceita Pets</p>
+<% else %>
+  <p>Nao Aceita Pets</p>
+  <% end %>

@@ -20,7 +20,6 @@ feature 'User visits pet with ong info' do
     expect(page).to have_content pet.description
     expect(page).to have_xpath('//img')
     expect(page).to have_content ong.name
-    expect(page).to have_content ong.address
     expect(page).to have_content ong.email
     expect(page).to have_content ong.phone
     expect(page).to have_content ong.contact

@@ -8,10 +8,12 @@ feature 'user visits ong profiles' do
     visit ong_path ong
 
     expect(page).to have_content ong.name
-    expect(page).to have_content ong.address
     expect(page).to have_content ong.phone
     expect(page).to have_content ong.email
     expect(page).to have_content ong.site
     expect(page).to have_content ong.pets.name
+    expect(page).to have_content ong.city
+    expect(page).to have_content ong.state
+
   end
 end
