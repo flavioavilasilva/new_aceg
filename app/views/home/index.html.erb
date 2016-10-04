@@ -1,18 +1,20 @@
 <h1>Adote um Pet</h1>
 
+<aside>
+  <%= form_tag(ongs_path, method: :get, class: "form-inline") do %>
+    <%=label_tag(:city, "Cidade") %>
+    <%= select_tag(:city, options_for_select(@cities)) %>
+    <%= submit_tag("Filtrar") %>
+  <% end %>
+</aside>
+
 <section id="ongs">
   <h2>ONGs</h2>
     <% @ongs.each do |ong| %>
     <div class="ong">
       <h2><%= link_to ong.name, ong %></h2>
-      <% ong.featured_pets.each do |pet| %>
-        <div class="pets">
-            <h2><%= link_to pet.name, pet %></h2>
-            Idade: <%= pet.age %>
-            Gênero: <%= pet.gender %>
-            Porte: <%= pet.size %>
-        </div>
-      <% end %>
+      <%= image_tag ong.avatar.url(:thumb) %>
+      <%= render ong.featured_pets %>
     </div>
     <% end %>
 </section>

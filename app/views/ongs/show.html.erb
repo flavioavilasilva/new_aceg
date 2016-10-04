@@ -1,8 +1,8 @@
+
 <article>
-<h1>Dados da Ong</h1>
+<h1><%= @ong.name %></h1>
+<%= image_tag @ong.avatar.url(:medium) %>
 <dl>
-<dt>Nome: </dt>
-<dd><%= @ong.name %></dd>
 <dt>Cnpj: </dt>
 <dd><%= @ong.cnpj %></dd>
 <dt>Telefone: </dt>
@@ -33,4 +33,9 @@
   <dd>Não aceita Pets</dd>
 <% end %>
 </dl>
+
+<section>
+  <h1>PETs disponíveis para adoção</h1>
+  <%= render @ong.pets %>
+</section>
 </article>
