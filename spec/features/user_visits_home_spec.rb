@@ -5,6 +5,9 @@ feature 'User visits home' do
     pet = create(:pet)
 
     visit root_path
+
+    expect(page).to have_css('a','Cadastre sua ONG')
+
     within '.pets' do
       expect(page).to have_content pet.name
       expect(page).to have_content pet.age
@@ -13,7 +16,7 @@ feature 'User visits home' do
     end
   end
 
-  scenario 'and see 5 ongs ant 5 pets from that ongs' do
+  scenario 'and see 5 ongs and 5 pets from that ongs' do
     ongs = create_list(:ong, 6)
 
     ongs.each do |ong|
