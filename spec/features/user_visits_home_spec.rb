@@ -6,7 +6,7 @@ feature 'User visits home' do
 
     visit root_path
 
-    expect(page).to have_css('a','Cadastre sua ONG')
+    expect(page).to have_content('Cadastre sua ONG')
 
     within '.pets' do
       expect(page).to have_content pet.name

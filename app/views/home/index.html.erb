@@ -22,24 +22,11 @@
         <div class="panel panel-default">
           <div class="panel-heading"><h2><%= link_to ong.name, ong %></h2></div>
           <div class="panel-body">
-            <% ong.featured_pets.each do |pet| %>
-              <div class="pets">
-                <div class="col-sm-6 col-md-4">
-                  <div class="thumbnail">
-                    <div class="caption">
-                      <h2><%= link_to pet.name, pet %></h2>
-                      <%= image_tag pet.avatar.url(:thumb) %>
-                      <dl>
-                        <dt>Idade:</dt><dd><%= pet.age %></dd>
-                        <dt>Gênero:</dt><dd><%= pet.gender %></dd>
-                        <dt>Porte:</dt><dd><%= pet.size %></dd>
-                      </dl>
-                      <a href="#" class="btn btn-primary" role="button">Ver Pet</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <% end %>
+
+            <%= render ong.featured_pets %>
+
+            <%= render ong.events %>
+            
           </div>
         </div>
       </div>
