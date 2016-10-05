@@ -1,0 +1,41 @@
+pt-BR:
+  helpers:
+    submit:
+      pet:
+        create: Enviar
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'required'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Please review the problems below:"
+    labels:
+      pet:
+        name: Nome
+        age: Idade
+        size: Porte
+        pet_type: Tipo
+        breed: Raça
+        gender: Genero
+        vaccined: Vacinado
+        castrated: Castrado
+        description: Descrição
+        deficiency: Deficiencia
+        ong: Ong
+
+    # hints:
+    #   defaults:
+    #     username: 'User name to sign in.'
+    #     password: 'No special characters, please.'
+    # include_blanks:
+    #   defaults:
+    #     age: 'Rather not say'
+    # prompts:
+    #   defaults:
+    #     age: 'Select your age'
+
