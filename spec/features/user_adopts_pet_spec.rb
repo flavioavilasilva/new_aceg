@@ -1,20 +1,19 @@
 require 'rails_helper'
 
 feature 'User adopt pet' do
-  scenario ' ' do
+  scenario 'successfuly' do
     ong = create(:ong)
     pet = create(:pet, ong: ong)
     user = create(:user)
+    adoption = build(:adoption)
 
     visit pets_path(pet)
 
-    count_before = Adoption.count
-
     click_on 'Adotar'
 
-    count_after = Adoption.count
-
-    expect(count_after) > 0
     expect(page).to have_content 'Sua solicitação de adoção foi registrada e será analisada!'
+    expect(page).to have_content adoption.pet.name
+    expect(page).to have_content adoption.pet.ong.name
+    expect(page).to have_content adoption.status
   end
 end
