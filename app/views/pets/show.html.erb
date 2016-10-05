@@ -1,6 +1,6 @@
 <article>
   <h1><%= @pet.name %></h1>
-  <%= image_tag @pet.avatar.url %>
+  <%= image_tag @pet.avatar.url(:thumb) %>
   <dl>
     <dt>Idade</dt>
     <dd><%= @pet.age %></dd>

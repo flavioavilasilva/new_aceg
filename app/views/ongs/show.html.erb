@@ -39,4 +39,14 @@
   <h1>PETs disponíveis para adoção</h1>
   <%= render @ong.pets %>
 </section>
+
+
+<section>
+  <h1>Eventos</h1>
+
+  <%= render @ong.events %>
+
+  <%= link_to 'Criar Evento', new_ong_event_path(@ong) %>
+</section>
+
 </article>

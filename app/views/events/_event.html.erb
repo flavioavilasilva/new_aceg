@@ -1,0 +1,9 @@
+<div class="event">
+  <h2><%= link_to event.name, event %></h2>
+  <dl>
+      <dt>Endereço</dt>
+      <dd><%= event.address %></dd>
+      <dt>Data e Hora</dt>
+      <dd><%= friendly_date event.datetime %></dd>
+  </dl>
+</div>

@@ -1,4 +1,3 @@
-<h1>Adote um Pet</h1>
 
 <aside>
   <%= form_tag(ongs_path, method: :get, class: "form-inline") do %>
@@ -9,12 +8,28 @@
 </aside>
 
 <section id="ongs">
-  <h2>ONGs</h2>
-    <% @ongs.each do |ong| %>
-    <div class="ong">
-      <h2><%= link_to ong.name, ong %></h2>
-      <%= image_tag ong.avatar.url(:thumb) %>
-      <%= render ong.featured_pets %>
+
+  <div class="jumbotron">
+    <h1>Bem-vindos à AdoPet!</h1>
+    <p>...</p>
+    <p><%= link_to 'Cadastre sua ONG', new_ong_path, class:'btn btn-primary btn-lg' %></p>
+  </div>
+
+  <% @ongs.each do |ong| %>
+
+    <div class="row">
+      <div class="ong">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h2><%= link_to ong.name, ong %></h2></div>
+          <div class="panel-body">
+
+            <%= render ong.featured_pets %>
+
+            <%= render ong.events %>
+            
+          </div>
+        </div>
+      </div>
     </div>
-    <% end %>
+  <% end %>
 </section>
