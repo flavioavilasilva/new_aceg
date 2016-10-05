@@ -1,0 +1,6 @@
+<%= simple_form_for [@ong, @event] do |f| %>
+  <%= f.input :name, label: 'Nome' %>
+  <%= f.input :address, label: 'Endereço' %>
+  <%= f.input :datetime, label: 'Date e Hora' %>
+  <%= f.button :submit, 'Enviar' %>
+<% end %>
