@@ -11,6 +11,7 @@ gem 'simple_form'
 gem 'bootstrap-sass'
 gem 'sass-rails'
 gem 'paperclip'
+gem 'devise'
 
 group :development, :test do
   gem 'rspec-rails'

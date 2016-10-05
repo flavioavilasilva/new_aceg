@@ -11,6 +11,12 @@
   <body>
 
     <div class="container">
+      <nav>
+        <%= link_to 'Criar conta', new_user_registration_path %>
+                
+      </nav>
+      <% notice %>
+      <% alert %>
       <% if flash[:error] %>
         <div class="alert alert-danger">
         <p><%= flash[:error] %></p>
