@@ -4,14 +4,18 @@ FactoryGirl.define do
       "ong - #{n}"
     end
     phone '12345678'
+    cnpj '1241412'
     site 'od.com.br'
-    cnpj '325256462'
-    address 'Rua de baixo 123'
     email 'od@gmail.com'
     contact 'edson...'
     about_us 'bla.. bla'
     logo 'imagemLogo'
     acept_pets 1
-    city 'São Paulo'
+    city 'Diadema'
+    state 'Sao Paulo'
+    street 'Rua aurora'
+    number 15
+    neighborhood 'Santo Amaro'
+    zipcode '12345-123'
   end
 end

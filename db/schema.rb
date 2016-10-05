@@ -29,13 +29,17 @@ ActiveRecord::Schema.define(version: 20161004223440) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.string   "cnpj"
-    t.string   "address"
     t.string   "email"
     t.string   "contact"
     t.text     "about_us"
     t.string   "logo"
     t.boolean  "acept_pets"
+    t.string   "state"
     t.string   "city"
+    t.string   "street"
+    t.string   "zipcode"
+    t.string   "neighborhood"
+    t.string   "number"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"

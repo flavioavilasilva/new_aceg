@@ -26,9 +26,8 @@ feature 'user creates events to ong' do
 
   scenario 'user see event in the home page' do
     ong = create(:ong)
-    event = create(:event, ong: ong, datetime: DateTime.new.in_time_zone(2016,
-                                                                         10, 4,
-                                                                         8, 0))
+    event = create(:event, ong: ong, datetime: DateTime.new(2016, 10, 4,
+                                                            8, 0).in_time_zone)
 
     visit root_path
 
@@ -39,9 +38,8 @@ feature 'user creates events to ong' do
   scenario 'user see event in the ong page' do
     ong = create(:ong)
     events = create_list(:event, 5, ong: ong,
-                                    datetime: DateTime.new.in_time_zone(2016,
-                                                                        10, 4,
-                                                                        8, 0))
+                                    datetime: DateTime.new(2016, 10, 4,
+                                                           8, 0).in_time_zone)
 
     visit ong_path ong
 

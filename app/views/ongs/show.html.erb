@@ -1,22 +1,45 @@
+
+<article>
 <h1><%= @ong.name %></h1>
-
 <%= image_tag @ong.avatar.url(:medium) %>
-
 <dl>
-  <dt>Localização</dt>
-  <dd><%= @ong.address %></dd>
-  <dt>Telefone</dt>
-  <dd><%= @ong.phone %></dd>
-  <dt>Email</dt>
-  <dd><%= @ong.email %></dd>
-  <dt>Site</dt>
-  <dd><%= @ong.site %></dd>
+<dt>CNPJ: </dt>
+<dd><%= @ong.cnpj %></dd>
+<dt>Telefone: </dt>
+<dd><%= @ong.phone %></dd>
+<dt>Email: </dt>
+<dd><%= @ong.email %></dd>
+<dt>CEP: </dt>
+<dd><%= @ong.zipcode %></dd>
+<dt>Site: <dt>
+<dd><%= @ong.site %></dd>
+<dt>Pets: </dt>
+<dd><%= @ong.pets.name %></dd>
+<dt>Estado: </dt>
+<dd><%= @ong.state %></dd>
+<dt>Cidade: </dt>
+<dd><%= @ong.city %></dd>
+<dt>Rua: </dt>
+<dd><%= @ong.street %></dd>
+<dt>Bairro: </dt>
+<dd><%= @ong.neighborhood %></dd>
+<dt>Número: </dt>
+<dd><%= @ong.number %></dd>
+<dt>Contatos: </dt>
+<dd><%= @ong.contact %></dd>
+<dt>ONG aceitas Pets?</dt>
+<% if @ong.acept_pets %>
+  <dd>Sim</dd>
+<% else %>
+  <dd>Não</dd>
+<% end %>
 </dl>
 
 <section>
   <h1>PETs disponíveis para adoção</h1>
   <%= render @ong.pets %>
 </section>
+
 
 <section>
   <h1>Eventos</h1>
@@ -25,3 +48,5 @@
 
   <%= link_to 'Criar Evento', new_ong_event_path(@ong) %>
 </section>
+
+</article>
