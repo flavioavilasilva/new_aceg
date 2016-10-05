@@ -25,8 +25,7 @@ feature 'User visits home' do
     visit root_path
     within '#ongs' do
       expect(page).to have_selector('.ong', count: 5)
-
-      within(:xpath, '//div[@class="ong"][1]') do
+      within(:xpath, '//div[@class="row"][1]') do
         expect(page).to have_selector('.pets', count: 5)
         expect(page).to have_selector('img')
       end

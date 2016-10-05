@@ -7,10 +7,6 @@ feature 'user visits home with menu' do
     click_link 'ONGs'
     click_link 'Pets'
 
-    within 'form' do
-      select 'cidade', from: 'São Paulo'
-    end
-
     expect(page).to have_content('AdoPet')
   end
 end
