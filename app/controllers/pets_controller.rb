@@ -1,6 +1,10 @@
 class PetsController < ApplicationController
   before_action :load_constants, only: [:new, :create]
 
+  def index
+    @pets = Pet.all
+  end
+
   def new
     @pet = Pet.new
   end
