@@ -33,6 +33,6 @@ class OngsController < ApplicationController
   def ong_params
     params.require(:ong).permit(:cnpj, :name, :street, :number, :neighborhood,
                                 :zipcode, :state, :city, :email, :phone,
-                                :contact, :acept_pets, :site)
+                                :contact, :acept_pets, :site, :avatar)
   end
 end

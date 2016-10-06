@@ -1,6 +1,6 @@
 <h1>Cadastrar ONG</h1>
 <%= simple_form_for @ong do |f| %>
-
+  <p><%= f.input :avatar, as: :file %></p>
   <p><%= f.input :cnpj, label: 'CNPJ' %></p>
   <p><%= f.input :name, label: 'Nome' %></p>
   <p><%= f.input :street, label: 'Rua' %></p>
