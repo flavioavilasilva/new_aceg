@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   resources :ongs, only: [:show, :new, :create, :index] do
     resources :events, only: [:new, :create]
   end
-  
+
   resources :events, only: [:show]
 
-  resources :adoptions, only: [:show, :edit]
+  resources :adoptions, only: [:show]
 end

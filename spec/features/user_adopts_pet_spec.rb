@@ -5,7 +5,7 @@ feature 'User adopt pet' do
     ong = create(:ong)
     pet = create(:pet, ong: ong)
     user = login
-    adoption = build(:adoption)
+    adoption = build(:adoption, pet: pet, user: user)
 
     visit pet_path(pet)
 
@@ -13,7 +13,7 @@ feature 'User adopt pet' do
 
     expect(page).to have_content 'Sua solicitação de adoção foi registrada e será analisada!'
     expect(page).to have_content adoption.pet.name
-    expect(page).to have_content adoption.pet.ong.name
+    expect(page).to have_content adoption.user.name
     expect(page).to have_content adoption.status
   end
 end
