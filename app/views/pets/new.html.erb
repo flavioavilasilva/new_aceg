@@ -1,4 +1,4 @@
-<%= simple_form_for @pet do |f| %>
+<%= simple_form_for([@ong, @pet]) do |f| %>
   <%= f.input :name, label: 'Nome' %>
   <%= f.input :avatar, as: :file %>
   <%= f.input :age, label: 'Idade' %>
@@ -10,6 +10,5 @@
   <%= f.input :deficiency, label: 'Deficiencia' %>
   <%= f.input :castrated, label: 'Castrado' %>
   <%= f.input :description, label: 'Descrição' %>
-  <%= f.association :ong, label: 'Ong'%>
   <%= f.button :submit, 'Enviar' %>
 <% end %>

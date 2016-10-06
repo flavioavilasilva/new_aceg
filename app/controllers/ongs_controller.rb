@@ -1,5 +1,9 @@
 class OngsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :my_ongs]
+
+  def my_ongs
+    @my_ongs = current_user.ongs
+  end
 
   def index
     if params[:city]
