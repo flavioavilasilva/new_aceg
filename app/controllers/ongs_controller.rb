@@ -1,4 +1,6 @@
 class OngsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+
   def index
     if params[:city]
       @city = params[:city]
@@ -17,7 +19,7 @@ class OngsController < ApplicationController
   end
 
   def create
-    @ong = Ong.new(ong_params)
+    @ong = current_user.ongs.create(ong_params)
     if @ong.save
       redirect_to @ong
     else

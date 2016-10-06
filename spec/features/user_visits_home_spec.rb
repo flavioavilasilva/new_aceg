@@ -2,11 +2,11 @@ require 'rails_helper'
 
 feature 'User visits home' do
   scenario 'and see pets' do
-    pet = create(:pet)
+    user = create(:user)
+    ong = create(:ong, user: user)
+    pet = create(:pet, ong: ong)
 
     visit root_path
-
-    expect(page).to have_content('Cadastre sua ONG')
 
     within '.pets' do
       expect(page).to have_content pet.name
@@ -16,8 +16,14 @@ feature 'User visits home' do
     end
   end
 
+  scenario 'and user is logged in' do
+    login
+    expect(page).to have_content 'Cadastre sua ONG'
+  end
+
   scenario 'and see 5 ongs and 5 pets from that ongs' do
-    ongs = create_list(:ong, 6)
+    user = create(:user)
+    ongs = create_list(:ong, 6, user: user)
 
     ongs.each do |ong|
       create_list(:pet, 10, ong: ong)
