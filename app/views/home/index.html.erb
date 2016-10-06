@@ -12,7 +12,9 @@
   <div class="jumbotron">
     <h1>Bem-vindos à AdoPet!</h1>
     <p>...</p>
-    <p><%= link_to 'Cadastre sua ONG', new_ong_path, class:'btn btn-primary btn-lg' %></p>
+    <% if current_user %>
+      <p><%= link_to 'Cadastre sua ONG', new_ong_path, class:'btn btn-primary btn-lg' %></p>
+    <% end %>
   </div>
 
   <% @ongs.each do |ong| %>
@@ -26,7 +28,7 @@
             <%= render ong.featured_pets %>
 
             <%= render ong.events %>
-            
+
           </div>
         </div>
       </div>

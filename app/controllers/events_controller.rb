@@ -4,12 +4,12 @@ class EventsController < ApplicationController
   end
 
   def new
-    @ong = Ong.find(params[:ong_id])
+    fill_ong
     @event = @ong.events.build(ong: @ong)
   end
 
   def create
-    @ong = Ong.find(params[:ong_id])
+    fill_ong
     @event = @ong.events.new(params.require(:event).permit(:ong_id,
                                                            :name, :address,
                                                            :datetime))
@@ -20,5 +20,11 @@ class EventsController < ApplicationController
       flash[:error] = 'Todos os campos com (*) são obrigatórios'
       render :new
     end
+  end
+
+  private
+
+  def fill_ong
+    @ong = Ong.find(params[:ong_id])
   end
 end

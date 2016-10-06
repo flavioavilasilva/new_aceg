@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe :contract, type: :model do
   describe '#featured_pets' do
     it 'shows the first 5 pets of the ong' do
-      ong = create(:ong)
+      user = create(:user)
+      ong = create(:ong, user: user)
       pet1 = create(:pet, ong: ong)
       pet2 = create(:pet, created_at: 3.days.ago, ong: ong)
       pet3 = create(:pet, created_at: 10.days.ago, ong: ong)
