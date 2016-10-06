@@ -2,7 +2,8 @@ require 'rails_helper'
 
 feature 'user creates events to ong' do
   scenario 'successfully' do
-    ong = create(:ong)
+    user = login
+    ong = create(:ong, user: user)
     visit ong_path ong
 
     click_on 'Criar Evento'
@@ -25,7 +26,8 @@ feature 'user creates events to ong' do
   end
 
   scenario 'user see event in the home page' do
-    ong = create(:ong)
+    user = login
+    ong = create(:ong, user: user)
     event = create(:event, ong: ong, datetime: DateTime.new(2016, 10, 4,
                                                             8, 0).in_time_zone)
 
@@ -36,7 +38,8 @@ feature 'user creates events to ong' do
   end
 
   scenario 'user see event in the ong page' do
-    ong = create(:ong)
+    user = login
+    ong = create(:ong, user: user)
     events = create_list(:event, 5, ong: ong,
                                     datetime: DateTime.new(2016, 10, 4,
                                                            8, 0).in_time_zone)
@@ -49,7 +52,8 @@ feature 'user creates events to ong' do
   end
 
   scenario 'should fail because all fields are mandatory' do
-    ong = create(:ong)
+    user = login
+    ong = create(:ong, user: user)
     visit ong_path ong
 
     click_on 'Criar Evento'

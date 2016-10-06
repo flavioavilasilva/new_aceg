@@ -1,8 +1,8 @@
 require 'rails_helper'
 feature 'User create ong' do
   scenario 'successfuly' do
-    ong = create(:ong)
-
+    login
+    ong = build(:ong)
     visit new_ong_path
 
     fill_in 'CNPJ',     with: ong.cnpj
@@ -16,7 +16,7 @@ feature 'User create ong' do
     fill_in 'Email',    with: ong.email
     fill_in 'Telefone', with: ong.phone
     fill_in 'Contato',  with: ong.contact
-    check 'Recebe Pets'
+    check   'Recebe Pets'
     fill_in 'Site',     with: ong.site
 
     click_on 'Cadastrar ONG'
@@ -37,7 +37,8 @@ feature 'User create ong' do
   end
 
   scenario 'nao aceita Pet' do
-    ong = create(:ong)
+    login
+    ong = build(:ong)
     visit new_ong_path
 
     fill_in 'CNPJ',     with: ong.cnpj
@@ -58,6 +59,7 @@ feature 'User create ong' do
     expect(page).to have_content 'Não'
   end
   scenario 'unsuccessfuly' do
+    login
     visit new_ong_path
 
     fill_in 'CNPJ',     with: ''

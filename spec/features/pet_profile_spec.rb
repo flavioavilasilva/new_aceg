@@ -2,7 +2,8 @@ require 'rails_helper'
 
 feature 'visitor see the pet profile' do
   scenario 'successfully' do
-    ong = create(:ong)
+    user = create(:user)
+    ong = create(:ong, user: user)
     pet = build(:pet, ong: ong)
 
     visit new_pet_path
@@ -33,7 +34,10 @@ feature 'visitor see the pet profile' do
   end
 
   scenario 'should fill mandatory fields' do
-    pet = build(:pet)
+    user = create(:user)
+    ong = create(:ong, user: user)
+    pet = build(:pet, ong: ong)
+
     visit new_pet_path
     fill_in 'Nome', with: pet.name
     fill_in 'Raça', with: pet.breed
