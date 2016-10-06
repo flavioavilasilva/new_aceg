@@ -82,6 +82,11 @@ ActiveRecord::Schema.define(version: 20161005230652) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "name"
+    t.string   "state"
+    t.string   "city"
+    t.string   "phone"
+    t.string   "address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
