@@ -30,6 +30,11 @@
     <dt>Descrição</dt>
     <dd><%= @pet.description %></dd>
   </dl>
+
+  <%= form_for [@pet, @adoption], html: {class: "nifty_form"} do |f| %>
+    <%= f.submit "Adotar" %>
+  <% end %>
+
   <hr>
   <h2>ONG Responsável</h2>
   <dl>
@@ -43,6 +48,6 @@
     <dt>Localização</dt>
     <dd><%= @pet.ong.city %></dd>
     <dd><%= @pet.ong.state %></dd>
-    <dd><%= @pet.ong.street %></dd>    
+    <dd><%= @pet.ong.street %></dd>
   </dl>
 </article>

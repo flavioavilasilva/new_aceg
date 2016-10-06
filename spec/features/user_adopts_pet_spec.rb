@@ -4,10 +4,10 @@ feature 'User adopt pet' do
   scenario 'successfuly' do
     ong = create(:ong)
     pet = create(:pet, ong: ong)
-    user = create(:user)
+    user = login
     adoption = build(:adoption)
 
-    visit pets_path(pet)
+    visit pet_path(pet)
 
     click_on 'Adotar'
 
