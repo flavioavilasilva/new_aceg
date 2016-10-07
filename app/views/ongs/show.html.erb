@@ -1,63 +1,77 @@
 
-<article>
-<h1><%= @ong.name %></h1>
-<%= image_tag @ong.avatar.url(:medium) %>
-<dl>
-<dt>CNPJ: </dt>
-<dd><%= @ong.cnpj %></dd>
-<dt>Telefone: </dt>
-<dd><%= @ong.phone %></dd>
-<dt>Email: </dt>
-<dd><%= @ong.email %></dd>
-<dt>CEP: </dt>
-<dd><%= @ong.zipcode %></dd>
-<dt>Site: <dt>
-<dd><%= @ong.site %></dd>
-<dt>Pets: </dt>
-<dd><%= @ong.pets.name %></dd>
-<dt>Estado: </dt>
-<dd><%= @ong.state %></dd>
-<dt>Cidade: </dt>
-<dd><%= @ong.city %></dd>
-<dt>Rua: </dt>
-<dd><%= @ong.street %></dd>
-<dt>Bairro: </dt>
-<dd><%= @ong.neighborhood %></dd>
-<dt>Número: </dt>
-<dd><%= @ong.number %></dd>
-<dt>Contatos: </dt>
-<dd><%= @ong.contact %></dd>
-<dt>ONG aceitas Pets?</dt>
-<% if @ong.acept_pets %>
-  <dd>Sim</dd>
-<% else %>
-  <dd>Não</dd>
-<% end %>
-</dl>
-
-<section>
-  <h1>PETs disponíveis para adoção</h1>
-  <%= render @ong.pets %>
-</section>
-
-
-<section>
-  <h1>Eventos</h1>
-
-  <%= render @ong.events %>
-  <% if current_user == @ong.user %>
-    <%= link_to 'Criar Evento', new_ong_event_path(@ong) %>
-  <% end %>
-</section>
-
-
-
-<section>
-  <h1>Cadastro de Pets</h1>
-  <% if current_user == @ong.user %>
-    <%= link_to 'Cadastrar Pets', new_ong_pet_path(@ong) %>
-  <% end %>
-</section>
-
-
-</article>
+  <div class="col-md-12">
+    <div class="box">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-3">
+            <%= image_tag @ong.avatar.url(:medium), class: 'img-responsive' %>
+          </div>
+          <div class="col-md-9">
+            <h1><%= @ong.name %></h1>
+            <%= link_to 'Criar Evento', new_ong_event_path(@ong), class: 'btn btn-primary' %>
+            <div class="row">
+              <div class="col-md-6">
+                <dl class="dl-horizontal">
+                  <dt>CNPJ: </dt>
+                  <dd><%= @ong.cnpj %></dd>
+                  <dt>Telefone: </dt>
+                  <dd><%= @ong.phone %></dd>
+                  <dt>Email: </dt>
+                  <dd><%= @ong.email %></dd>
+                  <dt>CEP: </dt>
+                  <dd><%= @ong.zipcode %></dd>
+                  <dt>Site: <dt>
+                  <dd><%= @ong.site %></dd>
+                  <dt>Estado: </dt>
+                  <dd><%= @ong.state %></dd>
+                  <dt>Cidade: </dt>
+                  <dd><%= @ong.city %></dd>
+                </dl>
+              </div>
+              <div class="col-md-6">
+                <dl class="dl-horizontal">
+                  <dt>Rua: </dt>
+                  <dd><%= @ong.street %></dd>
+                  <dt>Bairro: </dt>
+                  <dd><%= @ong.neighborhood %></dd>
+                  <dt>Número: </dt>
+                  <dd><%= @ong.number %></dd>
+                  <dt>Contatos: </dt>
+                  <dd><%= @ong.contact %></dd>
+                  <dt>ONG aceitas Pets?</dt>
+                  <% if @ong.acept_pets %>
+                    <dd>Sim</dd>
+                  <% else %>
+                    <dd>Não</dd>
+                  <% end %>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section>
+      <h1>Cadastro de Pets</h1>
+      <% if current_user == @ong.user %>
+        <%= link_to 'Cadastrar Pets', new_ong_pet_path(@ong) %>
+      <% end %>
+    </section>
+    <section>
+      <h1>PETs disponíveis para adoção</h1>
+      <%= render @ong.pets %>
+    </section>
+  </div>
+</div>
+<div id="advantages">
+  <div class="container">
+    <div class="same-height-row">
+      <section>
+        <h1>Eventos</h1>
+        <%= render @ong.events %>
+        <% if current_user == @ong.user %>
+          <%= link_to 'Criar Evento', new_ong_event_path(@ong) %>
+        <% end %>
+      </section>
+    </div>
+  </div>

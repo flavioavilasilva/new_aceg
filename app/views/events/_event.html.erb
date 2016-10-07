@@ -1,9 +1,14 @@
-<div class="event">
-  <h2><%= link_to event.name, event %></h2>
-  <dl>
-      <dt>Endereço</dt>
-      <dd><%= event.address %></dd>
-      <dt>Data e Hora</dt>
-      <dd><%= friendly_date event.datetime %></dd>
-  </dl>
+<div class="col-sm-4">
+
+
+<div class="box same-height clickable" style="height: 168px;">
+    <div class="icon"><i class="fa fa-paw"></i></div>
+    <h3><%= link_to event.name, event %></h3>
+    <dl>
+        <dt>Endereço</dt>
+        <dd><%= event.address %></dd>
+        <dt>Data e Hora</dt>
+        <dd><%= friendly_date event.datetime %></dd>
+    </dl>
+</div>
 </div>

@@ -1,37 +1,57 @@
-
 <aside>
-  <%= form_tag(ongs_path, method: :get, class: "form-inline") do %>
-    <%=label_tag(:city, "Cidade") %>
-    <%= select_tag(:city, options_for_select(@cities)) %>
-    <%= submit_tag("Filtrar") %>
-  <% end %>
 </aside>
-
-<section id="ongs">
-
-  <div class="jumbotron">
-    <h1>Bem-vindos à AdoPet!</h1>
-    <p>...</p>
-    <% if current_user %>
-      <p><%= link_to 'Cadastre sua ONG', new_ong_path, class:'btn btn-primary btn-lg' %></p>
-    <% end %>
-  </div>
-
-  <% @ongs.each do |ong| %>
-
-    <div class="row">
-      <div class="ong">
-        <div class="panel panel-default">
-          <div class="panel-heading"><h2><%= link_to ong.name, ong %></h2></div>
-          <div class="panel-body">
-
-            <%= render ong.featured_pets %>
-
-            <%= render ong.events %>
-
+<div class="container" data-animate="fadeInUpBig">
+  <div class="col-md-12">
+    <div class="box slideshow">
+      <h3>Bem-vindo a AdoPet!</h3>
+      <p class="lead">Encontre seu próximo amor em 4 patas <3</p>
+      <div >
+        <a href="#">
+          <img src="<%= image_path 'getinspired1.jpg' %>" alt="Get inspired" class="img-responsive">
+        </a>
+      </div>
+    </div>
+    <div class="box info-bar">
+      <div class="row">
+        <div class="col-sm-12 col-md-3 col-md-offset-3 products-showing">
+          <strong>Encontre seus pets:</strong>
+        </div>
+        <div class="col-sm-12 col-md-6  products-number-sort">
+          <div class="row">
+            <%= form_tag(ongs_path, method: :get, class: "form-inline") do %>
+              <div class="col-md-6 col-sm-6">
+                <%=label_tag(:city, "Cidade") %>
+                <%= select_tag(:city, options_for_select(@cities), class: 'form-control') %>
+                <%= submit_tag("Filtrar", class: 'btn btn-primay') %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
-  <% end %>
-</section>
+  </div>
+</div>
+<div id="hot">
+  <div id="ongs">
+    <% @ongs.each do |ong| %>
+      <div class="box">
+        <div class="container">
+          <div class="col-md-12">
+            <h2><%= link_to ong.name, ong %></h2>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <%= render ong.featured_pets %>
+      </div>
+      <div id="events">
+        <div class="container">
+          <div class="same-height-row">
+            <%= render ong.events %>
+          </div>
+        </div>
+      </div>
+      <%= render ong.events %>
+    <% end %>
+  </div>
+</div>
