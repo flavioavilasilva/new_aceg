@@ -45,16 +45,18 @@
   <h1>Eventos</h1>
 
   <%= render @ong.events %>
-
-  <%= link_to 'Criar Evento', new_ong_event_path(@ong) %>
+  <% if current_user == @ong.user %>
+    <%= link_to 'Criar Evento', new_ong_event_path(@ong) %>
+  <% end %>
 </section>
 
 
 
 <section>
   <h1>Cadastro de Pets</h1>
-
-  <%= link_to 'Cadastrar Pets', new_ong_pet_path(@ong) %>
+  <% if current_user == @ong.user %>
+    <%= link_to 'Cadastrar Pets', new_ong_pet_path(@ong) %>
+  <% end %>
 </section>
 
 

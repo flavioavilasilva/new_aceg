@@ -11,7 +11,12 @@ class PetsController < ApplicationController
 
   def new
     fill_ong
-    @pet = @ong.pets.build
+    if current_user != @ong.user
+      flash[:error] = 'Vocẽ não pode cadastrar Pets para esta ONG'
+      redirect_to @ong
+    else
+      @pet = @ong.pets.build
+    end
   end
 
   def create

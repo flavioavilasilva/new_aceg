@@ -5,7 +5,12 @@ class EventsController < ApplicationController
 
   def new
     fill_ong
-    @event = @ong.events.build(ong: @ong)
+    if current_user != @ong.user
+      flash[:error] = 'Vocẽ não pode cadastrar eventos para esta ONG'
+      redirect_to @ong
+    else
+      @event = @ong.events.build(ong: @ong)
+    end
   end
 
   def create
