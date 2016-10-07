@@ -62,7 +62,8 @@
 <section>
   <h1>Fotos</h1>
 
-  <%= simple_form_for [@ong.gallery, @ong.photos] do |f| %>
+  <%= simple_form_for [@ong.photos] do |f| %>
+    <%= f.input :name, label: 'Nome' %>
     <%= f.input :image, as: :file, label: 'Imagem' %>
     <%= f.button :submit, 'Enviar Imagem' %>
   <% end %>

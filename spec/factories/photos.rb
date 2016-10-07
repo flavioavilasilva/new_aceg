@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :photo do
-    gallery nil
+    name "MyString"
+    ong nil
   end
 end

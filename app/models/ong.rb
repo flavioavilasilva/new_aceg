@@ -2,8 +2,7 @@ class Ong < ApplicationRecord
   has_many :pets
   has_many :events
   belongs_to :user
-  has_one :gallery
-  has_many :photos, through: :gallery
+  has_many :photos
 
   has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' },
                              default_url: '/images/:style/missing_ong.png'
