@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161005230652) do
+ActiveRecord::Schema.define(version: 20161007003732) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 20161005230652) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ong_id"], name: "index_events_on_ong_id"
+  end
+
+  create_table "galleries", force: :cascade do |t|
+    t.integer  "ong_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ong_id"], name: "index_galleries_on_ong_id"
   end
 
   create_table "ongs", force: :cascade do |t|
@@ -67,6 +74,13 @@ ActiveRecord::Schema.define(version: 20161005230652) do
     t.datetime "avatar_updated_at"
     t.integer  "ong_id"
     t.index ["ong_id"], name: "index_pets_on_ong_id"
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.integer  "gallery_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gallery_id"], name: "index_photos_on_gallery_id"
   end
 
   create_table "users", force: :cascade do |t|

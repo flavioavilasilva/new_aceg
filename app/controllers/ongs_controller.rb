@@ -24,6 +24,7 @@ class OngsController < ApplicationController
 
   def create
     @ong = current_user.ongs.create(ong_params)
+    @ong.gallery = Gallery.new(ong: @ong)
     if @ong.save
       redirect_to @ong
     else

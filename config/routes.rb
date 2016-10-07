@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :ongs, only: [:show, :index, :new, :create] do
     resources :events, only: [:new, :create]
     resources :pets, only: [:new, :create, :index]
+    resources :galleries, only: [:create]
   end
   resources :events, only: [:show]
   resources :pets, only:  [:index, :show]
