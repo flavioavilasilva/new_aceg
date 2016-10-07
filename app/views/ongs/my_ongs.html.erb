@@ -1,0 +1,24 @@
+<h1>Minhas ONGs</h1>
+
+<% if @my_ongs.count > 0 %>
+  <section id="ongs">
+    <h2>ONGs</h2>
+      <% @my_ongs.each do |ong| %>
+      <div class="ong">
+        <h2><%= link_to ong.name, ong %></h2>
+        <% ong.featured_pets.each do |pet| %>
+          <div class="pets">
+              <h2><%= link_to pet.name, pet %></h2>
+              Idade: <%= pet.age %>
+              Gênero: <%= pet.gender %>
+              Porte: <%= pet.size %>
+          </div>
+        <% end %>
+      </div>
+      <% end %>
+  </section>
+<% else %>
+  <p class="alert alert-warning">
+    Nenhuma ONG cadastrada
+  </p>
+<% end %>

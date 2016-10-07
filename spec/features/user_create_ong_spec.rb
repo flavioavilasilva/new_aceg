@@ -79,4 +79,34 @@ feature 'User create ong' do
 
     expect(page).to have_content 'Campos com (*) são obrigatórios'
   end
+
+  scenario 'and view only my ONGs' do
+    another_user = create(:user)
+    another_ong = create(:ong, user: another_user)
+
+    login
+    ong = build(:ong)
+    visit new_ong_path
+
+    fill_in 'CNPJ',     with: ong.cnpj
+    fill_in 'Nome',     with: ong.name
+    fill_in 'Rua',      with: ong.street
+    fill_in 'Número',   with: ong.number
+    fill_in 'Bairro',   with: ong.neighborhood
+    fill_in 'Cep',      with: ong.zipcode
+    fill_in 'Estado',   with: ong.state
+    fill_in 'Cidade',   with: ong.city
+    fill_in 'Email',    with: ong.email
+    fill_in 'Telefone', with: ong.phone
+    fill_in 'Contato',  with: ong.contact
+    check   'Recebe Pets'
+    fill_in 'Site',     with: ong.site
+
+    click_on 'Cadastrar ONG'
+
+    click_on 'Minhas ONGs'
+
+    expect(page).to have_content ong.name
+    expect(page).not_to have_content another_ong.name
+  end
 end

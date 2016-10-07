@@ -1,19 +1,22 @@
 class PetsController < ApplicationController
   before_action :load_constants, only: [:new, :create]
-
   def index
-    @pets = Pet.all
+    if params[:ong_id]
+      fill_ong
+      @pets = @ong.pets
+    else
+      @pets = Pet.all
+    end
   end
 
   def new
-    @pet = Pet.new
+    fill_ong
+    @pet = @ong.pets.build
   end
 
   def create
-    @pet = Pet.new(params.require(:pet).permit(:name, :age, :size, :pet_type,
-                                               :breed, :gender, :vaccined,
-                                               :deficiency, :castrated,
-                                               :description, :avatar, :ong_id))
+    fill_ong
+    @pet = @ong.pets.new(pets_params)
     if @pet.save
       redirect_to @pet
     else
@@ -32,5 +35,15 @@ class PetsController < ApplicationController
     @sizes = Size::SIZES
     @pet_types = PetType::TYPES
     @genders = Gender::GENDERS
+  end
+
+  def fill_ong
+    @ong = Ong.find(params[:ong_id])
+  end
+
+  def pets_params
+    params.require(:pet).permit(:name, :age, :size, :pet_type, :breed, :gender,
+                                :vaccined, :deficiency, :castrated,
+                                :description, :avatar)
   end
 end
