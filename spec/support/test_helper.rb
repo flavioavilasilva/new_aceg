@@ -1,5 +1,4 @@
 module TestHelper
-
   def login
     user = create(:user)
     visit new_user_session_path
@@ -9,5 +8,4 @@ module TestHelper
     click_on 'Entrar'
     user
   end
-
 end

@@ -12,8 +12,8 @@ feature 'User adopt pet' do
 
     click_on 'Adotar'
 
-    expect(page).to have_content "Sua solicitação de adoção foi registrada /n
-    e será analisada!"
+    expect(page).to have_content "Sua solicitação de adoção foi \
+    registrada e será analisada!"
     expect(page).to have_content adoption.pet.name
     expect(page).to have_content adoption.pet.ong.name
     expect(page).to have_content adoption.pet.ong.phone
