@@ -51,6 +51,24 @@ feature 'user creates events to ong' do
     end
   end
 
+  scenario 'dont show create button when current_user is not the ong creator' do
+    not_logged_user = create(:user)
+    ong = create(:ong, user: not_logged_user)
+    logged_user = login
+    visit ong_path ong
+
+    expect(page).not_to have_content 'Criar Evento'
+
+  end
+
+  scenario 'when create an event the current_user must be the ong creator' do
+    not_logged_user = create(:user)
+    ong = create(:ong, user: not_logged_user)
+    logged_user = login
+    visit new_ong_event_path ong
+    expect(page).to have_content 'Vocẽ não pode cadastrar eventos para esta ONG'
+  end
+
   scenario 'should fail because all fields are mandatory' do
     user = login
     ong = create(:ong, user: user)

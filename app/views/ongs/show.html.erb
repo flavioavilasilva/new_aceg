@@ -45,8 +45,9 @@
   <h1>Eventos</h1>
 
   <%= render @ong.events %>
-
-  <%= link_to 'Criar Evento', new_ong_event_path(@ong) %>
+  <% if current_user == @ong.user %>
+    <%= link_to 'Criar Evento', new_ong_event_path(@ong) %>
+  <% end %>
 </section>
 
 </article>
