@@ -12,7 +12,8 @@ feature 'User adopt pet' do
 
     click_on 'Adotar'
 
-    expect(page).to have_content 'Sua solicitação de adoção foi registrada e será analisada!'
+    expect(page).to have_content "Sua solicitação de adoção foi registrada /n
+    e será analisada!"
     expect(page).to have_content adoption.pet.name
     expect(page).to have_content adoption.pet.ong.name
     expect(page).to have_content adoption.pet.ong.phone
@@ -23,8 +24,6 @@ feature 'User adopt pet' do
     user_not_log_in = create(:user)
     ong = create(:ong, user: user_not_log_in)
     pet = create(:pet, ong: ong)
-
-    adoption = build(:adoption, pet: pet, user: user_not_log_in)
 
     visit pet_path(pet)
 
