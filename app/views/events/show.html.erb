@@ -1,11 +1,19 @@
-<article>
-    <h1><%= @event.name %></h1>
-    <dl>
-      <dt>ONG</dt>
-      <dd><%= @event.ong.name %></dd>
-      <dt>Endereço</dt>
-      <dd><%= @event.address %></dd>
-      <dt>Data e Hora</dt>
-      <dd><%= friendly_date @event.datetime %></dd>
-    </dl>
-</article>
+<div class="col-md-12">
+  <h1><%= @event.name %></h1>
+  <div class="box">
+    <div class="container-fluid">
+      <div class="row">
+        <article>
+            <dl>
+              <dt>ONG</dt>
+              <dd><%= @event.ong.name %></dd>
+              <dt>Endereço</dt>
+              <dd><%= @event.address %></dd>
+              <dt>Data e Hora</dt>
+              <dd><%= friendly_date @event.datetime %></dd>
+            </dl>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>

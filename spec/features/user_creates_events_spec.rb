@@ -4,7 +4,7 @@ feature 'user creates events to ong' do
   scenario 'successfully' do
     user = login
     ong = create(:ong, user: user)
-    visit ong_path ong
+    visit minhas_ongs_path ong
 
     click_on 'Criar Evento'
 
@@ -70,8 +70,8 @@ feature 'user creates events to ong' do
 
   scenario 'should fail because all fields are mandatory' do
     user = login
-    ong = create(:ong, user: user)
-    visit ong_path ong
+    create(:ong, user: user)
+    visit minhas_ongs_path
 
     click_on 'Criar Evento'
 

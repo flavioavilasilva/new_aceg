@@ -10,7 +10,7 @@
 
   <body>
     <header>
-      <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+        <div class="navbar navbar-default yamm" role="navigation" id="navbar">
         <div class="container">
           <div class="navbar-header">
             <%= link_to root_path, class:'navbar-brand home' do %>
@@ -35,8 +35,8 @@
                 <li><%= link_to 'Minhas ONGs', minhas_ongs_path %>
                 <li><%= link_to 'Editar conta', edit_user_registration_path %>
                 <li><%= link_to 'Logoff', destroy_user_session_path, method: :delete%>
-                <li><%= current_user.email %></li>
                 <li><%= link_to 'Cadastre sua ONG', new_ong_path %><li>
+                <p class="navbar-text"><%= current_user.email %></p>
               <% else %>
                 <li><%= link_to 'Login', new_user_session_path %></li>
                 <li><%= link_to 'Criar conta', new_user_registration_path %></li>

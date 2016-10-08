@@ -1,24 +1,34 @@
-<h1>Minhas ONGs</h1>
+<div class="col-md-12">
+          <h1>Minhas ONGs</h1>
 
-<% if @my_ongs.count > 0 %>
-  <section id="ongs">
-    <h2>ONGs</h2>
-      <% @my_ongs.each do |ong| %>
-      <div class="ong">
-        <h2><%= link_to ong.name, ong %></h2>
-        <% ong.featured_pets.each do |pet| %>
-          <div class="pets">
-              <h2><%= link_to pet.name, pet %></h2>
-              Idade: <%= pet.age %>
-              Gênero: <%= pet.gender %>
-              Porte: <%= pet.size %>
-          </div>
+  <div class="box">
+
+    <div class="container-fluid">
+      <div class="row">
+
+
+        <% if @my_ongs.count > 0 %>
+          <section id="ongs">
+
+              <% @my_ongs.each do |ong| %>
+              <div class="ong">
+                <h2><%= link_to ong.name, ong %></h2>
+                <% if current_user == ong.user %>
+                  <%= link_to 'Criar Evento', new_ong_event_path(ong), class: 'btn btn-primary' %>
+                  <%= link_to 'Cadastrar Pets', new_ong_pet_path(ong), class: 'btn btn-success' %>
+                <% end %>
+              </div>
+              <% end %>
+          </section>
+        <% else %>
+          <p class="alert alert-warning">
+            Nenhuma ONG cadastrada
+          </p>
         <% end %>
+
+
+
       </div>
-      <% end %>
-  </section>
-<% else %>
-  <p class="alert alert-warning">
-    Nenhuma ONG cadastrada
-  </p>
-<% end %>
+    </div>
+  </div>
+</div>
