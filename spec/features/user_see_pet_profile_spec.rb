@@ -15,7 +15,7 @@ feature 'visitor see the pet profile' do
     fill_in 'Raça', with: pet.breed
     choose 'Macho'
     check 'Vacinado'
-    fill_in 'Deficiencia', with: pet.deficiency
+    fill_in 'Deficiência', with: pet.deficiency
     check 'Castrado'
     fill_in 'Descrição', with: pet.description
 

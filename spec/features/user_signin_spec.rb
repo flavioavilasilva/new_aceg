@@ -16,7 +16,7 @@ feature 'user sign in' do
     expect(page).to have_no_content 'Login'
     expect(page).to have_content 'Logoff'
     expect(page).to have_content 'Editar conta'
-    within('nav') do
+    within('header') do
       expect(page).to have_content user.email
     end
   end

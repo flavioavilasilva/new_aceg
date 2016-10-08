@@ -1,18 +1,28 @@
 <h1>Cadastrar ONG</h1>
-<%= simple_form_for @ong do |f| %>
-  <p><%= f.input :avatar, as: :file %></p>
-  <p><%= f.input :cnpj, label: 'CNPJ' %></p>
-  <p><%= f.input :name, label: 'Nome' %></p>
-  <p><%= f.input :street, label: 'Rua' %></p>
-  <p><%= f.input :number, label: 'Número' %></p>
-  <p><%= f.input :neighborhood, label: 'Bairro' %></p>
-  <p><%= f.input :zipcode, label: 'Cep' %></p>
-  <p><%= f.input :state, label: 'Estado' %></p>
-  <p><%= f.input :city, label: 'Cidade' %></p>
-  <p><%= f.input :email, label: 'Email' %></p>
-  <p><%= f.input :phone, label: 'Telefone' %></p>
-  <p><%= f.input :contact, label: 'Contato' %></p>
-  <p><%= f.input :acept_pets, label: 'Recebe Pets' %></p>
-  <p><%= f.input :site, label: 'Site' %></p>
-  <p><%= f.button :submit, 'Cadastrar ONG' %></p>
-<% end %>
+<div class="col-md-12">
+  <div class="box">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <%= simple_form_for @ong do |f| %>
+            <p><%= f.input :name, label: 'Nome da ONG' %></p>
+            <p><%= f.input :cnpj, label: 'CNPJ', placeholder: 'SP''XX.XXX.XXX/0001-ZZ' %></p>
+            <p><%= f.input :street, label: 'Logradouro', placeholder: 'Av. Paulista' %></p>
+            <p><%= f.input :number, label: 'Número e complemento', placeholder: 'Número 125 - Ap 45' %></p>
+            <p><%= f.input :neighborhood, label: 'Bairro' %></p>
+            <p><%= f.input :zipcode, label: 'CEP', placeholder: '00000-000' %></p>
+            <p><%= f.input :state, label: 'Estado', placeholder: 'SP' %></p>
+            <p><%= f.input :city, label: 'Cidade' %></p>
+            <p><%= f.input :email, label: 'Email', placeholder: 'seuemail@ong.com.br' %></p>
+            <p><%= f.input :phone, label: 'Telefone', placeholder: '(11)55555-5555', input_html: { maxlength: 14, 'data-mask':"(99)99999999"} %></p>
+            <p><%= f.input :contact, label: 'Contato', hint: 'Nome do Responsável' %></p>
+            <p><%= f.input :acept_pets, label: 'Recebe Pets' %></p>
+            <p><%= f.input :site, label: 'Site', placeholder: 'http://www.nomedaong.com.br' %></p>
+            <p><%= f.input :avatar, as: :file %></p>
+            <p><%= f.button :submit, 'Cadastrar ONG' %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

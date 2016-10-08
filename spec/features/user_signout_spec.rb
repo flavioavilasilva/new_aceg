@@ -14,7 +14,7 @@ feature 'user sign out' do
 
     click_on 'Logoff'
 
-    within('nav') do
+    within('header') do
       expect(page).to have_content 'Login'
     end
   end

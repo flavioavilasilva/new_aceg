@@ -1,53 +1,59 @@
-<article>
+<div class="col-md-12">
   <h1><%= @pet.name %></h1>
-  <%= image_tag @pet.avatar.url(:thumb) %>
-  <dl>
-    <dt>Idade</dt>
-    <dd><%= @pet.age %></dd>
-    <dt>Porte</dt>
-    <dd><%= @pet.size %></dd>
-    <dt>Tipo</dt>
-    <dd><%= @pet.pet_type %></dd>
-    <dt>Raça</dt>
-    <dd><%= @pet.breed %></dd>
-    <dt>Gênero</dt>
-    <dd><%= @pet.gender %></dd>
-    <dt>Vacinado</dt>
-    <dd><% if @pet.vaccined? %>
-          <i class="glyphicon glyphicon-ok"></i>
-        <% else %>
-          <i class="glyphicon glyphicon-remove"></i>
-        <% end %>
-    </dd>
-    <dt>Deficiência</dt>
-    <dd><%= @pet.deficiency %></dd>
-    <dt>Castrado</dt>
-    <dd><% if @pet.castrated %>
-          <i class="glyphicon glyphicon-ok"></i>
-        <% else %>
-          <i class="glyphicon glyphicon-remove"></i>
-        <% end %></dd>
-    <dt>Descrição</dt>
-    <dd><%= @pet.description %></dd>
-  </dl>
-
-  <%= form_for [@pet.ong, @pet, @adoption], html: {class: "nifty_form"} do |f| %>
-    <%= f.submit "Adotar" %>
-  <% end %>
-
-  <hr>
-  <h2>ONG Responsável</h2>
-  <dl>
-    <dd><%= @pet.ong.name %></dd>
-    <dt>Email</dt>
-    <dd><%= @pet.ong.email %></dd>
-    <dt>Telefone</dt>
-    <dd><%= @pet.ong.phone %></dd>
-    <dt>Contato</dt>
-    <dd><%= @pet.ong.contact %></dd>
-    <dt>Localização</dt>
-    <dd><%= @pet.ong.city %></dd>
-    <dd><%= @pet.ong.state %></dd>
-    <dd><%= @pet.ong.street %></dd>
-  </dl>
-</article>
+  <div class="box">
+    <div class="container-fluid">
+      <div class="row">
+        <article>
+          <%= image_tag @pet.avatar.url(:thumb) %>
+          <dl>
+            <dt>Idade</dt>
+            <dd><%= @pet.age %></dd>
+            <dt>Porte</dt>
+            <dd><%= @pet.size %></dd>
+            <dt>Tipo</dt>
+            <dd><%= @pet.pet_type %></dd>
+            <dt>Raça</dt>
+            <dd><%= @pet.breed %></dd>
+            <dt>Gênero</dt>
+            <dd><%= @pet.gender %></dd>
+            <dt>Vacinado</dt>
+            <dd><% if @pet.vaccined? %>
+                  <i class="glyphicon glyphicon-ok"></i>
+                <% else %>
+                  <i class="glyphicon glyphicon-remove"></i>
+                <% end %>
+            </dd>
+            <dt>Deficiência</dt>
+            <dd><%= @pet.deficiency %></dd>
+            <dt>Castrado</dt>
+            <dd><% if @pet.castrated %>
+                  <i class="glyphicon glyphicon-ok"></i>
+                <% else %>
+                  <i class="glyphicon glyphicon-remove"></i>
+                <% end %></dd>
+            <dt>Descrição</dt>
+            <dd><%= @pet.description %></dd>
+          </dl>
+          <hr>
+          <%= form_for [@pet.ong, @pet, @adoption], html: {class: "nifty_form"} do |f| %>
+            <%= f.submit "Adotar" %>
+          <% end %>
+          <h2>ONG Responsável</h2>
+          <dl>
+            <dd><%= @pet.ong.name %></dd>
+            <dt>Email</dt>
+            <dd><%= @pet.ong.email %></dd>
+            <dt>Telefone</dt>
+            <dd><%= @pet.ong.phone %></dd>
+            <dt>Contato</dt>
+            <dd><%= @pet.ong.contact %></dd>
+            <dt>Localização</dt>
+            <dd><%= @pet.ong.city %></dd>
+            <dd><%= @pet.ong.state %></dd>
+            <dd><%= @pet.ong.street %></dd>
+          </dl>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>

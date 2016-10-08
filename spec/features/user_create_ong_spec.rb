@@ -7,10 +7,10 @@ feature 'User create ong' do
 
     fill_in 'CNPJ',     with: ong.cnpj
     fill_in 'Nome',     with: ong.name
-    fill_in 'Rua',      with: ong.street
-    fill_in 'Número',   with: ong.number
+    fill_in 'Logradouro', with: ong.street
+    fill_in 'Número e complemento', with: ong.number
     fill_in 'Bairro',   with: ong.neighborhood
-    fill_in 'Cep',      with: ong.zipcode
+    fill_in 'CEP',      with: ong.zipcode
     fill_in 'Estado',   with: ong.state
     fill_in 'Cidade',   with: ong.city
     fill_in 'Email',    with: ong.email
@@ -43,10 +43,10 @@ feature 'User create ong' do
 
     fill_in 'CNPJ',     with: ong.cnpj
     fill_in 'Nome',     with: ong.name
-    fill_in 'Rua',      with: ong.street
-    fill_in 'Número',   with: ong.number
+    fill_in 'Logradouro', with: ong.street
+    fill_in 'Número e complemento', with: ong.number
     fill_in 'Bairro',   with: ong.neighborhood
-    fill_in 'Cep',      with: ong.zipcode
+    fill_in 'CEP',      with: ong.zipcode
     fill_in 'Estado',   with: ong.state
     fill_in 'Cidade',   with: ong.city
     fill_in 'Email',    with: ong.email
@@ -64,10 +64,10 @@ feature 'User create ong' do
 
     fill_in 'CNPJ',     with: ''
     fill_in 'Nome',     with: ''
-    fill_in 'Rua',      with: ''
+    fill_in 'Logradouro', with: ''
     fill_in 'Número',   with: ''
     fill_in 'Bairro',   with: ''
-    fill_in 'Cep',      with: ''
+    fill_in 'CEP',      with: ''
     fill_in 'Estado',   with: ''
     fill_in 'Cidade',   with: ''
     fill_in 'Email',    with: ''
@@ -90,10 +90,10 @@ feature 'User create ong' do
 
     fill_in 'CNPJ',     with: ong.cnpj
     fill_in 'Nome',     with: ong.name
-    fill_in 'Rua',      with: ong.street
+    fill_in 'Logradouro', with: ong.street
     fill_in 'Número',   with: ong.number
     fill_in 'Bairro',   with: ong.neighborhood
-    fill_in 'Cep',      with: ong.zipcode
+    fill_in 'CEP',      with: ong.zipcode
     fill_in 'Estado',   with: ong.state
     fill_in 'Cidade',   with: ong.city
     fill_in 'Email',    with: ong.email

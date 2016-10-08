@@ -9,72 +9,56 @@
   </head>
 
   <body>
-
-      <header>
-
-
-
-        <nav class="navbar navbar-default">
-          <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-
-              <%= link_to 'AdoPet', root_path, class:'navbar-brand' %>
-              <ul class="nav navbar-nav">
-                  <li><%= link_to 'ONGs', ongs_path %></li>
-                  <li><%= link_to 'Pets', pets_path %></li>
-              </ul>
-
+    <header>
+      <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+        <div class="container">
+          <div class="navbar-header">
+            <%= link_to root_path, class:'navbar-brand home' do %>
+              <%= image_tag 'logo.png', class: 'hidden-xs img-responsive' %>
+              <%= image_tag 'logo.png', class: 'visible-xs img-responsive' %>
+              <span class="sr-only">AdoPet</span>
+            <% end %>
+            <div class="navbar-buttons">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fa fa-align-justify"></i>
+              </button>
             </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-              <ul class="nav navbar-nav navbar-right">
-
-                <% if user_signed_in? %>
-
+          </div>
+          <div class="navbar-collapse collapse" id="navigation">
+            <ul class="nav navbar-nav navbar-left">
+              <li><%= link_to 'ONGs', ongs_path %></li>
+              <li><%= link_to 'Pets', pets_path %></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <% if user_signed_in? %>
                 <li><%= link_to 'Minhas ONGs', minhas_ongs_path %>
                 <li><%= link_to 'Editar conta', edit_user_registration_path %>
                 <li><%= link_to 'Logoff', destroy_user_session_path, method: :delete%>
-                  |<%= current_user.email %> |
-                </li>
-                <% else %>
+                <li><%= link_to 'Cadastre sua ONG', new_ong_path %><li>
+                <p class="navbar-text"><%= current_user.email %></p>
+              <% else %>
                 <li><%= link_to 'Login', new_user_session_path %></li>
                 <li><%= link_to 'Criar conta', new_user_registration_path %></li>
-                <% end %>
-
-                <% notice %>
-                <% alert %>
-              </ul>
-
-
-            </div><!-- /.navbar-collapse -->
-          </div><!-- /.container-fluid -->
-        </nav>
-
-
-
-
-      </header>
-
-    <div class="container">
-
-      <% if flash[:error] %>
-        <div class="alert alert-danger">
-        <p><%= flash[:error] %></p>
+              <% end %>
+            </ul>
+          </div>
         </div>
-      <% end %>
+      </div>
+    </header>
+    <div id="all">
+      <div id="content">
+        <% if flash[:error] %>
+          <div class="alert alert-danger">
+            <p><%= flash[:error] %></p>
+          </div>
+        <% end %>
 
-      <%= yield %>
+        <% notice %>
+        <% alert %>
 
-
+        <%= yield %>
+      </div>
     </div>
-
-
-
   </body>
-
-
-
 </html>
