@@ -1,5 +1,6 @@
 class PetsController < ApplicationController
   before_action :load_constants, only: [:new, :create]
+
   def index
     if params[:ong_id]
       fill_ong
