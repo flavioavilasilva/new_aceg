@@ -3,7 +3,6 @@
   <div class="box">
     <div class="container-fluid">
       <div class="row">
-
         <article>
           <%= image_tag @pet.avatar.url(:thumb) %>
           <dl>
@@ -36,6 +35,9 @@
             <dd><%= @pet.description %></dd>
           </dl>
           <hr>
+          <%= form_for [@pet.ong, @pet, @adoption], html: {class: "nifty_form"} do |f| %>
+            <%= f.submit "Adotar" %>
+          <% end %>
           <h2>ONG Responsável</h2>
           <dl>
             <dd><%= @pet.ong.name %></dd>
@@ -50,7 +52,6 @@
             <dd><%= @pet.ong.state %></dd>
             <dd><%= @pet.ong.street %></dd>
           </dl>
-
           <%= link_to "Voltar", :back, class:'btn btn-primary' %>
         </article>
       </div>

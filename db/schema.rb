@@ -12,6 +12,16 @@
 
 ActiveRecord::Schema.define(version: 20161005230652) do
 
+  create_table "adoptions", force: :cascade do |t|
+    t.integer  "pet_id"
+    t.integer  "user_id"
+    t.string   "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_adoptions_on_pet_id"
+    t.index ["user_id"], name: "index_adoptions_on_user_id"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
