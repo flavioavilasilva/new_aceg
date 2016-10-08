@@ -18,7 +18,7 @@ feature 'user signup' do
 
     click_on 'Cadastrar conta'
 
-    within('nav') do
+    within('header') do
       expect(page).to have_content user.email
     end
   end
