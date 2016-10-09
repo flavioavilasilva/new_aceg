@@ -1,7 +1,21 @@
-<h1>Sua solicitação de adoção foi registrada e será analisada!</h1>
-<br>
-Dados da adoção:
-<%= @adoption.pet.name %>
-<%= @adoption.pet.ong.name %>
-<%= @adoption.pet.ong.phone %>
-<%= @adoption.status %>
+<div class="col-md-12">
+  <div class="box">
+    <div class="container">
+      <div class="row">
+        <h1>Sua solicitação de adoção foi registrada e será analisada!</h1>
+        <br>
+        Dados da adoção:
+        <dl>
+          <dt>Nome</dt>
+          <dd><%= @adoption.pet.name %></dd>
+          <dt>ONG</dt>
+          <dd><%= @adoption.pet.ong.name %></dd>
+          <dt>Telefone</dt>
+          <dd><%= @adoption.pet.ong.phone %></dd>
+          <dt>Status</dt>
+          <dd><%= @adoption.status %></dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>

@@ -36,7 +36,7 @@
           </dl>
           <hr>
           <%= form_for [@pet.ong, @pet, @adoption], html: {class: "nifty_form"} do |f| %>
-            <%= f.submit "Adotar" %>
+            <%= f.submit "Adotar", class:'btn btn-success btn-lg' %>
           <% end %>
           <h2>ONG Responsável</h2>
           <dl>
