@@ -18,33 +18,31 @@
               <%= image_tag 'logo.png', class: 'visible-xs img-responsive' %>
               <span class="sr-only">AdoPet</span>
             <% end %>
-            <div class="navbar-buttons">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
-                <span class="sr-only">Toggle navigation</span>
-                <i class="fa fa-align-justify"></i>
-              </button>
-            </div>
           </div>
-          <div class="navbar-collapse collapse" id="navigation">
-            <ul class="nav navbar-nav navbar-left">
-              <li><%= link_to 'ONGs', ongs_path %></li>
-              <li><%= link_to 'Pets', pets_path %></li>
-            </ul>
 
+          <ul class="nav navbar-nav navbar-left">
+            <li><%= link_to 'ONGs', ongs_path %></li>
+            <li><%= link_to 'Pets', pets_path %></li>
+          </ul>
 
-            <ul class="nav navbar-nav navbar-right">
-              <% if user_signed_in? %>
-                <li><%= link_to 'Minhas ONGs', minhas_ongs_path %>
-                <li><%= link_to 'Editar conta', edit_user_registration_path %>
-                <li><%= link_to 'Logoff', destroy_user_session_path, method: :delete%>
-                <li><%= link_to 'Cadastre sua ONG', new_ong_path %><li>
-                <p class="navbar-text"><%= current_user.email %></p>
-              <% else %>
-                <li><%= link_to 'Login', new_user_session_path %></li>
-                <li><%= link_to 'Criar conta', new_user_registration_path %></li>
-              <% end %>
-            </ul>
-          </div>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <li><%= link_to 'Minhas ONGs', minhas_ongs_path %></li>
+              <li class="dropdown">
+                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
+                   <ul class="dropdown-menu">
+                     <li><%= link_to 'Editar conta', edit_user_registration_path %>
+                     <li><%= link_to 'Logoff', destroy_user_session_path, method: :delete%>
+                     <li><%= link_to 'Cadastre sua ONG', new_ong_path %><li>
+                   </ul>
+              </li>
+
+            <% else %>
+              <li><%= link_to 'Login', new_user_session_path %></li>
+              <li><%= link_to 'Criar conta', new_user_registration_path %></li>
+            <% end %>
+          </ul>
+
         </div>
       </div>
     </header>
