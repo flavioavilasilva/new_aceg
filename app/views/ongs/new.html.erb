@@ -1,9 +1,8 @@
-<h1>Cadastrar ONG</h1>
 <div class="col-md-12">
   <div class="box">
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
-        <div class="col-md-12">
+        <h1>Cadastrar ONG</h1>
           <%= simple_form_for @ong do |f| %>
             <p><%= f.input :name, label: 'Nome da ONG' %></p>
             <p><%= f.input :cnpj, label: 'CNPJ', placeholder: 'SP''XX.XXX.XXX/0001-ZZ' %></p>
@@ -19,9 +18,8 @@
             <p><%= f.input :acept_pets, label: 'Recebe Pets' %></p>
             <p><%= f.input :site, label: 'Site', placeholder: 'http://www.nomedaong.com.br' %></p>
             <p><%= f.input :avatar, as: :file %></p>
-            <p><%= f.button :submit, 'Cadastrar ONG' %></p>
+            <p><%= f.button :submit, 'Cadastrar ONG', class:'btn btn-success' %></p>
           <% end %>
-        </div>
       </div>
     </div>
   </div>
