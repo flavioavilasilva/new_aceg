@@ -1,9 +1,9 @@
 
-<div class="col-md-12">
+<div class="col-md-4">
   <div class="item" id="pet">
     <div class="product">
       <%= link_to pet do %>
-        <%= image_tag pet.avatar.url, class: 'img-responsive' %>
+        <%= image_tag pet.avatar.url(:medium), class: 'img-responsive' %>
       <% end %>
       <%= link_to pet, class: 'invisible' do %>
         <%= image_tag pet.avatar.url(:thumb), class: 'img-responsive' %>
