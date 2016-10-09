@@ -8,7 +8,7 @@ feature 'User visits home' do
 
     visit root_path
 
-    within '.item' do
+    within '#pet' do
       expect(page).to have_content pet.name
       expect(page).to have_content pet.age
       expect(page).to have_content pet.gender
@@ -21,7 +21,7 @@ feature 'User visits home' do
     expect(page).to have_content 'Cadastre sua ONG'
   end
 
-  scenario 'and see 5 ongs and 5 pets from that ongs' do
+  scenario 'and see 5 ongs and 3 featured pets from that ongs' do
     user = create(:user)
     ongs = create_list(:ong, 6, user: user)
 
@@ -32,7 +32,7 @@ feature 'User visits home' do
 
     within '#ongs' do
       expect(page).to have_selector('#ong', count: 5)
-      expect(page).to have_selector('#pet', count: 25)
+      expect(page).to have_selector('#pet', count: 15)
     end
   end
 end

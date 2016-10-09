@@ -29,10 +29,10 @@
         </a>
       </div>
     </div>
-
-
   </div>
 </div>
+
+
 <div id="hot">
   <div id="ongs">
     <% @ongs.each do |ong| %>
@@ -44,16 +44,17 @@
         </div>
       </div>
       <div class="container">
-        <%= render ong.featured_pets %>
-      </div>
-      <div id="events">
-        <div class="container">
-          <div class="same-height-row">
-            <%= render ong.events %>
-          </div>
+        <h3>Pets em destaque</h3>
+        <div class="same-height-row">
+          <%= render ong.featured_pets %>
         </div>
       </div>
-      <%= render ong.events %>
+      <div class="container">
+        <h3>Eventos</h3>
+        <div class="same-height-row">
+          <%= render ong.featured_events %>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>

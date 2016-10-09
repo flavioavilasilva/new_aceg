@@ -1,21 +1,18 @@
-
 <div class="col-md-4">
-  <div class="item" id="pet">
-    <div class="product">
-      <%= link_to pet do %>
-        <%= image_tag pet.avatar.url(:medium), class: 'img-responsive' %>
-      <% end %>
-      <%= link_to pet, class: 'invisible' do %>
-        <%= image_tag pet.avatar.url(:thumb), class: 'img-responsive' %>
-      <% end %>
-      <div class="text">
-        <h3><%= link_to pet.name, pet %></h3>
-        <dl class="dl-horizontal">
-          <dt>Idade:</dt><dd><%= pet.age %></dd>
-          <dt>Gênero:</dt><dd><%= pet.gender %></dd>
-          <dt>Porte:</dt><dd><%= pet.size %></dd>
-        </dl>
+    <div class="box same-height clickable" style="height: 500px;"  id="pet">
+        <%= link_to pet do %>
+          <%= image_tag pet.avatar.url(:medium), class: 'img-responsive' %>
+        <% end %>
+        <%= link_to pet, class: 'invisible' do %>
+          <%= image_tag pet.avatar.url(:thumb), class: 'img-responsive' %>
+        <% end %>
+        <div class="text">
+          <h3><%= link_to pet.name, pet %></h3>
+          <dl class="dl-horizontal">
+            <dt>Idade:</dt><dd><%= pet.age %></dd>
+            <dt>Gênero:</dt><dd><%= pet.gender %></dd>
+            <dt>Porte:</dt><dd><%= pet.size %></dd>
+          </dl>
+        </div>
       </div>
-    </div>
-  </div>
 </div>
