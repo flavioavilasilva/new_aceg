@@ -2,11 +2,24 @@ class PetsController < ApplicationController
   before_action :load_constants, only: [:new, :create]
 
   def index
+
     if params[:ong_id]
       fill_ong
       @pets = @ong.pets
     else
-      @pets = Pet.all
+      if params[:city]
+        @pets = []
+        @city = params[:city]
+        Ong.where(city: params[:city]).each do |ong|
+          if ong.pets.present?
+            ong.pets.each do |pet|
+              @pets << pet
+            end
+          end
+        end
+      else
+        @pets = Pet.all
+      end
     end
   end
 

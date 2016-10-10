@@ -1,24 +1,27 @@
 require 'rails_helper'
 
-feature 'user filters ongs' do
-  scenario 'the user filter ong from root path' do
+feature 'user filters pets' do
+  scenario 'the user filter pets from root path' do
     user = create(:user)
-    ongs_diadema = create_list(:ong, 3, city: 'Diadema', user: user)
-    ongs_santos = create_list(:ong, 10, city: 'Santos', user: user)
+    ong_diadema = create(:ong, city: 'Diadema', user: user)
+    pets_diadema = create_list(:pet, 3, ong: ong_diadema)
+    ong_santos = create(:ong, city: 'Santos', user: user)
+    pets_santos = create_list(:pet, 3, ong: ong_santos)
 
     visit root_path
+
     select 'Diadema', from: 'Cidade'
 
     click_on 'Filtrar'
 
-    expect(current_url).to have_content(ongs_path)
-    expect(page).to have_content('Filtrando ONGs de Diadema')
-    ongs_diadema.each do |ong|
-      expect(page).to have_content(ong.name)
+    expect(current_url).to have_content(pets_path)
+    expect(page).to have_content('Filtrando Pets de Diadema')
+    pets_diadema.each do |pet|
+      expect(page).to have_content(pet.name)
     end
 
-    ongs_santos.each do |ong|
-      expect(page).not_to have_content(ong.name)
+    pets_santos.each do |pet|
+      expect(page).not_to have_content(pet.name)
     end
   end
 
