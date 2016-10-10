@@ -2,21 +2,26 @@
 
   <div class="box">
     <div class="container">
-
-
       <div class="row">
-        <article>
+        <div class="col-md-3">
           <h1><%= @pet.name %></h1>
-          
-          <div class="row">
-            <div class="col-sm-6 col-md-4">
-              <div class="thumbnail">
-                <%= image_tag @pet.avatar.url(:medium) %>
-              </div>
-            </div>
-          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <%= image_tag @pet.avatar.url(:medium), class: 'img-responsive' %>
+          <br>
+          <%= form_for [@pet.ong, @pet, @adoption], html: {class: "nifty_form"} do |f| %>
+          <center>
+            <%= f.submit "Adotar", class:'btn btn-success btn-lg' %>
+          <!--  <%= link_to "Voltar", :back, class:'btn btn-primary btn-lg' %> -->
+          </center>
+          <% end %>
+        </div>
 
-          <dl>
+      <div class="col-md-9">
+        <div class="col-md-6">
+          <dl class="dl-horizontal">
             <dt>Idade</dt>
             <dd><%= @pet.age %></dd>
             <dt>Porte</dt>
@@ -45,12 +50,11 @@
             <dt>Descrição</dt>
             <dd><%= @pet.description %></dd>
           </dl>
-          <hr>
-          <%= form_for [@pet.ong, @pet, @adoption], html: {class: "nifty_form"} do |f| %>
-            <%= f.submit "Adotar", class:'btn btn-success btn-lg' %>
-          <% end %>
-          <h2>ONG Responsável</h2>
-          <dl>
+        </div>
+
+        <div class="col-md-6">
+          <dl class="dl-horizontal">
+            <dt>ONG Responsável</dt>
             <dd><%= @pet.ong.name %></dd>
             <dt>Email</dt>
             <dd><%= @pet.ong.email %></dd>
@@ -58,13 +62,12 @@
             <dd><%= @pet.ong.phone %></dd>
             <dt>Contato</dt>
             <dd><%= @pet.ong.contact %></dd>
-            <dt>Localização</dt>
+            <dt>Localização:</dt>
             <dd><%= @pet.ong.city %></dd>
             <dd><%= @pet.ong.state %></dd>
             <dd><%= @pet.ong.street %></dd>
           </dl>
-          <%= link_to "Voltar", :back, class:'btn btn-primary' %>
-        </article>
+        </div>
       </div>
     </div>
   </div>
