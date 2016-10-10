@@ -16,23 +16,34 @@
     </div>
   </div>
   <h1>Solicitações de adoções</h1>
-  <section class="adoptions">
-    <% @adoptions.each do |adoption| %>
-        <div class="adopt-request">
-          <div class="row">
-            <div class="col-md-1"><%= image_tag adoption.pet.avatar.url(:thumb) %></div>
-            <div class="col-md-1"><%= adoption.pet.name %></div>
-            <div class="col-md-2">Usuário :<%= adoption.user.name %></div>
-            <div class="col-md-2"><%= adoption.user.email %></div>
-            <div class="col-md-1"><%= adoption.user.phone %></div>
-            <div class="col-md-2">
-              <%= form_for adoption, html: {class: "nifty_form"} do |f| %>
-                <%= f.select :status, Adoption.statuses.keys, {}, class: "form-control" %>
-                <%= f.submit "Salvar", class: 'btn btn-success' %>
-              <% end %>
-            </div>
+  <div class="box">
+    <section class="adoptions">
+      <div class="container-fluid">
+            <% @adoptions.each do |adoption| %>
+                <div class="adopt-request">
+                  <div class="row">
+                    <div class="col-md-2"><%= image_tag adoption.pet.avatar.url(:thumb) %></div>
+                    <div class="col-md-2"><%= adoption.pet.name %></div>
+                    <div class="col-md-2">Usuário :<%= adoption.user.name %></div>
+                    <div class="col-md-2"><%= adoption.user.email %></div>
+                    <div class="col-md-2"><%= adoption.user.phone %></div>
+
+                    <div class="col-md-2">
+                      <%= form_for adoption, html: {class: "nifty_form"} do |f| %>
+                      <div class="col-md-6">
+                        <%= f.select :status, Adoption.statuses.keys, {}, class: "form-control" %>
+                      </div>
+                      <div class="col-md-6">
+                        <%= f.submit "Salvar", class: 'btn btn-success' %>
+                      </div>
+                      <% end %>
+                    </div>
+
+                    </div>
+                  </div>
+            <% end %>
           </div>
         </div>
-    <% end %>
-  </section>
+    </section>
+  </div>
 </div>
