@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :pets, only:  [:index, :show]
 
-  resources :adoptions, only: [:show]
+  resources :adoptions, only: [:show, :edit, :update]
 
   get '/minhas-ongs', to: 'ongs#my_ongs'
 end

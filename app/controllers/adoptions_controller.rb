@@ -7,7 +7,8 @@ class AdoptionsController < ApplicationController
 
   def create
     pet = Pet.find(params[:pet_id])
-    adoption = Adoption.new(pet: pet, user: current_user, status: 'Aberta')
+    adoption = Adoption.new(pet: pet, user: current_user, ong: pet.ong,
+                            status: 0)
     if adoption.save
       redirect_to adoption
     else
@@ -16,11 +17,24 @@ class AdoptionsController < ApplicationController
     end
   end
 
+  def update
+    @adoption = Adoption.find(params[:id])
+    @adoption.update(adoption_params)
+
+    redirect_to :minhas_ongs
+  end
+
+  private
+
   def valid_user
     unless user_signed_in?
       flash[:error] = 'É necessário estar logado!'
       redirect_to :new_user_session
     end
     true
+  end
+
+  def adoption_params
+    params.require(:adoption).permit(:status)
   end
 end
