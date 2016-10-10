@@ -28,13 +28,13 @@ feature 'user creates events to ong' do
   scenario 'user see event in the home page' do
     user = login
     ong = create(:ong, user: user)
-    event = create(:event, ong: ong, datetime: DateTime.new(2016, 10, 4,
+    event = create(:event, ong: ong, datetime: DateTime.new(2017, 10, 4,
                                                             8, 0).in_time_zone)
 
     visit root_path
 
     expect(page).to have_content(event.name)
-    expect(page).to have_content('04/10/2016 08:00')
+    expect(page).to have_content('04/10/2017 08:00')
   end
 
   scenario 'user see event in the ong page' do

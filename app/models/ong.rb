@@ -9,6 +9,7 @@ class Ong < ApplicationRecord
 
   validates :cnpj, :name, :street, :number, :neighborhood, :zipcode, :state,
             :city, :email, :phone, :contact, presence: true
+
   def featured_pets
     pets.order(:created_at).limit(3)
   end
