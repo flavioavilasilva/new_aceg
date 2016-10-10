@@ -12,5 +12,6 @@ FactoryGirl.define do
     deficiency 'Nenhuma'
     castrated true
     description 'Muito docil e fofo'
+    created_at DateTime.now.in_time_zone
   end
 end

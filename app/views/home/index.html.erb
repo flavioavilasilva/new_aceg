@@ -41,8 +41,10 @@
             <% ong.featured_pets.each do |pet| %>
 
               <div class='col-sm-4'>
-                <h2><%= link_to pet.name, pet %></h2>
+              <%= link_to pet do %>
+                <h2><%= pet.name %></h2>
                 <%= image_tag pet.avatar.url(:medium), class: 'img-responsive' %>
+                <% end %>
               </div>
             <% end %>
           </div>
@@ -58,9 +60,11 @@
           <div class='text-left col-sm-12'>
             <h2 class='text-left'>Próximos Eventos</h2>
           </div>
+          <div class="row">
+            <%= render @events %>            
+          </div>
         </div>
       </div>
-      <%= render @events %>
     </div>
   </div>
 </div>
