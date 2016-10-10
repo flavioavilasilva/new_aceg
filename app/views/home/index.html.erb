@@ -4,8 +4,8 @@
   <div class="col-md-12">
     <div class="box info-bar">
       <div class="row">
-        <div class="col-sm-12 col-md-3 col-md-offset-3 products-showing">
-          <strong>Encontre seus Pets:</strong>
+        <div class="col-sm-12 col-md-1 col-md-offset-0 products-showing">
+          <strong>Localidade:</strong>
         </div>
         <div class="col-sm-12 col-md-6  products-number-sort">
           <div class="row">
@@ -21,40 +21,45 @@
       </div>
     </div>
     <div class="box slideshow">
-      <h3>Bem-vindo a AdoPet!</h3>
-      <p class="lead">Encontre seu próximo amor em 4 patas <3</p>
       <div >
         <a href="#">
-          <img src="<%= image_path 'adote_um_pet.jpg' %>" alt="Encontre seu próximo amor" style="width:100%">
+          <img src="<%= image_path 'banner_adopt.jpg' %>" alt="Encontre seu próximo amor" style="width:100%">
         </a>
       </div>
     </div>
   </div>
 </div>
 
-
-<div id="hot">
-  <div id="ongs">
-    <% @ongs.each do |ong| %>
-      <div class="box" id="ong">
-        <div class="container">
-          <div class="col-md-12">
+<div class="container"
+  <div id="hot">
+    <div id="ongs">
+      <% @ongs.each do |ong| %>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class='col-sm-12 col-md-1 col-md-offset-0'>
             <h2><%= link_to ong.name, ong %></h2>
           </div>
         </div>
       </div>
       <div class="container">
-        <h3>Pets em destaque</h3>
         <div class="same-height-row">
           <%= render ong.featured_pets %>
         </div>
       </div>
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class='col-sm-12 col-md-1 col-md-offset-0'>
+            <h2>Eventos</h2>
+          </div>
+        </div>
+      </div>      
       <div class="container">
-        <h3>Eventos</h3>
         <div class="same-height-row">
           <%= render ong.featured_events %>
         </div>
       </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
