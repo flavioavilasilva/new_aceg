@@ -1,36 +1,38 @@
 <div class="col-md-12">
-
+  <h1>Minha ONG</h1>
   <div class="box">
-
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
-          <h1>Minhas ONGs</h1>
-
-        <% if @my_ongs.count > 0 %>
-          <section id="ongs">
-
-              <% @my_ongs.each do |ong| %>
-              <div class="ong">
-                <h2><%= link_to ong.name, ong %></h2>
-                <% if current_user == ong.user %>
-                  <%= link_to 'Criar Evento', new_ong_event_path(ong), class: 'btn btn-primary' %>
-                  <%= link_to 'Cadastrar Pets', new_ong_pet_path(ong), class: 'btn btn-success' %>
-                <% end %>
-              </div>
+        <section id="ongs">
+            <div class="ong">
+              <h2><%= link_to @my_ong.name, @my_ong %></h2>
+              <% if current_user == @my_ong.user %>
+                <%= link_to 'Criar Evento', new_ong_event_path(@my_ong), class: 'btn btn-primary' %>
+                <%= link_to 'Cadastrar Pets', new_ong_pet_path(@my_ong), class: 'btn btn-success' %>
               <% end %>
-          </section>
-        <% else %>
-          <p class="alert alert-warning">
-            Nenhuma ONG cadastrada
-          </p>
-          <p>
-            <%= link_to 'Cadastre sua ONG', new_ong_path, class: 'btn btn-success' %>
-          </p>
-        <% end %>
-
-
+            </div>
+        </section>
       </div>
     </div>
   </div>
-  <%= link_to "Voltar", :back, class:'btn btn-primary' %>
+  <h1>Solicitações de adoções</h1>
+  <section class="adoptions">
+    <% @adoptions.each do |adoption| %>
+        <div class="adopt-request">
+          <div class="row">
+            <div class="col-md-1"><%= image_tag adoption.pet.avatar.url(:thumb) %></div>
+            <div class="col-md-1"><%= adoption.pet.name %></div>
+            <div class="col-md-2">Usuário :<%= adoption.user.name %></div>
+            <div class="col-md-2"><%= adoption.user.email %></div>
+            <div class="col-md-1"><%= adoption.user.phone %></div>
+            <div class="col-md-2">
+              <%= form_for adoption, html: {class: "nifty_form"} do |f| %>
+                <%= f.select :status, Adoption.statuses.keys, {}, class: "form-control" %>
+                <%= f.submit "Salvar", class: 'btn btn-success' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </section>
 </div>

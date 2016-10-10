@@ -2,7 +2,8 @@ class OngsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :my_ongs]
 
   def my_ongs
-    @my_ongs = current_user.ongs
+    @my_ong = current_user.ongs.first
+    @adoptions = @my_ong.adoptions.where(status: 0)
   end
 
   def index
