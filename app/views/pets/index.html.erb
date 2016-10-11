@@ -3,7 +3,12 @@
     <div class="container">
       <h1>Pets</h1>
       <div class="row">
-          <%= render @pets %>
+        <% if @city %>
+        <h2>Filtrando Pets de <%= @city %></h2>
+        <% else %>
+        <h2>Pets</h2>
+        <% end %>
+        <%= render @pets %>
       </div>
     </div>
   </div>

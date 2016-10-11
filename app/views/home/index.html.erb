@@ -7,7 +7,7 @@
         </div>
         <div class="col-sm-12 col-md-6  products-number-sort">
           <div class="row">
-            <%= form_tag(ongs_path, method: :get, class: "form-inline") do %>
+            <%= form_tag(pets_path, method: :get, class: "form-inline") do %>
               <div class="col-md-6 col-sm-6">
                 <%=label_tag(:city, "Cidade") %>
                 <%= select_tag(:city, options_for_select(@cities), class: 'form-control') %>
@@ -53,7 +53,6 @@
       <% end %>
     </div>
 
-
     <div id="events" class="container">
       <div class="panel panel-default">
         <div class="panel-body">
@@ -66,5 +65,6 @@
         </div>
       </div>
     </div>
+
   </div>
 </div>
