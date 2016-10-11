@@ -43,7 +43,7 @@
               <div class='col-sm-4'>
               <%= link_to pet do %>
                 <h2><%= pet.name %></h2>
-                <%= image_tag pet.avatar.url(:medium), class: 'img-responsive' %>
+                <%= image_tag pet.avatar.url(:medium), class: 'img-responsive center-block' %>
                 <% end %>
               </div>
             <% end %>
@@ -61,7 +61,7 @@
             <h2 class='text-left'>Próximos Eventos</h2>
           </div>
           <div class="row">
-            <%= render @events %>            
+            <%= render @events %>
           </div>
         </div>
       </div>

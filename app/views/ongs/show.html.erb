@@ -19,7 +19,7 @@
                   <dt>CEP: </dt>
                   <dd><%= @ong.zipcode %></dd>
                   <dt>Site: <dt>
-                  <dd><%= @ong.site %></dd>
+                  <dd><%= link_to @ong.site, "http://#{@ong.site}" %></dd>
                   <dt>Estado: </dt>
                   <dd><%= @ong.state %></dd>
                   <dt>Cidade: </dt>

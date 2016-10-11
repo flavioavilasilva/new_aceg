@@ -16,7 +16,7 @@ feature 'User visits home' do
     visit root_path
 
     within '#ongs' do
-      ongs[0..2].each do |ong|
+      ongs[6..4].each do |ong|
         expect(page).to have_content(ong.name)
       end
     end
