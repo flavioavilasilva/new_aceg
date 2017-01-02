@@ -12,6 +12,8 @@ gem 'bootstrap-sass'
 gem 'sass-rails'
 gem 'paperclip'
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'rspec-rails'
