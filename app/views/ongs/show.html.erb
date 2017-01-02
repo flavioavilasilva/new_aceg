@@ -44,7 +44,14 @@
                   <% end %>
                 </dl>
               </div>
-              <%= social_share_button_tag(@ong.name, url: ong_url(@ong), desc: @ong.site) %>
+              <div class="col-md-6">
+                <dl class="dl-horizontal">
+                  <dd><%= @ong.description %></dd>
+                </dl>
+              </div>
+              <div class="col-md-6">
+                <%= social_share_button_tag(@ong.name, url: ong_url(@ong), desc: @ong.site) %>
+              </div>
             </div>
           </div>
         </div>

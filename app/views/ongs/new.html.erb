@@ -4,6 +4,7 @@
       <div class="row">
         <h1>Cadastrar ONG</h1>
           <%= simple_form_for @ong do |f| %>
+            <p><%= f.input :avatar, as: :file %></p>
             <p><%= f.input :name, label: 'Nome da ONG' %></p>
             <p><%= f.input :cnpj, label: 'CNPJ', placeholder: 'SP''XX.XXX.XXX/0001-ZZ' %></p>
             <p><%= f.input :street, label: 'Logradouro', placeholder: 'Av. Paulista' %></p>
@@ -15,9 +16,10 @@
             <p><%= f.input :email, label: 'Email', placeholder: 'seuemail@ong.com.br' %></p>
             <p><%= f.input :phone, label: 'Telefone', placeholder: '(11)55555-5555', input_html: { maxlength: 14, 'data-mask':"(99)99999999"} %></p>
             <p><%= f.input :contact, label: 'Contato', hint: 'Nome do Responsável' %></p>
+            <p><%= f.input :description, label: 'Descreva sua ONG', placeholder: 'Descreva o trabalho de sua ONG', as: :text %></p>
             <p><%= f.input :acept_pets, label: 'Recebe Pets' %></p>
             <p><%= f.input :site, label: 'Site', placeholder: 'http://www.nomedaong.com.br' %></p>
-            <p><%= f.input :avatar, as: :file %></p>
+
             <p><%= f.button :submit, 'Cadastrar ONG', class:'btn btn-success' %></p>
           <% end %>
       </div>
