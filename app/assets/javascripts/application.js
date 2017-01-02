@@ -20,4 +20,4 @@
 //= require bootstrap-hover-dropdown
 //= require owl.carousel.min
 //= require front
-
+//= require social-share-button

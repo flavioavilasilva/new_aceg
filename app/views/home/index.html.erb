@@ -45,6 +45,7 @@
                 <h2><%= pet.name %></h2>
                 <%= image_tag pet.avatar.url(:medium), class: 'img-responsive center-block' %>
                 <% end %>
+                <%= social_share_button_tag(pet.name, url: pet_url(pet), desc: pet.description) %>
               </div>
             <% end %>
           </div>

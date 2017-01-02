@@ -10,6 +10,7 @@
             <dt>Gênero:</dt><dd><%= pet.gender %></dd>
             <dt>Porte:</dt><dd><%= pet.size %></dd>
           </dl>
+          <%= social_share_button_tag(pet.name, url: pet_url(pet), desc: pet.description) %>
         </div>
       </div>
 </div>

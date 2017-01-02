@@ -14,6 +14,7 @@ gem 'paperclip'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'social-share-button'
 
 group :development, :test do
   gem 'rspec-rails'

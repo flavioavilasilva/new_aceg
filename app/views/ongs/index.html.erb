@@ -14,16 +14,7 @@
                   <% @ongs.each do |ong| %>
                 <div class="ong">
                   <h2><%= link_to ong.name, ong %></h2>
-
-                <!--  <% ong.featured_pets.each do |pet| %>
-                    <div class="pets">
-                        <h3><%= link_to pet.name, pet %></h3>
-                        Idade: <%= pet.age %>
-                        Gênero: <%= pet.gender %>
-                        Porte: <%= pet.size %>
-                    </div>
-                  <% end %>
-                -->
+                  <%= social_share_button_tag(ong.name) %>
                 </div>
                 <% end %>
             </section>
