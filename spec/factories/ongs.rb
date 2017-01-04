@@ -11,11 +11,6 @@ FactoryGirl.define do
     about_us 'bla.. bla'
     logo 'imagemLogo'
     acept_pets 1
-    city 'Diadema'
-    state 'Sao Paulo'
-    street 'Rua aurora'
-    number 15
-    neighborhood 'Santo Amaro'
-    zipcode '12345-123'
+    description 'Great ong...'
   end
 end

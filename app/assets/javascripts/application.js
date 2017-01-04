@@ -21,3 +21,27 @@
 //= require owl.carousel.min
 //= require front
 //= require social-share-button
+
+$( document ).ready(function() {
+  geolocation();
+});
+
+function geolocation() {
+
+  if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(post_position);
+  }
+
+  function post_position(position)
+  {
+    latitude = position['coords'].latitude
+    longitude = position['coords'].longitude
+    post_lat_long(latitude,longitude)
+
+    function post_lat_long(latitude, longitude){
+       var post_set_location = window.location.href + 'set-location?lat='+ latitude + '&long='+ longitude
+       $.post(post_set_location, function(json) {
+        });
+    }
+  }
+}
