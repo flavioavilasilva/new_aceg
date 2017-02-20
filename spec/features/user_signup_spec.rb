@@ -11,11 +11,13 @@ feature 'user signup' do
     fill_in 'Email', with: user.email
     fill_in 'Senha', with: user.password
     fill_in 'Confirmação de senha', with:  user.password
-    fill_in 'Estado', with: user.state
-    fill_in 'Cidade', with: user.city
+    fill_in 'Estado', with: user.address.state
+    fill_in 'Cidade', with: user.address.city
     fill_in 'Telefone', with: user.phone
-    fill_in 'Endereço', with: user.address
+    fill_in 'Endereço', with: user.address.address
 
+    save_and_open_page
+    binding.pry
     click_on 'Cadastrar conta'
 
     within('header') do

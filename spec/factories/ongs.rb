@@ -12,5 +12,6 @@ FactoryGirl.define do
     logo 'imagemLogo'
     acept_pets 1
     description 'Great ong...'
+    association :address, factory: :address
   end
 end

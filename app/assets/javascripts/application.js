@@ -21,13 +21,13 @@
 //= require owl.carousel.min
 //= require front
 //= require social-share-button
+//= require application
 
 $( document ).ready(function() {
   geolocation();
 });
 
 function geolocation() {
-
   if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(post_position);
   }

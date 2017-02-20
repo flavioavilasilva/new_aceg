@@ -17,23 +17,23 @@
                   <dt>Email: </dt>
                   <dd><%= @ong.email %></dd>
                   <dt>CEP: </dt>
-                  <dd><%= @ong.zipcode %></dd>
+                  <dd><%= @ong.address.postal_code %></dd>
                   <dt>Site: <dt>
                   <dd><%= link_to @ong.site, "http://#{@ong.site}" %></dd>
                   <dt>Estado: </dt>
-                  <dd><%= @ong.state %></dd>
+                  <dd><%= @ong.address.state %></dd>
                   <dt>Cidade: </dt>
-                  <dd><%= @ong.city %></dd>
+                  <dd><%= @ong.address.city %></dd>
                 </dl>
               </div>
               <div class="col-md-6">
                 <dl class="dl-horizontal">
                   <dt>Rua: </dt>
-                  <dd><%= @ong.street %></dd>
+                  <dd><%= @ong.address.address %></dd>
                   <dt>Bairro: </dt>
-                  <dd><%= @ong.neighborhood %></dd>
+                  <dd><%= @ong.address.neighborhood %></dd>
                   <dt>Número: </dt>
-                  <dd><%= @ong.number %></dd>
+                  <dd><%= @ong.address.address_number %></dd>
                   <dt>Contatos: </dt>
                   <dd><%= @ong.contact %></dd>
                   <dt>ONG aceitas Pets?</dt>

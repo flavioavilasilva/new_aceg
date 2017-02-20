@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170104020844) do
+ActiveRecord::Schema.define(version: 20170219221330) do
 
   create_table "addresses", force: :cascade do |t|
-    t.integer  "ong_id"
-    t.integer  "user_id"
+    t.string   "postal_code"
+    t.string   "latitude"
+    t.string   "longitude"
+    t.string   "state"
+    t.string   "city"
     t.string   "address"
     t.string   "address_number"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.float    "latitude"
-    t.float    "longitude"
-    t.index ["ong_id"], name: "index_addresses_on_ong_id"
-    t.index ["user_id"], name: "index_addresses_on_user_id"
+    t.string   "neighborhood"
   end
 
   create_table "adoptions", force: :cascade do |t|
@@ -68,18 +68,14 @@ ActiveRecord::Schema.define(version: 20170104020844) do
     t.text     "about_us"
     t.string   "logo"
     t.boolean  "acept_pets"
-    t.string   "state"
-    t.string   "city"
-    t.string   "street"
-    t.string   "zipcode"
-    t.string   "neighborhood"
-    t.string   "number"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.integer  "user_id"
     t.string   "description"
+    t.integer  "address_id"
+    t.index ["address_id"], name: "index_ongs_on_address_id"
     t.index ["user_id"], name: "index_ongs_on_user_id"
   end
 
@@ -125,6 +121,8 @@ ActiveRecord::Schema.define(version: 20170104020844) do
     t.string   "provider"
     t.string   "uid"
     t.text     "image"
+    t.integer  "address_id"
+    t.index ["address_id"], name: "index_users_on_address_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

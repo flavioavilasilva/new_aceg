@@ -3,7 +3,8 @@ require 'rails_helper'
 feature 'User visits pet with ong info' do
   scenario 'successfuly' do
     user = create(:user)
-    ong = create(:ong, user: user)
+    address = create(:address)
+    ong = create(:ong, user: user, address: address)
     pet = create(:pet, ong: ong)
 
     visit root_path
@@ -24,8 +25,8 @@ feature 'User visits pet with ong info' do
     expect(page).to have_content ong.email
     expect(page).to have_content ong.phone
     expect(page).to have_content ong.contact
-    expect(page).to have_content ong.city
-    expect(page).to have_content ong.state
-    expect(page).to have_content ong.street
+    expect(page).to have_content ong.address.city
+    expect(page).to have_content ong.address.state
+    expect(page).to have_content ong.address.address
   end
 end

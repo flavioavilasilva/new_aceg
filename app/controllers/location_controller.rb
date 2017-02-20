@@ -1,5 +1,5 @@
-class LocationController < ActionController::Base
+class LocationController < ApplicationController
   def create
-    @geolocation ||= Geolocation.new(Geocoder.search("#{params[:lat]}, #{params[:long]}"))
+    session[:geolocation] = Geolocation.new(Geocoder.search("#{params[:lat]}, #{params[:long]}"))
   end
 end
