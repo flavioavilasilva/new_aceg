@@ -2,9 +2,7 @@ require 'rails_helper'
 
 feature 'user visits ong profiles' do
   scenario 'successfuly' do
-    user = create(:user)
-    address = create(:address)
-    ong = create(:ong, user: user, address: address)
+    ong = ong_login
     create(:pet, ong: ong)
 
     visit ong_path ong

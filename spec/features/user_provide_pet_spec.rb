@@ -2,11 +2,10 @@ require 'rails_helper'
 
 feature 'user provide pet' do
   scenario 'successfully' do
-    user = login
-    ong = create(:ong, user: user)
+    ong = ong_login
     pet = build(:pet, ong: ong)
 
-    visit minhas_ongs_path
+    visit ong_path ong
 
     click_on 'Cadastrar Pets'
 

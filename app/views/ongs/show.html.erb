@@ -34,7 +34,7 @@
                   <dd><%= @ong.address.neighborhood %></dd>
                   <dt>Número: </dt>
                   <dd><%= @ong.address.address_number %></dd>
-                  <dt>Contatos: </dt>
+                  <dt>Responsável: </dt>
                   <dd><%= @ong.contact %></dd>
                   <dt>ONG aceitas Pets?</dt>
                   <% if @ong.acept_pets %>
@@ -68,10 +68,45 @@
           <%= render @ong.events %>
         </section>
         </div>
-
-          <%= link_to "Voltar", :back, class:'btn btn-primary' %>
+        <% if ong_signed_in? %>
+          <%= link_to 'Criar Evento', new_ong_event_path(current_ong), class: 'btn btn-primary' %>
+          <%= link_to 'Cadastrar Pets', new_ong_pet_path(current_ong), class: 'btn btn-success' %>
+        <% end %>
+        <%= link_to "Voltar", :back, class:'btn btn-primary' %>
       </div>
     </div>
+  </div>
+
+  <h1>Solicitações de adoções</h1>
+  <div class="box">
+    <section class="adoptions">
+      <div class="container-fluid">
+            <% @adoptions.each do |adoption| %>
+                <div class="adopt-request">
+                  <div class="row">
+                    <div class="col-md-2"><%= image_tag adoption.pet.avatar.url(:thumb) %></div>
+                    <div class="col-md-2"><%= adoption.pet.name %></div>
+                    <div class="col-md-2">Usuário :<%= adoption.user.name %></div>
+                    <div class="col-md-2"><%= adoption.user.email %></div>
+                    <div class="col-md-2"><%= adoption.user.phone %></div>
+
+                    <div class="col-md-2">
+                      <%= form_for adoption, html: {class: "nifty_form"} do |f| %>
+                      <div class="col-md-6">
+                        <%= f.select :status, Adoption.statuses.keys, {}, class: "form-control" %>
+                      </div>
+                      <div class="col-md-6">
+                        <%= f.submit "Salvar", class: 'btn btn-success' %>
+                      </div>
+                      <% end %>
+                    </div>
+
+                    </div>
+                  </div>
+            <% end %>
+          </div>
+        </div>
+    </section>
   </div>
 
 </div>

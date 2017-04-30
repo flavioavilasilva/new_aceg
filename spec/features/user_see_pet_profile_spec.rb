@@ -2,8 +2,7 @@ require 'rails_helper'
 
 feature 'visitor see the pet profile' do
   scenario 'successfully' do
-    user = login
-    ong = create(:ong, user: user)
+    ong = ong_login
     pet = build(:pet, ong: ong)
 
     visit new_ong_pet_path(ong)
@@ -33,8 +32,7 @@ feature 'visitor see the pet profile' do
   end
 
   scenario 'should fill mandatory fields' do
-    user = login
-    ong = create(:ong, user: user)
+    ong = ong_login
     pet = build(:pet, ong: ong)
 
     visit new_ong_pet_path(ong)
@@ -45,18 +43,14 @@ feature 'visitor see the pet profile' do
   end
 
   scenario 'dont show create button when current_user is not the ong creator' do
-    not_logged_user = create(:user)
-    ong = create(:ong, user: not_logged_user)
-    login
+    ong = create(:ong)
     visit ong_path ong
     expect(page).not_to have_content 'Cadastrar Pets'
   end
 
   scenario 'when create an pet the current_user must be the ong creator' do
-    not_logged_user = create(:user)
-    ong = create(:ong, user: not_logged_user)
-    login
+    ong = create(:ong)
     visit new_ong_pet_path ong
-    expect(page).to have_content 'Vocẽ não pode cadastrar Pets para esta ONG'
+    expect(page).to have_css('h2', :text => 'Log in')
   end
 end

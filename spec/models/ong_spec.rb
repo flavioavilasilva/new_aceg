@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe :contract, type: :model do
   describe '#featured_pets' do
     it 'shows the first 3 pets of the ong' do
-      user = create(:user)
-      ong = create(:ong, user: user)
+      ong = create(:ong)
       pet1 = create(:pet, ong: ong)
       pet2 = create(:pet, created_at: 3.days.ago, ong: ong)
       pet3 = create(:pet, created_at: 10.days.ago, ong: ong)
@@ -17,7 +16,6 @@ RSpec.describe :contract, type: :model do
       expect(pets).to include(pet4)
       expect(pets).to include(pet2)
       expect(pets).to include(pet3)
-      expect(pets).to include(pet4)
       expect(pets).to_not include(pet1)
       expect(pets).to_not include(pet5)
     end

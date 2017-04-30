@@ -5,13 +5,14 @@ FactoryGirl.define do
     end
     phone '12345678'
     cnpj '1241412'
+    password '123456'
     site 'od.com.br'
-    email 'od@gmail.com'
+    email { Faker::Internet.email }
     contact 'edson...'
     about_us 'bla.. bla'
     logo 'imagemLogo'
     acept_pets 1
     description 'Great ong...'
-    association :address, factory: :address
+    address { FactoryGirl.create(:address) }
   end
 end

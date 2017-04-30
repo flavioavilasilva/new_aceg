@@ -1,30 +1,22 @@
 require 'rails_helper'
 
 feature 'User visits home' do
-  before do
-    params = { lat: -23.6843221, long:-46.7155771 }
-    page.driver.post('/set-location', params)
-  end
-
-  scenario 'and user is logged in' do
-    login
-    expect(page).to have_content 'Cadastre sua ONG'
+  scenario 'must have ong sig up button' do
+    visit root_path
+    expect(page).to have_content 'Criar ONG'
   end
 
   scenario 'and see 3 ongs' do
-    user = create(:user)
-    address1 = create(:address, latitude:-23.6833585, longitude:-46.7144426)
-    ong1 = create(:ong, name: 'ong1', user: user, address: address1)
+    address1 = create(:address, latitude:-23.550756.freeze, longitude:-46.632970.freeze)
+    ong1 = create(:ong, name: 'ong1', address: address1)
 
-    address3 = create(:address, latitude:-23.6525773, longitude:-46.7216739)
-    ong3 = create(:ong, name: 'ong3', user: user, address: address3)
+    address3 = create(:address, latitude:-23.582420.freeze, longitude:-46.645826.freeze)
+    ong3 = create(:ong, name: 'ong3', address: address3)
 
-    address2 = create(:address, latitude:-23.6797034, longitude:-46.7129943)
-    ong2 = create(:ong, name: 'ong2', user: user, address: address2)
+    address2 = create(:address, latitude:-23.551956.freeze, longitude:-46.636607.freeze)
+    ong2 = create(:ong, name: 'ong2', address: address2)
 
     visit root_path
-
-    sleep(2)
 
     within '#ongs' do
       expect(page.all(:xpath, '//div[@class="panel panel-default"]')[0]).to have_content('ong1')
@@ -34,15 +26,11 @@ feature 'User visits home' do
   end
 
   scenario 'should list the 3 oldets pets' do
-    user = create(:user)
-    address = create(:address, latitude:-23.6833585, longitude:-46.7144426)
-    ong = create(:ong, user: user, address: address)
-    pet1 = create(:pet, ong: ong, created_at: DateTime.new(2016, 1, 1, 0, 0, 0)
-                                                           .in_time_zone)
-    pet2 = create(:pet, ong: ong, created_at: DateTime.new(2016, 8, 1, 0, 0, 0)
-                                                           .in_time_zone)
-    pet3 = create(:pet, ong: ong, created_at: DateTime.new(2016, 5, 1, 0, 0, 0)
-                                                           .in_time_zone)
+    address = create(:address, latitude:-23.550756, longitude:-46.632970)
+    ong = create(:ong, address: address)
+    pet1 = create(:pet, ong: ong, created_at: (DateTime.now - 10).in_time_zone)
+    pet2 = create(:pet, ong: ong, created_at: (DateTime.now - 5).in_time_zone)
+    pet3 = create(:pet, ong: ong, created_at: (DateTime.now - 2).in_time_zone)
     pet4 = create(:pet, ong: ong)
     pet5 = create(:pet, ong: ong)
     pet6 = create(:pet, ong: ong)
@@ -64,30 +52,22 @@ feature 'User visits home' do
   end
 
   scenario 'should list the next 3 events' do
-    user = create(:user)
-    user2 = create(:user)
-    address = create(:address, latitude:-23.6833585, longitude:-46.7144426)
-    ong = create(:ong, user: user, address: address)
-    ong2 = create(:ong, user: user2, address: address)
+    address = create(:address, latitude:-23.550756, longitude:-46.632970)
+    ong = create(:ong, address: address)
+    ong2 = create(:ong, address: address)
 
-    event1 = create(:event, ong: ong, datetime: DateTime.new(2015, 2, 7, 0,
+    event1 = create(:event, ong: ong, datetime: DateTime.new(2011, 2, 7, 0,
                                                              0, 0).in_time_zone)
-    event2 = create(:event, ong: ong2, datetime: DateTime.new(2016, 9, 8, 0, 0,
+    event2 = create(:event, ong: ong2, datetime: DateTime.new(2012, 9, 8, 0, 0,
                                                               0).in_time_zone)
-    event3 = create(:event, ong: ong, datetime: DateTime.new(2017, 11, 10, 0, 0,
-                                                             0).in_time_zone)
-    event4 = create(:event, ong: ong2, datetime: DateTime.new(2016, 5, 7, 0, 0,
+    event3 = create(:event, ong: ong, datetime: (DateTime.now + 3).in_time_zone)
+    event4 = create(:event, ong: ong2, datetime: DateTime.new(2014, 5, 7, 0, 0,
                                                               0).in_time_zone)
-    event5 = create(:event, ong: ong, datetime: DateTime.new(2017, 9, 3, 0, 0,
-                                                             0).in_time_zone)
-    event6 = create(:event, ong: ong2, datetime: DateTime.new(2017, 9, 12, 0, 0,
+    event5 = create(:event, ong: ong, datetime: (DateTime.now + 5).in_time_zone)
+    event6 = create(:event, ong: ong2, datetime:(DateTime.now + 6).in_time_zone)
+    event7 = create(:event, ong: ong2, datetime: DateTime.new(2014, 9, 12, 0, 0,
                                                               0).in_time_zone)
-    event7 = create(:event, ong: ong2, datetime: DateTime.new(2018, 9, 12, 0, 0,
-                                                              0).in_time_zone)
-
     visit root_path
-
-    save_and_open_page
 
     within '#events' do
       expect(page).to have_content(event3.name)

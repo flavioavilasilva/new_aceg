@@ -5,7 +5,7 @@ feature 'user sign out' do
 
     visit root_path
 
-    click_on 'Login'
+    click_on 'Login Usuário'
 
     fill_in 'Email', with: user.email
     fill_in 'Senha', with: user.password
@@ -15,7 +15,7 @@ feature 'user sign out' do
     click_on 'Logoff'
 
     within('header') do
-      expect(page).to have_content 'Login'
+      expect(page).to have_content 'Login Usuário'
     end
   end
 end

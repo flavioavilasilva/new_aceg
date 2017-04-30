@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'User adopt pet' do
   scenario 'successfuly' do
     user = login
-    ong = create(:ong, user: user)
+    ong = ong_login
     pet = create(:pet, ong: ong)
 
     adoption = build(:adoption, pet: pet, user: user)
@@ -22,7 +22,7 @@ feature 'User adopt pet' do
 
   scenario 'user is not loged' do
     user_not_log_in = create(:user)
-    ong = create(:ong, user: user_not_log_in)
+    ong = ong_login
     pet = create(:pet, ong: ong)
 
     visit pet_path(pet)

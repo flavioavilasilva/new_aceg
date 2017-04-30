@@ -1,0 +1,39 @@
+<h2>Cadastro de ONG</h2>
+<div class="col-md-12">
+  <div class="box">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= f.error_notification %>
+            <div class="form-inputs">
+              <%= f.input :cnpj, label: 'CNPJ', required: true, autofocus: true %>
+              <%= f.input :email,label: 'E-mail', required: true, autofocus: true %>
+              <%= f.input :name, label: 'Nome', required: true %>
+              <%= f.input :phone, label: 'Telefone', required: true %>
+              <%= f.input :password, label: 'Senha', required: true, hint: ("#{@minimum_password_length} mínimo de caracteres" if @minimum_password_length) %>
+              <%= f.input :password_confirmation, label: 'Confirmação de senha', required: true %>
+              <%= f.simple_fields_for :address do |a| %>
+                <%= a.input :postal_code, label: 'CEP', required: true %>
+                <%= a.input :state, label: 'Estado', required: true %>
+                <%= a.input :city, label: 'Cidade', required: true %>
+                <%= a.input :address, label: 'Endereço', required: true %>
+                <%= a.input :address_number, label: 'Número', required: true %>
+              <% end %>
+              <%= f.input :contact, label: 'Responsável', required: true %>
+              <%= f.input :acept_pets, label: 'Recebe Pets?' %>
+              <%= f.input :site, label: 'Site', placeholder: 'http://www.nomedaong.com.br' %>
+              <%= f.input :description, label: 'Descreva sua ONG', placeholder: 'Descreva o trabalho de sua ONG', as: :text %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, "Cadastrar conta" %>
+            </div>
+          <% end %>
+
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

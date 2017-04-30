@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
+
   get 'sessions/create'
 
   post '/set-location', to: 'location#create'
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  #devise_for :ongs
+
+  devise_for :ongs, controllers: {
+    registrations: 'ongs/registrations'
+  }
+
+  devise_for :users, :controllers => { omniauth_callbacks: "users/omniauth_callbacks", registrations: "registrations_user" }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'home#index'
 
-  resources :ongs, only: [:show, :new, :create, :index] do
+  resources :ongs do
     resources :events, only: [:new, :create]
     resources :pets, only: [:new, :create, :show, :index] do
       resources :adoptions, only: [:create]
@@ -19,6 +26,5 @@ Rails.application.routes.draw do
   resources :pets, only:  [:index, :show]
 
   resources :adoptions, only: [:show, :edit, :update]
-
-  get '/minhas-ongs', to: 'ongs#my_ongs'
+  
 end

@@ -1,10 +1,9 @@
 require 'rails_helper'
 
-feature 'user creates events to ong' do
+feature 'ong creates events to ong' do
   scenario 'successfully' do
-    user = login
-    ong = create(:ong, user: user)
-    visit minhas_ongs_path ong
+    ong = ong_login
+    visit ong_path ong
 
     click_on 'Criar Evento'
 
@@ -26,8 +25,7 @@ feature 'user creates events to ong' do
   end
 
   scenario 'user see event in the home page' do
-    user = login
-    ong = create(:ong, user: user)
+    ong = ong_login
     event = create(:event, ong: ong, datetime: DateTime.new(2017, 10, 4,
                                                             8, 0).in_time_zone)
 
@@ -38,8 +36,7 @@ feature 'user creates events to ong' do
   end
 
   scenario 'user see event in the ong page' do
-    user = login
-    ong = create(:ong, user: user)
+    ong = ong_login
     events = create_list(:event, 5, ong: ong,
                                     datetime: DateTime.new(2016, 10, 4,
                                                            8, 0).in_time_zone)
@@ -52,26 +49,21 @@ feature 'user creates events to ong' do
   end
 
   scenario 'dont show create button when current_user is not the ong creator' do
-    not_logged_user = create(:user)
-    ong = create(:ong, user: not_logged_user)
-    login
+    ong = create(:ong)
     visit ong_path ong
 
     expect(page).not_to have_content 'Criar Evento'
   end
 
-  scenario 'when create an event the current_user must be the ong creator' do
-    not_logged_user = create(:user)
-    ong = create(:ong, user: not_logged_user)
-    login
+  scenario 'when create an event the current_ong must logged' do
+    ong = create(:ong)
     visit new_ong_event_path ong
-    expect(page).to have_content 'Vocẽ não pode cadastrar eventos para esta ONG'
+    expect(page).to have_css('h2', :text => 'Log in')
   end
 
   scenario 'should fail because all fields are mandatory' do
-    user = login
-    create(:ong, user: user)
-    visit minhas_ongs_path
+    ong = ong_login
+    visit ong_path ong
 
     click_on 'Criar Evento'
 

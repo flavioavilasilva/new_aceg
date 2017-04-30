@@ -30,14 +30,7 @@
             <%= link_to "Logout", destroy_user_session_path, method: :delete %>
           <% end %>
           <ul class="nav navbar-nav navbar-right">
-
             <% if user_signed_in? %>
-               <% if current_user.ongs.any?%>
-               <li><%= link_to 'Minhas ONGs', minhas_ongs_path %></li>
-               <% else %>
-               <li><%= link_to 'Cadastre sua ONG', new_ong_path %><li>
-               <% end %>
-
               <li class="dropdown">
                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
                    <ul class="dropdown-menu">
@@ -46,10 +39,25 @@
 
                    </ul>
               </li>
-
             <% else %>
-              <li><%= link_to 'Login', new_user_session_path %></li>
-              <li><%= link_to 'Criar conta', new_user_registration_path %></li>
+              <li><%= link_to 'Login Usuário', new_user_session_path %></li>
+              <li><%= link_to 'Criar Usuário', new_user_registration_path %></li>
+            <% end %>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <% if ong_signed_in? %>
+              <li class="dropdown">
+                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_ong.email %> <span class="caret"></span></a>
+                   <ul class="dropdown-menu">
+                     <li><%= link_to 'Minha ONG', ong_path(current_ong) %>
+                     <li><%= link_to 'Editar conta', edit_ong_registration_path %>
+                     <li><%= link_to 'Logoff', destroy_ong_session_path, method: :delete%>
+                   </ul>
+              </li>
+            <% else %>
+              <li><%= link_to 'Login ONG', new_ong_session_path %></li>
+              <li><%= link_to 'Criar ONG', new_ong_registration_path %></li>
             <% end %>
           </ul>
 

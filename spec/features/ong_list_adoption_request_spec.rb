@@ -3,16 +3,16 @@ require 'rails_helper'
 feature 'ong see list of request adoption' do
   scenario 'successfully' do
     user = login
-    ong = create(:ong, user: user)
+    ong = ong_login
     pet = create(:pet, ong: ong)
 
     destroy_user_session_path
-
+    
     adoption_received = create(:adoption, user: user, pet: pet, ong: ong)
     create(:adoption, user: user, pet: pet, ong: ong, status: 2)
     create(:adoption, user: user, pet: pet, ong: ong, status: 1)
 
-    visit minhas_ongs_path
+    visit ong_path(ong)
     expect(page).to have_content 'Solicitações de adoções'
 
     within '.adoptions' do
@@ -29,14 +29,14 @@ feature 'ong see list of request adoption' do
 
   scenario 'user see list and update adopt request' do
     user = login
-    ong = create(:ong, user: user)
+    ong = ong_login
     pet = create(:pet, ong: ong)
 
     destroy_user_session_path
 
     create(:adoption, user: user, pet: pet, ong: ong)
 
-    visit minhas_ongs_path
+    visit ong_path(ong)
     expect(page).to have_content 'Solicitações de adoções'
 
     within '.adoptions' do

@@ -5,7 +5,7 @@ feature 'user sign in' do
 
     visit root_path
 
-    click_on 'Login'
+    click_on 'Login Usuário'
 
     fill_in 'Email', with: user.email
     fill_in 'Senha', with: user.password
@@ -13,7 +13,7 @@ feature 'user sign in' do
     click_on 'Entrar'
 
     expect(page).to have_no_content 'Cadastrar conta'
-    expect(page).to have_no_content 'Login'
+    expect(page).to have_no_content 'Login Usuário'
     expect(page).to have_content 'Logoff'
     expect(page).to have_content 'Editar conta'
     within('header') do

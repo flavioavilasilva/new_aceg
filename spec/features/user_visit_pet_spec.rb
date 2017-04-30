@@ -2,9 +2,8 @@ require 'rails_helper'
 
 feature 'User visits pet with ong info' do
   scenario 'successfuly' do
-    user = create(:user)
     address = create(:address)
-    ong = create(:ong, user: user, address: address)
+    ong = create(:ong, address: address)
     pet = create(:pet, ong: ong)
 
     visit root_path

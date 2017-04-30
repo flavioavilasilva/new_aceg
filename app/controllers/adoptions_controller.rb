@@ -21,7 +21,7 @@ class AdoptionsController < ApplicationController
     @adoption = Adoption.find(params[:id])
     @adoption.update(adoption_params)
 
-    redirect_to :minhas_ongs
+    redirect_to :ong
   end
 
   private

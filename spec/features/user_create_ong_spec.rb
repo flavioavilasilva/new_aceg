@@ -1,29 +1,29 @@
 require 'rails_helper'
 feature 'User create ong' do
   scenario 'successfuly' do
-    login
     address = build(:address, latitude:-23.6797034, longitude:-46.7129943)
     ong = build(:ong, address: address)
 
-    visit new_ong_path
+    visit new_ong_registration_path
 
-    fill_in 'CNPJ',     with: ong.cnpj
-    fill_in 'Nome', with: ong.name
-    fill_in 'Logradouro', with: ong.address.address
-    fill_in 'Número e complemento', with: ong.address.address_number
-    fill_in 'CEP',      with: ong.address.postal_code
-    fill_in 'Estado',   with: ong.address.state
-    fill_in 'Cidade',   with: ong.address.city
-    fill_in 'E-mail',    with: ong.email
-    fill_in 'Telefone', with: ong.phone
-    fill_in 'Contato',  with: ong.contact
-    fill_in 'Descreva sua ONG',  with: ong.description
-    check   'Recebe Pets'
-    fill_in 'Site',     with: ong.site
+    fill_in 'Senha',                with: ong.password
+    fill_in 'Confirmação de senha', with:  ong.password
+    fill_in 'CNPJ',                 with: ong.cnpj
+    fill_in 'Nome',                 with: ong.name
+    fill_in 'Endereço',             with: ong.address.address
+    fill_in 'Número',               with: ong.address.address_number
+    fill_in 'CEP',                  with: ong.address.postal_code
+    fill_in 'Estado',               with: ong.address.state
+    fill_in 'Cidade',               with: ong.address.city
+    fill_in 'E-mail',               with: ong.email
+    fill_in 'Telefone',             with: ong.phone
+    fill_in 'Responsável',          with: ong.contact
+    fill_in 'Descreva sua ONG',     with: ong.description
+    check   'Recebe Pets?'
+    fill_in 'Site',                 with: ong.site
 
-    click_on("btn_cadastrar_ong")
-
-    save_and_open_page
+    click_on("Cadastrar conta")
+    click_on("Minha ONG")
 
     expect(page).to have_content ong.name
     expect(page).to have_content ong.cnpj
@@ -41,74 +41,36 @@ feature 'User create ong' do
   end
 
   scenario 'nao aceita Pet' do
-    login
     ong = build(:ong)
-    visit new_ong_path
+    visit new_ong_registration_path
 
-    fill_in 'CNPJ',     with: ong.cnpj
-    fill_in 'Nome',     with: ong.name
-    fill_in 'Logradouro', with: ong.address.address
-    fill_in 'Número e complemento', with: ong.address.address_number
-    fill_in 'CEP',      with: ong.address.postal_code
-    fill_in 'Estado',   with: ong.address.state
-    fill_in 'Cidade',   with: ong.address.city
-    fill_in 'E-mail',    with: ong.email
-    fill_in 'Telefone', with: ong.phone
-    fill_in 'Contato',  with: ong.contact
-    fill_in 'Site',     with: ong.site
-    uncheck 'Recebe Pets'
+    fill_in 'Senha',                with: ong.password
+    fill_in 'Confirmação de senha', with: ong.password
+    fill_in 'CNPJ',                 with: ong.cnpj
+    fill_in 'Nome',                 with: ong.name
+    fill_in 'Endereço',             with: ong.address.address
+    fill_in 'Número',               with: ong.address.address_number
+    fill_in 'CEP',                  with: ong.address.postal_code
+    fill_in 'Estado',               with: ong.address.state
+    fill_in 'Cidade',               with: ong.address.city
+    fill_in 'E-mail',               with: ong.email
+    fill_in 'Telefone',             with: ong.phone
+    fill_in 'Responsável',          with: ong.contact
+    fill_in 'Descreva sua ONG',     with: ong.description
+    uncheck 'Recebe Pets?'
+    fill_in 'Site',                 with: ong.site
 
-    click_on("btn_cadastrar_ong")
+    click_on("Cadastrar conta")
+    click_on("Minha ONG")
 
     expect(page).to have_content 'Não'
   end
   scenario 'unsuccessfuly' do
-    login
-    visit new_ong_path
+    visit new_ong_registration_path
 
-    fill_in 'CNPJ',     with: ''
-    fill_in 'Nome',     with: ''
-    fill_in 'Logradouro', with: ''
-    fill_in 'Número',   with: ''
-    fill_in 'CEP',      with: ''
-    fill_in 'Estado',   with: ''
-    fill_in 'Cidade',   with: ''
-    fill_in 'E-mail',    with: ''
-    fill_in 'Telefone', with: ''
-    fill_in 'Contato',  with: ''
-    fill_in 'Site',     with: ''
+    click_on("Cadastrar conta")
 
-    click_on("btn_cadastrar_ong")
-
-    expect(page).to have_content 'Campos com (*) são obrigatórios'
+    expect(page).to have_content 'Por favor, revise os problemas abaixo'
   end
 
-  scenario 'and view only my ONGs' do
-    another_user = create(:user)
-    another_ong = create(:ong, user: another_user)
-
-    login
-    ong = build(:ong)
-    visit new_ong_path
-
-    fill_in 'CNPJ',     with: ong.cnpj
-    fill_in 'Nome',     with: ong.name
-    fill_in 'Logradouro', with: ong.address.address
-    fill_in 'Número',   with: ong.address.address_number
-    fill_in 'CEP',      with: ong.address.postal_code
-    fill_in 'Estado',   with: ong.address.state
-    fill_in 'Cidade',   with: ong.address.city
-    fill_in 'E-mail',    with: ong.email
-    fill_in 'Telefone', with: ong.phone
-    fill_in 'Contato',  with: ong.contact
-    check   'Recebe Pets'
-    fill_in 'Site',     with: ong.site
-
-    click_on("btn_cadastrar_ong")
-
-    click_on 'Minhas ONGs'
-
-    expect(page).to have_content ong.name
-    expect(page).not_to have_content another_ong.name
-  end
 end

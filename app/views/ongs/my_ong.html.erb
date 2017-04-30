@@ -5,10 +5,10 @@
       <div class="row">
         <section id="ongs">
             <div class="ong">
-              <h2><%= link_to @my_ong.name, @my_ong %></h2>
-              <% if current_user == @my_ong.user %>
-                <%= link_to 'Criar Evento', new_ong_event_path(@my_ong), class: 'btn btn-primary' %>
-                <%= link_to 'Cadastrar Pets', new_ong_pet_path(@my_ong), class: 'btn btn-success' %>
+              <h2><%= link_to current_ong.name, current_ong %></h2>
+              <% if ong_signed_in? %>
+                <%= link_to 'Criar Evento', new_ong_event_path(current_ong), class: 'btn btn-primary' %>
+                <%= link_to 'Cadastrar Pets', new_ong_pet_path(current_ong), class: 'btn btn-success' %>
               <% end %>
             </div>
         </section>

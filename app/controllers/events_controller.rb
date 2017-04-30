@@ -1,16 +1,12 @@
 class EventsController < ApplicationController
+  before_action :authenticate_ong!, only: [:new]
   def show
     @event = Event.find(params[:id])
   end
 
   def new
     fill_ong
-    if current_user != @ong.user
-      flash[:error] = 'Vocẽ não pode cadastrar eventos para esta ONG'
-      redirect_to @ong
-    else
-      @event = @ong.events.build(ong: @ong)
-    end
+    @event = @ong.events.build(ong: @ong)
   end
 
   def create

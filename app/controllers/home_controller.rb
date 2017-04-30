@@ -10,16 +10,17 @@ class HomeController < ApplicationController
 
     @events = Event.where('datetime > :date', date: DateTime.now.in_time_zone)
                    .order(:datetime).limit(3)
-    @cities = Ong.distinct.pluck(:city)
+
+    @cities = Address.distinct.pluck(:city)
   end
 
   private
 
   def latitude
-    session[:geolocation].blank? ? LATITUDE_DEFAULT : session[:geolocation]['latitude']
+    session[:geolocation].blank? || Rails.env.test? ? LATITUDE_DEFAULT : session[:geolocation]['latitude']
   end
 
   def longitude
-    session[:geolocation].blank? ? LONGITUDE_DEFAULT : session[:geolocation]['longitude']
+    session[:geolocation].blank? || Rails.env.test? ? LONGITUDE_DEFAULT : session[:geolocation]['longitude']
   end
 end

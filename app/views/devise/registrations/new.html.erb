@@ -6,16 +6,17 @@
         <div class="col-md-12">
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <%= f.error_notification %>
-
             <div class="form-inputs">
               <%= f.input :email, required: true, autofocus: true %>
               <%= f.input :name, label: 'Nome', required: true %>
-              <%= f.input :state, label: 'Estado', required: true %>
-              <%= f.input :city, label: 'Cidade', required: true %>
               <%= f.input :phone, label: 'Telefone', required: true %>
-              <%= f.input :address, label: 'Endereço', required: true %>
               <%= f.input :password, label: 'Senha', required: true, hint: ("#{@minimum_password_length} mínimo de caracteres" if @minimum_password_length) %>
               <%= f.input :password_confirmation, label: 'Confirmação de senha', required: true %>
+              <%= f.simple_fields_for :address do |a| %>
+                <%= a.input :state, label: 'Estado', required: true %>
+                <%= a.input :city, label: 'Cidade', required: true %>
+                <%= a.input :address, label: 'Endereço', required: true %>
+              <% end %>
             </div>
 
             <div class="form-actions">
