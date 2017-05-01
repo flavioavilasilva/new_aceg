@@ -8,8 +8,6 @@ class PetsController < ApplicationController
     else
       @pets = Pet.all
     end
-
-    Pet.joins(:ong).where( :publication_contributors => {:contributor_type => "Author"}, :contributors => {:name => params[:authors]} )
   end
 
   def new
