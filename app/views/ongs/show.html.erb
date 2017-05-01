@@ -68,7 +68,7 @@
           <%= render @ong.events %>
         </section>
         </div>
-        <% if ong_signed_in? %>
+        <% if ong_signed_in? && current_ong.id == @ong.id %>
           <%= link_to 'Criar Evento', new_ong_event_path(current_ong), class: 'btn btn-primary' %>
           <%= link_to 'Cadastrar Pets', new_ong_pet_path(current_ong), class: 'btn btn-success' %>
         <% end %>
