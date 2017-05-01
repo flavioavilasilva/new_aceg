@@ -6,20 +6,25 @@ feature 'ong signup' do
     visit root_path
     click_on 'Criar ONG'
 
-    fill_in :ong_name, with: ong.name
-    fill_in :ong_email, with: ong.email
-    fill_in :ong_cnpj, with: ong.cnpj
-    fill_in :ong_password, with: ong.password
-    fill_in :ong_password_confirmation, with:  ong.password
-    fill_in :ong_address_attributes_state, with: ong.address.state
-    fill_in :ong_address_attributes_city, with: ong.address.city
-    fill_in :ong_phone, with: ong.phone
-    fill_in :ong_address_attributes_address, with: ong.address.address
+    fill_in 'Nome', with: ong.name
+    fill_in 'E-mail', with: ong.email
+    fill_in 'CNPJ', with: ong.cnpj
+    fill_in 'Telefone', with: ong.phone
+    fill_in 'Senha', with: ong.password
+    fill_in 'Confirmação de senha', with:  ong.password
+    fill_in 'CEP', with: ong.address.postal_code
+    fill_in 'Estado', with: ong.address.state
+    fill_in 'Cidade', with: ong.address.city
+    fill_in 'Rua', with: ong.address.address
+    fill_in 'Bairro', with: ong.address.neighborhood
+    fill_in 'Número', with: ong.address.address_number
 
     click_on 'Cadastrar conta'
 
     within('header') do
       expect(page).to have_content ong.email
     end
+
+    expect(page.current_url).to have_content 'ongs/'
   end
 end

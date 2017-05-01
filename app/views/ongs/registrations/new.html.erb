@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'cep.js' %>
 <h2>Cadastro de ONG</h2>
 <div class="col-md-12">
   <div class="box">
@@ -7,30 +8,31 @@
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <%= f.error_notification %>
             <div class="form-inputs">
-              <%= f.input :cnpj, label: 'CNPJ', required: true, autofocus: true %>
-              <%= f.input :email,label: 'E-mail', required: true, autofocus: true %>
-              <%= f.input :name, label: 'Nome', required: true %>
-              <%= f.input :phone, label: 'Telefone', required: true %>
-              <%= f.input :password, label: 'Senha', required: true, hint: ("#{@minimum_password_length} mínimo de caracteres" if @minimum_password_length) %>
-              <%= f.input :password_confirmation, label: 'Confirmação de senha', required: true %>
+              <p><%= f.input :cnpj, label: 'CNPJ', input_html: {id: "cnpj"}, placeholder: 'SP''XX.XXX.XXX/0001-ZZ' %></p>
+              <p><%= f.input :name, label: 'Nome', required: true %></p>
+              <p><%= f.input :email, label: 'E-mail', placeholder: 'seuemail@ong.com.br' %></p>
+              <p><%= f.input :phone, label: 'Telefone', placeholder: '(11)55555-5555', required: true, input_html: { maxlength: 14, 'data-mask':"(99)99999999"} %></p>
+              <p><%= f.input :password, label: 'Senha', required: true, hint: ("#{@minimum_password_length} mínimo de caracteres" if @minimum_password_length) %></p>
+              <p><%= f.input :password_confirmation, label: 'Confirmação de senha', required: true %></p>
+              <hr>
               <%= f.simple_fields_for :address do |a| %>
-                <%= a.input :postal_code, label: 'CEP', required: true %>
-                <%= a.input :state, label: 'Estado', required: true %>
-                <%= a.input :city, label: 'Cidade', required: true %>
-                <%= a.input :address, label: 'Endereço', required: true %>
-                <%= a.input :address_number, label: 'Número', required: true %>
+                <p><%= a.input :postal_code, label: 'CEP', input_html: {id: "cep"}, placeholder: '04772-010' %></p>
+                <p><%= a.input :state, label: 'Estado', placeholder: 'SP', input_html: {id: "estado"} %></p>
+                <p><%= a.input :city, label: 'Cidade', input_html: {id: "cidade"} %></p>
+                <p><%= a.input :address, label: 'Rua', input_html: {id: "rua"}, placeholder: 'Av. Paulista' %></p>
+                <p><%= a.input :address_number, label: 'Número', placeholder: 'Número 125 - Ap 45' %></p>
+                <p><%= a.input :neighborhood, label: 'Bairro', input_html: {id: "bairro"}, placeholder: 'Bela Vista' %></p>
               <% end %>
-              <%= f.input :contact, label: 'Responsável', required: true %>
-              <%= f.input :acept_pets, label: 'Recebe Pets?' %>
-              <%= f.input :site, label: 'Site', placeholder: 'http://www.nomedaong.com.br' %>
-              <%= f.input :description, label: 'Descreva sua ONG', placeholder: 'Descreva o trabalho de sua ONG', as: :text %>
+              <hr>
+              <p><%= f.input :acept_pets, label: 'Recebe Pets?' %></p>
+              <p><%= f.input :contact, label: 'Responsável', hint: 'Nome do Responsável' %></p>
+              <p><%= f.input :site, label: 'Site', placeholder: 'www.nomedaong.com.br' %></p>
+              <p><%= f.input :description, label: 'Descreva sua ONG', placeholder: 'Descreva o trabalho de sua ONG', as: :text %></p>
             </div>
-
             <div class="form-actions">
               <%= f.button :submit, "Cadastrar conta" %>
             </div>
           <% end %>
-
           <%= render "devise/shared/links" %>
         </div>
       </div>

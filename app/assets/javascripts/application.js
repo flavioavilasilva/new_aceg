@@ -45,3 +45,10 @@ function geolocation() {
     }
   }
 }
+
+function busca_cep(cep){
+  url = "https://viacep.com.br/ws/"+cep+"/json/"
+  $.getJSON( url, function( data ) {
+    return data;
+  });
+}

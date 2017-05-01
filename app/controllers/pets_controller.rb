@@ -4,10 +4,12 @@ class PetsController < ApplicationController
   def index
     if params[:city]
       @city = params[:city]
-      @pets = Pet.joins(:ong).where(ongs: { city: @city })
+      @pets = Pet.joins(ong: :address).where(addresses: { city: params[:city] })
     else
       @pets = Pet.all
     end
+
+    Pet.joins(:ong).where( :publication_contributors => {:contributor_type => "Author"}, :contributors => {:name => params[:authors]} )
   end
 
   def new

@@ -6,14 +6,17 @@ feature 'user signup' do
     visit root_path
     click_on 'Criar Usuário'
 
-    fill_in :user_name, with: user.name
-    fill_in :user_email, with: user.email
-    fill_in :user_password, with: user.password
-    fill_in :user_password_confirmation, with:  user.password
-    fill_in :user_address_attributes_state, with: user.address.state
-    fill_in :user_address_attributes_city, with: user.address.city
-    fill_in :user_phone, with: user.phone
-    fill_in :user_address_attributes_address, with: user.address.address
+    fill_in 'Nome',                 with: user.name
+    fill_in 'E-mail',               with: user.email
+    fill_in 'Senha',                with: user.password
+    fill_in 'Confirmação de senha', with:  user.password
+    fill_in 'Telefone',             with: user.phone
+    fill_in 'CEP',                  with: user.address.postal_code
+    fill_in 'Estado',               with: user.address.state
+    fill_in 'Cidade',               with: user.address.city
+    fill_in 'Rua',                  with: user.address.address
+    fill_in 'Número',               with: user.address.address_number
+    fill_in 'Bairro',               with: user.address.neighborhood
 
     click_on 'Cadastrar conta'
 
