@@ -71,5 +71,10 @@
       </div>
       <%= social_share_button_tag(@pet.name, url: pet_url(@pet), desc: @pet.description) %>
     </div>
+    <div>
+      <% @pet.photos.each do |photo| %>
+        <%= image_tag photo.image.url(:mini) %>
+      <% end %>
+    </div>
   </div>
 </div>

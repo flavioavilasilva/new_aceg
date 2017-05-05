@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :photos
   get 'sessions/create'
 
   post '/set-location', to: 'location#create'
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
     resources :events, only: [:new, :create]
     resources :pets, only: [:new, :create, :show, :index] do
       resources :adoptions, only: [:create]
+      resources :photos
     end
   end
 
@@ -26,5 +28,5 @@ Rails.application.routes.draw do
   resources :pets, only:  [:index, :show]
 
   resources :adoptions, only: [:show, :edit, :update]
-  
+
 end

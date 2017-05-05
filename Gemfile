@@ -16,6 +16,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'social-share-button'
 gem 'geocoder'
+gem "therubyracer"
 
 group :development, :test do
   gem 'rspec-rails'

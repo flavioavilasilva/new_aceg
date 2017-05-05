@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <h1>Cadastrar Pet</h1>
-        <%= simple_form_for([@ong, @pet]) do |f| %>
+        <%= simple_form_for([@ong, @pet], html: {multipart: true}) do |f| %>
           <%= f.input :name, label: 'Nome' %>
           <%= f.input :avatar, as: :file %>
           <%= f.input :age, label: 'Idade' %>
@@ -15,6 +15,10 @@
           <%= f.input :deficiency, label: 'Deficiência' %>
           <%= f.input :castrated, label: 'Castrado' %>
           <%= f.input :description, label: 'Descrição' %>
+          <div>
+            <label>Galeria de fotos</label>
+            <%= file_field_tag "photos[]", multiple: true %>
+          </div>
           <%= f.button :submit, 'Enviar' %>
         <% end %>
       </div>

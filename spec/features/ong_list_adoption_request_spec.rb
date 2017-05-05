@@ -7,7 +7,7 @@ feature 'ong see list of request adoption' do
     pet = create(:pet, ong: ong)
 
     destroy_user_session_path
-    
+
     adoption_received = create(:adoption, user: user, pet: pet, ong: ong)
     create(:adoption, user: user, pet: pet, ong: ong, status: 2)
     create(:adoption, user: user, pet: pet, ong: ong, status: 1)

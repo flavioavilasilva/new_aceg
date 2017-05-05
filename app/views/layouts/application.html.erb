@@ -24,9 +24,9 @@
             <li><%= link_to 'ONGs', ongs_path %></li>
             <li><%= link_to 'Pets', pets_path %></li>
           </ul>
-          <% unless current_user %>
+          <% if !user_signed_in? && !ong_signed_in? %>
             <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
-          <% else %>
+          <% elsif user_signed_in? %>
             <%= link_to "Logout", destroy_user_session_path, method: :delete %>
           <% end %>
           <ul class="nav navbar-nav navbar-right">
@@ -39,7 +39,7 @@
 
                    </ul>
               </li>
-            <% else %>
+            <% elsif !ong_signed_in? %>
               <li><%= link_to 'Login Usuário', new_user_session_path %></li>
               <li><%= link_to 'Criar Usuário', new_user_registration_path %></li>
             <% end %>
@@ -55,7 +55,7 @@
                      <li><%= link_to 'Logoff', destroy_ong_session_path, method: :delete%>
                    </ul>
               </li>
-            <% else %>
+            <% elsif !user_signed_in? %>
               <li><%= link_to 'Login ONG', new_ong_session_path %></li>
               <li><%= link_to 'Criar ONG', new_ong_registration_path %></li>
             <% end %>
