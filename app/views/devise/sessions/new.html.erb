@@ -1,13 +1,11 @@
-
+<h3>Log in - Usuário</h3>
+<hr>
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-    <%= f.input :email, required: false, autofocus: true %>
+    <%= f.input :email, required: false, label: 'Email', autofocus: true %>
     <%= f.input :password, label: 'Senha', required: false %>
     <%= f.input :remember_me,  label: 'Lembrar',  as: :boolean if devise_mapping.rememberable? %>
-
-
     <%= f.button :submit, "Entrar" %>
-
 <% end %>
-
+<hr>
 <%= render "devise/shared/links" %>
+<hr>

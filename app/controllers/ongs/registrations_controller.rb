@@ -1,4 +1,5 @@
 class Ongs::RegistrationsController < Devise::RegistrationsController
+  before_action :configure_permitted_parameters
 
   def new
     build_resource({})
@@ -13,10 +14,14 @@ class Ongs::RegistrationsController < Devise::RegistrationsController
     ong_path resource
   end
 
+  def after_update_path_for(resource)
+    ong_path(resource)
+  end
+
   private
 
   def sign_up_params
-    allow = [:cnpj, :email, :password, :password_confirmation, :name, :phone, :contact, :acept_pets, :site, :description, [address_attributes: [:postal_code, :address_number, :state, :city, :address, :neighborhood]] ]
-    params.require(resource_name).permit(allow)
+    allow = [:facebook_url, :avatar, :cnpj, :email, :password, :password_confirmation, :name, :phone, :contact, :pet_capacity, :site, :description, [address_attributes: [:postal_code, :address_number, :state, :city, :address, :neighborhood]] ]
+    params.require(:ong).permit(allow)
   end
 end

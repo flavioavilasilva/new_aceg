@@ -1,0 +1,9 @@
+<h3>Ajude nos a melhorar!</h3>
+<hr>
+<%= simple_form_for :feedback,
+    :url => url_for(:action => 'create', :controller => 'feedbacks') do |f| %>
+  <%= f.input :name, label: 'Nome', class: "form-control" %>
+  <%= f.input :email, label: 'E-mail', class: "form-control" %>
+  <%= f.input :feedback, label: 'FeedBack', class: "form-control", as: :text %>
+  <%= f.button :submit, 'Enviar', class: "btn btn-default" %>
+<% end %>

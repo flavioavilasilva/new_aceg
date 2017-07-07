@@ -3,16 +3,21 @@ Rails.application.routes.draw do
   resources :photos
   get 'sessions/create'
 
+  get 'feedbacks/new', to: 'feedbacks#new'
+  post 'feedbacks/create', to: 'feedbacks#create'
+  get 'quemsomos', to: 'quem_somos#show'
+
   post '/set-location', to: 'location#create'
 
-  #devise_for :ongs
-
   devise_for :ongs, controllers: {
-    registrations: 'ongs/registrations'
+    registrations: 'ongs/registrations',
+    sessions: 'ongs/sessions'
   }
 
   devise_for :users, :controllers => { omniauth_callbacks: "users/omniauth_callbacks", registrations: "registrations_user" }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'user_profiles/:id', as: :user_profile, to: 'user_profiles#show'
+
   root 'home#index'
 
   resources :ongs do
@@ -25,8 +30,7 @@ Rails.application.routes.draw do
 
   resources :events, only: [:show]
 
-  resources :pets, only:  [:index, :show]
+  resources :pets, only:  [:index, :show, :edit, :update]
 
   resources :adoptions, only: [:show, :edit, :update]
-
 end

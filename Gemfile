@@ -17,10 +17,12 @@ gem 'omniauth-facebook'
 gem 'social-share-button'
 gem 'geocoder'
 gem "therubyracer"
+gem "twitter-bootstrap-rails"
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'selenium-webdriver'
   gem 'factory_girl_rails'
   gem 'rubocop', require: false
   gem 'pry-byebug'

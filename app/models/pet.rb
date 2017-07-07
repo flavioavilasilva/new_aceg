@@ -14,6 +14,14 @@ class Pet < ApplicationRecord
     @photos=value
   end
 
+  def available
+    available? ? 'Disponível para adoção' : 'Indisponível para adoção'
+  end
+
+  def castrated
+    castrated? ? 'Castrado' : 'Não castrado'
+  end
+
   private
 
   def save_photos

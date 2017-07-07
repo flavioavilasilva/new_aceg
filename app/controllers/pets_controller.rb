@@ -28,9 +28,9 @@ class PetsController < ApplicationController
   end
 
   def update
-    fill_ong
+    fill_pet
     @pet.photos = params[:photos]
-    if @pet.save
+    if @pet.update pets_params
       redirect_to @pet
     else
       flash[:error] = 'Campos com (*) são obrigatórios'
@@ -55,9 +55,13 @@ class PetsController < ApplicationController
     @ong = Ong.find(params[:ong_id])
   end
 
+  def fill_pet
+    @pet = Pet.find(params[:id])
+  end
+
   def pets_params
     params.require(:pet).permit(:name, :age, :size, :pet_type, :breed, :gender,
                                 :vaccined, :deficiency, :castrated,
-                                :description,:avatar, :photos)
+                                :description,:avatar, :photos, :available)
   end
 end

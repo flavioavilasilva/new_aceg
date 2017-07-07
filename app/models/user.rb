@@ -10,6 +10,10 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :address
 
+  has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' },
+                             default_url: '/images/:style/missing_ong.png'
+  validates_attachment_content_type :avatar, content_type: %r{\Aimage\/.*\z}
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.password = Devise.friendly_token[0,20]

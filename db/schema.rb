@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170503033715) do
+ActiveRecord::Schema.define(version: 20170706163644) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "postal_code"
@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 20170503033715) do
     t.string   "contact"
     t.text     "about_us"
     t.string   "logo"
-    t.boolean  "acept_pets"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -84,6 +83,8 @@ ActiveRecord::Schema.define(version: 20170503033715) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "pet_capacity"
+    t.string   "facebook_url"
     t.index ["address_id"], name: "index_ongs_on_address_id"
     t.index ["email"], name: "index_ongs_on_email", unique: true
     t.index ["reset_password_token"], name: "index_ongs_on_reset_password_token", unique: true
@@ -101,13 +102,14 @@ ActiveRecord::Schema.define(version: 20170503033715) do
     t.text     "deficiency"
     t.boolean  "castrated"
     t.text     "description"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.integer  "ong_id"
+    t.boolean  "available",           default: true
     t.index ["ong_id"], name: "index_pets_on_ong_id"
   end
 
@@ -141,6 +143,11 @@ ActiveRecord::Schema.define(version: 20170503033715) do
     t.string   "uid"
     t.text     "image"
     t.integer  "address_id"
+    t.string   "facebook_url"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["address_id"], name: "index_users_on_address_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

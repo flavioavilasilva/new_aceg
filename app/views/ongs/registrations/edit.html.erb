@@ -1,11 +1,14 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= javascript_include_tag 'cep.js' %>
+<h3>Editar ONG</h3>
+<hr>
+<%= simple_form_for(resource, as: resource_name, url: ong_registration_path, html: { method: :patch }) do |f| %>
   <%= f.error_notification %>
-
   <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-
+    <p><%= f.input :avatar, as: :file %></p>
+    <p><%= f.input :cnpj, label: 'CNPJ', input_html: {id: "cnpj"}, placeholder: 'SP''XX.XXX.XXX/0001-ZZ' %></p>
+    <p><%= f.input :name, label: 'Nome', required: true %></p>
+    <p><%= f.input :email, label: 'E-mail', placeholder: 'seuemail@ong.com.br' %></p>
+    <p><%= f.input :phone, label: 'Telefone', placeholder: '(11)55555-5555', required: true, input_html: { maxlength: 14, 'data-mask':"(99)99999999"} %></p>
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
@@ -13,10 +16,25 @@
     <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
     <%= f.input :password_confirmation, required: false %>
     <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+    <hr>
+    <%= f.simple_fields_for :address do |a| %>
+      <p><%= a.input :postal_code, label: 'CEP', input_html: {id: "cep"}, placeholder: '04772-010' %></p>
+      <p><%= a.input :state, label: 'Estado', placeholder: 'SP', input_html: {id: "estado"} %></p>
+      <p><%= a.input :city, label: 'Cidade', input_html: {id: "cidade"} %></p>
+      <p><%= a.input :address, label: 'Rua', input_html: {id: "rua"}, placeholder: 'Av. Paulista' %></p>
+      <p><%= a.input :address_number, label: 'Número', placeholder: 'Número 125 - Ap 45' %></p>
+      <p><%= a.input :neighborhood, label: 'Bairro', input_html: {id: "bairro"}, placeholder: 'Bela Vista' %></p>
+    <% end %>
+    <hr>
+      <p><%= f.input :pet_capacity, label: 'Qual a capacidade de pets em sua ONG?' %></p>
+      <p><%= f.input :contact, label: 'Responsável', hint: 'Nome do Responsável' %></p>
+      <p><%= f.input :site, label: 'Site', placeholder: 'www.nomedaong.com.br' %></p>
+      <p><%= f.input :facebook_url, label: 'URL Facebook', placeholder: 'www.facebook.com.br/suaong' %></p>
+      <p><%= f.input :description, label: 'Descreva sua ONG', placeholder: 'Descreva o trabalho de sua ONG', as: :text %></p>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Editar conta" %>
   </div>
 <% end %>
 

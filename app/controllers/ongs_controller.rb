@@ -13,5 +13,4 @@ class OngsController < ApplicationController
     @ong = Ong.find params[:id]
     @adoptions = @ong.adoptions.where(status: 0)
   end
-
 end

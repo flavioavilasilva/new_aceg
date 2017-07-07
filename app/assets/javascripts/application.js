@@ -10,16 +10,14 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require bootstrap-sprockets
 //= require turbolinks
-//= require waypoints.min
 //= require jquery.cookie
-//= require modernizr
 //= require bootstrap-hover-dropdown
-//= require owl.carousel.min
-//= require front
 //= require social-share-button
 //= require application
 

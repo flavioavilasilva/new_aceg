@@ -1,70 +1,100 @@
-<div class="container" data-animate="fadeInUpBig">
-  <div class="col-md-12">
-    <div class="box info-bar">
-      <div class="row">
-        <div class="col-sm-12 col-md-1 col-md-offset-0 products-showing">
-          <strong>Localidade:</strong>
+<style>
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
+  }
+
+  .carousel-inner a {
+    color: #fff;
+  }
+</style>
+  
+  <div class="well well-lg col-sm-12">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+      </ol>
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <%= image_tag 'adote_um_pet.jpeg', width: "460", height: "345", class: "img-responsive"%>
+            <div class="carousel-caption">
+              <%= link_to quemsomos_path do %>
+                <h3>ACEG - Adote</h3>
+                <p>Saiba mais sobre o portal ACEG, e nos ajude nessa missão :)</p>
+              <% end %>
+            </div>
         </div>
-        <div class="col-sm-12 col-md-6  products-number-sort">
-          <div class="row">
-            <%= form_tag(pets_path, method: :get, class: "form-inline") do %>
-              <div class="col-md-6 col-sm-6">
-                <%=label_tag(:city, "Cidade") %>
-                <%= select_tag(:city, options_for_select(@cities), class: 'form-control') %>
-                <%= submit_tag("Filtrar", class: 'btn btn-primay') %>
-              </div>
+
+        <div class="item">
+          <%= image_tag 'adote_um_pet.jpeg', width: "460", height: "345" %>
+            <div class="carousel-caption">
+              <h3>Alerta do bem <span class="glyphicon glyphicon-bullhorn"></span></h3>
+              <p>Saiba o que fazer para ajudar cães de rua.</p>
+            </div>
+        </div>
+
+        <div class="item">
+          <%= image_tag 'adote_um_pet.jpeg', width: "460", height: "345" %>
+          <div class="carousel-caption">
+            <h3>Cléo</h3>
+            <p>Conheça essa linda história de adoçao.</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <%= image_tag 'adote_um_pet.jpeg', width: "460", height: "345" %>
+          <div class="carousel-caption">
+            <h3>Maus tratos!</h3>
+            <p>Ajude a combater.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <hr>
+  </div>
+
+  <div class="well well-lg col-sm-12">
+    <%= form_tag(pets_path, method: :get, class: "form-inline") do %>
+        <%=label_tag(:city, "Cidade") %>
+        <%= select_tag(:city, options_for_select(@cities), class: 'form-control') %>
+        <%= submit_tag("Filtrar", class: 'btn btn-primay') %>
+    <% end %>
+  </div>
+
+  <% @ongs.each do |ong| %>
+  <div class="well well-lg col-sm-12">
+    <div class="row">
+      <div class="col-xs-4 col-md-2">
+        <p class="bg-info">
+          <h2>
+            <%= link_to ong do %>
+              <%= image_tag ong.avatar.url(:thumb), class: 'img-circle img-responsive' %><%= ong.name %>
             <% end %>
-          </div>
-        </div>
+          </h2>
+        </p>
+      </div>
+      <div class="col-xs-8 col-md-10">
+        <%= render ong.featured_pets %>
       </div>
     </div>
-    <div class="box slideshow">
-      <div >
-        <a href="#">
-          <img src="<%= image_path 'banner_adopt.jpg' %>" alt="Encontre seu próximo amor" style="width:100%">
-        </a>
-      </div>
-    </div>
+    <hr>
   </div>
-  </div>
-
-  <div id="hot">
-    <div id="ongs" class="container">
-      <% @ongs.each do |ong| %>
-        <div class="panel panel-default">
-        <div class="panel-body">
-          <div class='col-sm-12 '>
-            <h2><%= link_to ong.name, ong %></h2>
-          </div>
-
-          <div class="row">
-            <% ong.featured_pets.each do |pet| %>
-              <div class='col-sm-4'>
-              <%= link_to pet do %>
-                <h2><%= pet.name %></h2>
-                <%= image_tag pet.avatar.url(:medium), class: 'img-responsive center-block' %>
-                <% end %>
-                <%= social_share_button_tag(pet.name, url: pet_url(pet), desc: pet.description) %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <% end %>
-    </div>
-
-    <div id="events" class="container">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class='text-left col-sm-12'>
-            <h2 class='text-left'>Próximos Eventos</h2>
-          </div>
-          <div class="row">
-            <%= render @events %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
+  <% end %>

@@ -8,9 +8,6 @@ class HomeController < ApplicationController
       @ongs << address.ong if address.ong.present?
     end
 
-    @events = Event.where('datetime > :date', date: DateTime.now.in_time_zone)
-                   .order(:datetime).limit(3)
-
     @cities = Address.distinct.pluck(:city)
   end
 

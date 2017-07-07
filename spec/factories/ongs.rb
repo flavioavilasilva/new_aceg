@@ -11,7 +11,7 @@ FactoryGirl.define do
     contact 'edson...'
     about_us 'bla.. bla'
     logo 'imagemLogo'
-    acept_pets 1
+    pet_capacity "1"
     description 'Great ong...'
     address { FactoryGirl.create(:address) }
   end

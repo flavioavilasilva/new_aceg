@@ -18,10 +18,14 @@ class Ong < ApplicationRecord
   validates :name, :email, :phone, :address, presence: true
 
   def featured_pets
-    pets.order("created_at ASC").limit(3)
+    available_pets.limit(4)
+  end
+
+  def available_pets
+    pets.where(available: true).order("created_at ASC")
   end
 
   def featured_events
-    events.order(:created_at).limit(3)
+    events.order(:created_at).limit(4)
   end
 end
