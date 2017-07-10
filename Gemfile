@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'puma', '~> 3.0'
-gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
@@ -19,6 +18,10 @@ gem "therubyracer"
 gem "twitter-bootstrap-rails"
 gem 'mail_form'
 gem 'pg'
+
+group :assets do
+  gem 'uglifier'
+end
 
 group :development, :test do
   gem 'rspec-rails'
