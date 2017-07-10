@@ -19,6 +19,7 @@ gem 'geocoder'
 gem "therubyracer"
 gem "twitter-bootstrap-rails"
 gem 'mail_form'
+gem 'pg'
 
 group :development, :test do
   gem 'rspec-rails'

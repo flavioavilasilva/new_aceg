@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170706163644) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "addresses", force: :cascade do |t|
     t.string   "postal_code"
     t.float    "latitude"
@@ -32,9 +35,9 @@ ActiveRecord::Schema.define(version: 20170706163644) do
     t.datetime "updated_at",             null: false
     t.integer  "ong_id"
     t.integer  "status",     default: 0
-    t.index ["ong_id"], name: "index_adoptions_on_ong_id"
-    t.index ["pet_id"], name: "index_adoptions_on_pet_id"
-    t.index ["user_id"], name: "index_adoptions_on_user_id"
+    t.index ["ong_id"], name: "index_adoptions_on_ong_id", using: :btree
+    t.index ["pet_id"], name: "index_adoptions_on_pet_id", using: :btree
+    t.index ["user_id"], name: "index_adoptions_on_user_id", using: :btree
   end
 
   create_table "authorizations", force: :cascade do |t|
@@ -43,7 +46,7 @@ ActiveRecord::Schema.define(version: 20170706163644) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_authorizations_on_user_id"
+    t.index ["user_id"], name: "index_authorizations_on_user_id", using: :btree
   end
 
   create_table "events", force: :cascade do |t|
@@ -53,7 +56,7 @@ ActiveRecord::Schema.define(version: 20170706163644) do
     t.integer  "ong_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["ong_id"], name: "index_events_on_ong_id"
+    t.index ["ong_id"], name: "index_events_on_ong_id", using: :btree
   end
 
   create_table "ongs", force: :cascade do |t|
@@ -85,10 +88,10 @@ ActiveRecord::Schema.define(version: 20170706163644) do
     t.string   "last_sign_in_ip"
     t.string   "pet_capacity"
     t.string   "facebook_url"
-    t.index ["address_id"], name: "index_ongs_on_address_id"
-    t.index ["email"], name: "index_ongs_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_ongs_on_reset_password_token", unique: true
-    t.index ["user_id"], name: "index_ongs_on_user_id"
+    t.index ["address_id"], name: "index_ongs_on_address_id", using: :btree
+    t.index ["email"], name: "index_ongs_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_ongs_on_reset_password_token", unique: true, using: :btree
+    t.index ["user_id"], name: "index_ongs_on_user_id", using: :btree
   end
 
   create_table "pets", force: :cascade do |t|
@@ -110,7 +113,7 @@ ActiveRecord::Schema.define(version: 20170706163644) do
     t.datetime "avatar_updated_at"
     t.integer  "ong_id"
     t.boolean  "available",           default: true
-    t.index ["ong_id"], name: "index_pets_on_ong_id"
+    t.index ["ong_id"], name: "index_pets_on_ong_id", using: :btree
   end
 
   create_table "photos", force: :cascade do |t|
@@ -121,7 +124,7 @@ ActiveRecord::Schema.define(version: 20170706163644) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.index ["pet_id"], name: "index_photos_on_pet_id"
+    t.index ["pet_id"], name: "index_photos_on_pet_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -148,9 +151,19 @@ ActiveRecord::Schema.define(version: 20170706163644) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.index ["address_id"], name: "index_users_on_address_id"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["address_id"], name: "index_users_on_address_id", using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "adoptions", "ongs"
+  add_foreign_key "adoptions", "pets"
+  add_foreign_key "adoptions", "users"
+  add_foreign_key "authorizations", "users"
+  add_foreign_key "events", "ongs"
+  add_foreign_key "ongs", "addresses"
+  add_foreign_key "ongs", "users"
+  add_foreign_key "pets", "ongs"
+  add_foreign_key "photos", "pets"
+  add_foreign_key "users", "addresses"
 end
