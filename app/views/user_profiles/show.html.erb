@@ -1,6 +1,13 @@
 <!-- nav bar -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <%= link_to 'Início', root_path %>
+  </li>
+  <li class="breadcrumb-item active">
+    Perfil
+  </li>
+</ol>
 <!-- resumt -->
 <div class="panel panel-default">
   <div class="panel-heading resume-heading">
@@ -14,10 +21,32 @@
         <div class="col-xs-12 col-sm-8">
            <ul class="list-group">
               <li class="list-group-item"><h3><%= @user.name %></h3></li>
-              <li class="list-group-item"><%= @user.address.address %>, <%= @user.address.address_number %>, <%= @user.address.neighborhood %><br><%= @user.address.state %> - <%= @user.address.city %><br><%= @user.address.postal_code %> </li>
-              <li class="list-group-item"><i class="fa fa-phone"></i> <%= @user.phone %> </li>
-              <li class="list-group-item"><i class="fa fa-envelope"></i> <%= @user.email %> </li>
-              <li class="list-group-item"><i class="fa fa-facebook"></i> <%= @user.facebook_url %></li>
+              <li class="list-group-item">
+                <address>
+                  <%= link_to 'http://www.google.com.br/maps?'+ @user.address.postal_code + ',' + @user.address.address + ',' + @user.address.address_number + ',' + @user.address.state + ',' + @user.address.city , target: '_blank' do %>
+                    <%= @user.address.address %>, <%= @user.address.address_number %>,
+                    <%= @user.address.neighborhood %><br><%= @user.address.state %> - <%= @user.address.city %><br><%= @user.address.postal_code %>
+                  <% end %>
+                </address>
+              </li>
+              <li class="list-group-item"><i class="fa fa-phone"></i>
+                <%= link_to 'tel:'+ @user.phone  do %>
+                  <span class="bfh-phone" data-format="+55 (dd) ddddd-dddd" data-number="15555555555"></span>
+                  <%= @user.phone %>
+                <% end %>
+              </li>
+              <li class="list-group-item">
+                <%= link_to 'mailto:'+ @user.email do %>
+                  <i class="fa fa-envelope"></i> <%= @user.email %>
+                <% end %>
+              </li>
+              <% if @user.facebook_url.present? %>
+                <li class="list-group-item">
+                  <%= link_to 'http://'+ @user.facebook_url, target: '_blank' do %>
+                    <i class="fa fa-facebook"></i> <%= @user.facebook_url %>
+                  <% end %>
+                </li>
+              <% end %>
            </ul>
            <% if user_signed_in? && current_user.id == @user.id %>
               <div class="btn-group">
@@ -32,29 +61,35 @@
     </div>
   </div>
 
- <% if user_signed_in? %>
+ <% if user_signed_in? && @adoptions.count > 0 %>
   <div class="bs-callout bs-callout-danger">
       <h4>Solicitações de adoção</h4>
       <hr>
       <% @adoptions.each do |adoption| %>
         <div class="row">
+          <div class="col-xs-12 col-md-12">
           <div class="col-xs-2 col-md-2"><%= adoption.pet.name %><%= image_tag adoption.pet.avatar.url(:thumb), class: 'img-responsive' %></div>
           <div class="col-xs-6 col-md-6">
-            <%= adoption.user.name %><br>
-            <%= adoption.user.email %><br>
-            <%= adoption.user.phone %>
-          </div>
-          <br>
-          <div class="row">
-            <div class="col-xs-6 col-md-6">
-              <%= simple_form_for adoption do |f| %>
-                <%= f.select :status, Adoption.statuses.keys, {}, class: "form-control" %>
-                <br>
-                <%= f.submit "Salvar", class: 'btn btn-success' %>
-              <% end %>
-            </div>
+            <%= link_to ong_path(adoption.ong) do %>
+              <%= adoption.ong.name %>
+            <% end %>
+            <hr>
+            <%= link_to 'mailto:' + adoption.ong.email do %>
+            <%= adoption.ong.email %>
+            <% end %>
+            <br>
+            <%= link_to 'tel:' + adoption.ong.phone do %>
+              <%= adoption.ong.phone %>
+            <% end %>
           </div>
         </div>
+      </div>
+      <br>
+      <% if user_signed_in? && adoption.user.id == current_user.id %>
+        <div class="col-xs-12 col-md-12">
+          <%= button_to 'Cancelar', adoption_path(adoption, :adoption => { status: 'Cancelada'}), method: 'put', class: 'btn btn-danger' %>
+        </div>
+      <% end %>
         <hr>
       <% end %>
   </div>

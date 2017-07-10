@@ -1,9 +1,22 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <%= link_to 'Início', root_path %>
+  </li>
+  <li class="breadcrumb-item">
+    <%= link_to @ong.name, ong_path(@ong) %>
+  </li>
+  <li class="breadcrumb-item active">
+    Editar
+  </li>
+</ol>
 <%= javascript_include_tag 'cep.js' %>
 <h3>Editar ONG</h3>
 <hr>
 <%= simple_form_for(resource, as: resource_name, url: ong_registration_path, html: { method: :patch }) do |f| %>
   <%= f.error_notification %>
   <div class="form-inputs">
+    <%= f.input :current_password, label: 'Senha atual', hint: "É necessário a senha atual para confirmar suas alterações", required: true %>
+    <hr>
     <p><%= f.input :avatar, as: :file %></p>
     <p><%= f.input :cnpj, label: 'CNPJ', input_html: {id: "cnpj"}, placeholder: 'SP''XX.XXX.XXX/0001-ZZ' %></p>
     <p><%= f.input :name, label: 'Nome', required: true %></p>
@@ -15,7 +28,7 @@
 
     <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
     <%= f.input :password_confirmation, required: false %>
-    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+
     <hr>
     <%= f.simple_fields_for :address do |a| %>
       <p><%= a.input :postal_code, label: 'CEP', input_html: {id: "cep"}, placeholder: '04772-010' %></p>

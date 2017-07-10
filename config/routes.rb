@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'sessions/create'
 
   get 'feedbacks/new', to: 'feedbacks#new'
-  post 'feedbacks/create', to: 'feedbacks#create'
+  resources "feedbacks", only: [:new, :create]
   get 'quemsomos', to: 'quem_somos#show'
 
   post '/set-location', to: 'location#create'
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :ongs do
     resources :events, only: [:new, :create]
-    resources :pets, only: [:new, :create, :show, :index] do
+    resources :pets, only: [:new, :create, :show, :index, :edit, :update] do
       resources :adoptions, only: [:create]
       resources :photos
     end

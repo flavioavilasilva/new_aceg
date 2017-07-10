@@ -1,9 +1,21 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <%= link_to 'Início', root_path %>
+  </li>
+  <li class="breadcrumb-item active">
+    Feedback
+  </li>
+</ol>
 <h3>Ajude nos a melhorar!</h3>
 <hr>
-<%= simple_form_for :feedback,
-    :url => url_for(:action => 'create', :controller => 'feedbacks') do |f| %>
-  <%= f.input :name, label: 'Nome', class: "form-control" %>
-  <%= f.input :email, label: 'E-mail', class: "form-control" %>
-  <%= f.input :feedback, label: 'FeedBack', class: "form-control", as: :text %>
-  <%= f.button :submit, 'Enviar', class: "btn btn-default" %>
-<% end %>
+<div>
+  <%= simple_form_for @feedback, :html => {:class => 'form-horizontal' } do |f| %>
+    <%= f.input :name, label: 'Nome', :required => true %>
+    <%= f.input :email, label: 'E-mail', :required => true %>
+    <%= f.input :message, label: 'Mensagem', :as => :text, :required => true %>
+    <div>
+      </br>
+      <%= f.button :submit, 'Enviar', :class=> "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

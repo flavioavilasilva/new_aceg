@@ -9,7 +9,7 @@
     color: #fff;
   }
 </style>
-  
+
   <div class="well well-lg col-sm-12">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
@@ -26,7 +26,7 @@
           <%= image_tag 'adote_um_pet.jpeg', width: "460", height: "345", class: "img-responsive"%>
             <div class="carousel-caption">
               <%= link_to quemsomos_path do %>
-                <h3>ACEG - Adote</h3>
+                <h4>Adote</h4>
                 <p>Saiba mais sobre o portal ACEG, e nos ajude nessa missão :)</p>
               <% end %>
             </div>
@@ -35,7 +35,7 @@
         <div class="item">
           <%= image_tag 'adote_um_pet.jpeg', width: "460", height: "345" %>
             <div class="carousel-caption">
-              <h3>Alerta do bem <span class="glyphicon glyphicon-bullhorn"></span></h3>
+              <h4>Alerta do bem <span class="glyphicon glyphicon-bullhorn"></span></h4>
               <p>Saiba o que fazer para ajudar cães de rua.</p>
             </div>
         </div>
@@ -43,7 +43,7 @@
         <div class="item">
           <%= image_tag 'adote_um_pet.jpeg', width: "460", height: "345" %>
           <div class="carousel-caption">
-            <h3>Cléo</h3>
+            <h4>Cléo</h4>
             <p>Conheça essa linda história de adoçao.</p>
           </div>
         </div>
@@ -51,7 +51,7 @@
         <div class="item">
           <%= image_tag 'adote_um_pet.jpeg', width: "460", height: "345" %>
           <div class="carousel-caption">
-            <h3>Maus tratos!</h3>
+            <h4>Maus tratos!</h4>
             <p>Ajude a combater.</p>
           </div>
         </div>
@@ -71,30 +71,34 @@
     <hr>
   </div>
 
-  <div class="well well-lg col-sm-12">
-    <%= form_tag(pets_path, method: :get, class: "form-inline") do %>
-        <%=label_tag(:city, "Cidade") %>
-        <%= select_tag(:city, options_for_select(@cities), class: 'form-control') %>
-        <%= submit_tag("Filtrar", class: 'btn btn-primay') %>
-    <% end %>
-  </div>
-
   <% @ongs.each do |ong| %>
-  <div class="well well-lg col-sm-12">
-    <div class="row">
-      <div class="col-xs-4 col-md-2">
-        <p class="bg-info">
-          <h2>
-            <%= link_to ong do %>
-              <%= image_tag ong.avatar.url(:thumb), class: 'img-circle img-responsive' %><%= ong.name %>
-            <% end %>
-          </h2>
-        </p>
+    <% if ong.pets.count > 0 %>
+    <div class="well well-lg col-sm-12">
+      <div class="row">
+        <div class="col-xs-4 col-md-2">
+          <p class="bg-info">
+            <h5>
+              <%= link_to ong do %>
+                <%= image_tag ong.avatar.url(:thumb), class: 'img-circle img-responsive' %><%= ong.name %>
+              <% end %>
+            </h5>
+          </p>
+        </div>
+        <div class="col-xs-8 col-md-10">
+          <%= render ong.featured_pets %>
+        </div>
       </div>
-      <div class="col-xs-8 col-md-10">
-        <%= render ong.featured_pets %>
-      </div>
+      <hr>
     </div>
-    <hr>
-  </div>
+    <% end %>
+  <% end %>
+
+  <% if @events.count > 0 %>
+   <div class="bs-callout bs-callout-danger">
+       <h3><span class="glyphicon glyphicon-calendar" ></span> Eventos</h3>
+       <hr>
+       <div class="row">
+         <%= render @events %>
+       </div>
+   </div>
   <% end %>

@@ -1,18 +1,22 @@
 class PetsController < ApplicationController
-  before_action :load_constants, only: [:new, :create]
+  before_action :load_constants, only: [:new, :create, :edit, :index]
   before_action :authenticate_ong!, only: [:new]
   def index
-    if params[:city]
-      @city = params[:city]
-      @pets = Pet.joins(ong: :address).where(addresses: { city: params[:city] })
-    else
-      @pets = Pet.all
-    end
+      @pets = Pet.joins(ong: :address).where nil
+      @pets = @pets.city(params[:city]) if params[:city].present?
+      @pets = @pets.type(params[:pet_type]) if params[:pet_type].present?
+      @pets = @pets.gender(params[:gender]) if params[:gender].present?
+      @pets = @pets.size_pet(params[:size]) if params[:size].present?
   end
 
   def new
     fill_ong
     @pet = @ong.pets.build
+  end
+
+  def edit
+    fill_ong
+    fill_pet
   end
 
   def create
@@ -49,6 +53,7 @@ class PetsController < ApplicationController
     @sizes = Size::SIZES
     @pet_types = PetType::TYPES
     @genders = Gender::GENDERS
+    @cities = Address.distinct.pluck(:city)
   end
 
   def fill_ong

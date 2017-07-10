@@ -10,6 +10,11 @@ class Pet < ApplicationRecord
   after_create :save_photos
   after_update :save_photos
 
+  scope :city, -> (city) { where(addresses: { city: city } ) }
+  scope :type, -> (type) { where(pet_type: type ) }
+  scope :gender, -> (gender) { where(gender: gender ) }
+  scope :size_pet, -> (size_pet) { where(size: size_pet ) }
+
   def photos=(value)
     @photos=value
   end

@@ -18,6 +18,7 @@ gem 'social-share-button'
 gem 'geocoder'
 gem "therubyracer"
 gem "twitter-bootstrap-rails"
+gem 'mail_form'
 
 group :development, :test do
   gem 'rspec-rails'

@@ -3,15 +3,18 @@
     <%= link_to 'Início', root_path %>
   </li>
   <li class="breadcrumb-item">
-    <%= link_to @ong.name, ong_path(@ong) %>
+    <%= link_to @pet.ong.name, ong_path(@pet.ong) %>
+  </li>
+  <li class="breadcrumb-item">
+    <%= link_to @pet.name, ong_pet_path(@pet.ong, @pet) %>
   </li>
   <li class="breadcrumb-item active">
-    Cadastrar pet
+    Editar
   </li>
 </ol>
-<h3>Cadastrar Pet</h3>
+<h3>Editar Pet</h3>
 <hr>
-<%= simple_form_for([@ong, @pet], html: {multipart: true}) do |f| %>
+<%= simple_form_for([@ong, @pet], html: {multipart: true, method: :put}) do |f| %>
   <%= f.input :avatar, as: :file %>
   <%= f.input :name, label: 'Nome' %>
   <%= f.input :age, label: 'Idade' %>

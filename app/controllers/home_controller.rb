@@ -8,7 +8,7 @@ class HomeController < ApplicationController
       @ongs << address.ong if address.ong.present?
     end
 
-    @cities = Address.distinct.pluck(:city)
+    @events = Event.home_events
   end
 
   private

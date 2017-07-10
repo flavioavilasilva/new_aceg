@@ -21,13 +21,13 @@ class AdoptionsController < ApplicationController
     @adoption = Adoption.find(params[:id])
     @adoption.update(adoption_params)
 
-    redirect_to :ong
+    redirect_to @adoption.ong
   end
 
   private
 
   def valid_user
-    unless user_signed_in?
+    unless user_signed_in? || ong_signed_in?
       flash[:error] = 'É necessário estar logado!'
       redirect_to :new_user_session
     end

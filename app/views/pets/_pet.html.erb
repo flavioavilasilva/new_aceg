@@ -2,7 +2,12 @@
   <h4 class="card-title"><%= pet.name %></h4>
   <%= image_tag pet.avatar.url(:thumb), class: 'img-responsive' %>
   <div class="card-block">
-    <br>
+    <hr>
+    <%= pet.age %> anos <br>
+    Porte <%= pet.size %><br>
+    <%= pet.gender %><br>
+    <%= pet.breed %>
+    <br><br>
     <%= link_to "Ver", pet, class: "btn btn-primary" %>
     <br>
     <br>

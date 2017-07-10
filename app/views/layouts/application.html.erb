@@ -8,6 +8,7 @@
   <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
   <style>
 
@@ -24,6 +25,23 @@
 
     body {
       font-family: "TrebuchetMS";
+    }
+
+    /* btn admin */
+    .btn-primary {
+        color: #fff;
+        border-color: #ffffff;
+        background-color: #03b7a1
+    }
+
+    .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+        color: #fff;
+        border-color: #ffffff;
+        background-color: #03b7a1
+    }
+
+    h3{
+      color: #03b7a1;
     }
 
     /* Remove the navbar's default margin-bottom and rounded borders */
@@ -153,6 +171,11 @@
         <li>
           <%= link_to "QUEM SOMOS", quemsomos_path %>
         </li>
+        <% if !ong_signed_in? %>
+          <li>
+            <%= link_to "CADASTRAR ONG", new_ong_registration_path %>
+          </li>
+        <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if !user_signed_in? && !ong_signed_in? %>
@@ -203,7 +226,23 @@
       <ul class="nav nav-pills nav-stacked">
         <li role="presentation"><%= link_to 'Adote', pets_path %></li>
         <li role="presentation"><%= link_to 'Ong\'s', ongs_path %></li>
-        <li role="presentation"><a href="#"><span class="glyphicon glyphicon-cog"></span> Perfil ONG</a></li>
+        <br>
+        <li role="presentation">
+          <% if ong_signed_in? %>
+            <%= link_to current_ong do %>
+              <span class="glyphicon glyphicon-cog"></span> Sua ONG
+            <% end %>
+          <% elsif user_signed_in? %>
+            <%= link_to user_profile_path(current_user) do %>
+              <span class="glyphicon glyphicon-cog"></span> Perfil
+            <% end %>
+          <% end %>
+        </li>
+        <li role="presentation">
+          <%= link_to root_path do %>
+            <span class="glyphicon glyphicon-comment"></span> Mensagens
+          <% end %>
+        </li>
       </ul>
     </div>
 
@@ -221,17 +260,6 @@
     <div class="col-sm-2 sidenav" >
       Anúncios
       <hr>
-      <% @events.each do |event| %>
-        <div class="col-xs-12 col-md-12">
-          <h5><%= link_to event.name, event %></h5>
-          <dl>
-              <dt>Endereço</dt>
-              <dd><%= event.address %></dd>
-              <dt>Data e Hora</dt>
-              <dd><%= friendly_date event.datetime %></dd>
-          </dl>
-        </div>
-      <% end %>
     </div>
   </div>
 </div>

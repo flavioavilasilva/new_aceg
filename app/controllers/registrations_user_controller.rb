@@ -6,6 +6,12 @@ class RegistrationsUserController < Devise::RegistrationsController
     respond_with self.resource
   end
 
+  protected
+
+  def after_update_path_for(resource)
+    user_profile_path(resource)
+  end
+
   private
 
   def sign_up_params

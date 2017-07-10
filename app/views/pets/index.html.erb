@@ -1,15 +1,28 @@
-<div class="col-md-12">
-    <div class="box">
-    <div class="container">
-      <h1>Pets</h1>
-      <div class="row">
-        <% if @city %>
-        <h2>Filtrando Pets de <%= @city %></h2>
-        <% else %>
-        <h2>Pets</h2>
-        <% end %>
-        <%= render @pets %>
-      </div>
-    </div>
-  </div>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <%= link_to 'Início', root_path %>
+  </li>
+  <li class="breadcrumb-item active">
+    Pet's
+  </li>
+</ol>
+<h3>Adote</h3>
+<hr>
+<div class="well well-lg col-sm-12">
+  <%= simple_form_for(pets_path, method: :get, class: "form-inline") do %>
+      <%=label_tag(:city, "Cidade: ") %>
+      <%= select_tag(:city, options_for_select(@cities), include_blank: true, class: 'form-control') %>
+      <br>
+      <%=label_tag(:pet_type, "Tipo: ") %>
+      <%= select_tag(:pet_type, options_for_select(@pet_types), include_blank: true, class: 'form-control') %>
+      <br>
+      <%=label_tag(:gender, "Genero: ") %>
+      <%= select_tag(:gender, options_for_select(@genders), include_blank: true, class: 'form-control') %>
+      <br>
+      <%=label_tag(:size, "Porte: ") %>
+      <%= select_tag(:size, options_for_select(@sizes), include_blank: true, class: 'form-control') %>
+      <br>
+      <%= submit_tag("Filtrar", class: 'btn btn-primay') %>
+  <% end %>
 </div>
+<%= render @pets %>
