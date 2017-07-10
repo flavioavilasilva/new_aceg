@@ -16,7 +16,7 @@
         <%= simple_form_for pet, html: { method: :put } do |f| %>
           <%= f.hidden_field :available, value: pet.available? ? false : true, class: "form-control" %>
           <br>
-          <%= f.submit pet.available? ? "Remover da adoção" : "Incluir para adoção" , class: pet.available? ? 'btn btn-success' : 'btn btn-danger' %>
+          <%= f.submit pet.available? ? "Remover da adoção" : "Incluir para adoção" , class: pet.available? ? 'btn btn-danger' : 'btn btn-success' %>
         <% end %>
       <% end %>
     <% end %>

@@ -20,7 +20,7 @@
            <figure>
               <%= image_tag @pet.avatar.url(:medium), class: 'img-circle img-responsive' %>
            </figure>
-        </div>
+          </div>
         <div class="col-xs-12 col-sm-8">
            <ul class="list-group">
               <li class="list-group-item"><h3><%= @pet.name %></h3></li>
@@ -28,7 +28,11 @@
               <li class="list-group-item">Porte - <%= @pet.size %></li>
               <li class="list-group-item"><%= @pet.age %> anos</li>
               <li class="list-group-item"><%= @pet.castrated %></li>
-              <li class="list-group-item"><%= @pet.ong.name %></li>
+              <li class="list-group-item">
+                <%= link_to ong_path(@pet.ong) do %>
+                  <%= @pet.ong.name %>
+                <% end %>
+              </li>
               <li class="list-group-item">
                 <address>
                   <%= link_to 'http://www.google.com.br/maps?'+ @pet.ong.address.postal_code + ',' + @pet.ong.address.address + ',' + @pet.ong.address.address_number + ',' + @pet.ong.address.state + ',' + @pet.ong.address.city , target: '_blank' do %>
@@ -56,8 +60,8 @@
                 <% end %>
               </li>
            </ul>
+           <div class="row">
             <% if @pet.available? %>
-              <div class="row">
                 <div class="col-xs-3 col-sm-3">
                    <%= button_to ong_pet_adoptions_path(@pet.ong, @pet, @adoption), class: 'btn btn-primary' do %>
                       <span class="glyphicon glyphicon-heart-empty"></span> Adotar
@@ -76,8 +80,7 @@
                  <% end %>
               </div>
             <% end %>
-              </div>
-
+          </div>
           <hr>
           <%= social_share_button_tag(@pet.name, url: ong_url(@pet), desc: @pet.ong.site) %>
         </div>
