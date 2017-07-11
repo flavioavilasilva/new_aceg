@@ -7,8 +7,8 @@ class Feedback < MailForm::Base
   # in ActionMailer accepts.
   def headers
     {
-      :subject => "Feedback - ACEG",
-      :to => "flavio.avila.silva@outlook.com",
+      :subject => "Feedback - Adotarpets",
+      :to => "contato@adotarpets.com.br",
       :from => %("#{name}" <#{email}>)
     }
   end
