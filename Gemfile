@@ -18,6 +18,7 @@ gem "therubyracer"
 gem "twitter-bootstrap-rails"
 gem 'mail_form'
 gem 'pg'
+gem 'aws-sdk', '~> 2.3'
 
 group :assets do
   gem 'uglifier'
