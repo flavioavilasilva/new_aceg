@@ -21,20 +21,24 @@
         <div class="col-xs-12 col-sm-8">
            <ul class="list-group">
               <li class="list-group-item"><h3><%= @user.name %></h3></li>
-              <li class="list-group-item">
-                <address>
-                  <%= link_to 'http://www.google.com.br/maps?'+ @user.address.postal_code + ',' + @user.address.address + ',' + @user.address.address_number + ',' + @user.address.state + ',' + @user.address.city , target: '_blank' do %>
-                    <%= @user.address.address %>, <%= @user.address.address_number %>,
-                    <%= @user.address.neighborhood %><br><%= @user.address.state %> - <%= @user.address.city %><br><%= @user.address.postal_code %>
-                  <% end %>
-                </address>
-              </li>
+              <% if !@user.address.state.nil? %>
+                <li class="list-group-item">
+                  <address>
+                    <%= link_to 'http://www.google.com.br/maps?'+ @user.address.postal_code + ',' + @user.address.address + ',' + @user.address.address_number + ',' + @user.address.state + ',' + @user.address.city , target: '_blank' do %>
+                      <%= @user.address.address %>, <%= @user.address.address_number %>,
+                      <%= @user.address.neighborhood %><br><%= @user.address.state %> - <%= @user.address.city %><br><%= @user.address.postal_code %>
+                    <% end %>
+                  </address>
+                </li>
+              <% end %>
+              <% if @user.phone %>
               <li class="list-group-item"><i class="fa fa-phone"></i>
                 <%= link_to 'tel:'+ @user.phone  do %>
                   <span class="bfh-phone" data-format="+55 (dd) ddddd-dddd" data-number="15555555555"></span>
                   <%= @user.phone %>
                 <% end %>
               </li>
+              <% end %>
               <li class="list-group-item">
                 <%= link_to 'mailto:'+ @user.email do %>
                   <i class="fa fa-envelope"></i> <%= @user.email %>

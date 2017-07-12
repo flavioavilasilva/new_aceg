@@ -17,11 +17,13 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.password = Devise.friendly_token[0,20]
+      #user.avatar = auth.info.image.gsub("http","https")
       user.name = auth.info.name
       user.email = auth.info.email
       user.uid = auth.uid
       user.provider = auth.provider
-      user.image = auth.info.image
+      user.facebook_url = auth.info.urls['Facebook'].remove("https://")
+      user.address = Address.new(city: (auth.info.location.split ',')[0])
       user.save!
     end
   end
