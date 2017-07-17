@@ -10,7 +10,7 @@ class ComunicatorsController < ApplicationController
 
     @comunicator.request = request
     if @comunicator.deliver
-      flash.now[:notice] = 'Obrigado pelo seu Feedback :)'
+      flash.now[:notice] = 'Sua mensagem foi enviada para todas as ONG\'s :)'
     else
       flash.now[:error] = 'Mensagem não pode ser entregue :/'
       render :new
