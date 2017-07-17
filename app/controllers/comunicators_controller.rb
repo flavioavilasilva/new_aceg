@@ -4,7 +4,7 @@ class ComunicatorsController < ApplicationController
   end
 
   def create
-    params[:comunicator][:emails] = Ong.all_emails_text if params[:comunicator][:emails] == 'all'
+    params[:comunicator][:emails] = Ong.all_emails_text
     @comunicator = Comunicator.new(params[:comunicator])
     @comunicator.ong = Ong.find(Ong.find params[:ong_id])
 
