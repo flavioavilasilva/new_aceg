@@ -84,15 +84,18 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  config.action_mailer.default_url_options = { :host => 'www.adotarpets.com.br' }
+
   ActionMailer::Base.smtp_settings = {
     :port           => 587,
     :address        => 'smtp.gmail.com',
     :user_name      => 'contato@adotarpets.com.br',
     :password       => 'adotarpets@120986',
-    :domain         => 'adotarpets.com.br',
-    :authentication => :plain,
+    :domain         => 'gmail.com',
+    :authentication => :login,
   }
   ActionMailer::Base.delivery_method = :smtp
+
 
   # config/environments/production.rb
   config.paperclip_defaults = {
