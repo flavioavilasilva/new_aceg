@@ -87,7 +87,7 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
     :port           => 587,
     :address        => 'smtp.gmail.com',
-    :user_name => ENV.fetch('GMAIL_USER_NAME'),
+    :user_name => 'contato@adotarpets.com.br',
     :password => ENV.fetch('GMAIL_PASSWORD'),
     :domain         => 'gmail.com',
     :authentication => 'plain',
@@ -95,6 +95,7 @@ Rails.application.configure do
   }
   ActionMailer::Base.delivery_method = :smtp
 
+  config.action_mailer.default_url_options = { :host => 'www.adotarpets.com.br' }
 
   # config/environments/production.rb
   config.paperclip_defaults = {
