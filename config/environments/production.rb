@@ -92,7 +92,10 @@ Rails.application.configure do
     :domain         => 'gmail.com',
     :authentication => 'plain'
   }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
   ActionMailer::Base.delivery_method = :smtp
+  config.action_mailer.default_url_options = { :host => 'adotarpets.com.br' }
 
   # config/environments/production.rb
   config.paperclip_defaults = {
