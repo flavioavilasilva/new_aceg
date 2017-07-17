@@ -40,4 +40,13 @@ class Ong < ApplicationRecord
     media_total = (media_pequenos + media_medios + media_grandes) * 30
     media_total.to_s + " Kg de ração por mês"
   end
+
+  def self.all_emails_text
+    emails = Ong.all
+    array_emails = []
+    emails.each do |e|
+      array_emails << e.email
+    end
+    array_emails.join(",")
+  end
 end

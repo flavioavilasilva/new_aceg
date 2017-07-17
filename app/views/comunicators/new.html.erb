@@ -1,0 +1,43 @@
+<h3>Mensagens</h3>
+<hr>
+<div>
+  <%= label_tag(:all_ongs, 'Para todas as ONG\'s?') %>
+  <%= check_box_tag :all_ongs, checked = true, checked: true %>
+  <%= simple_form_for [current_ong, @comunicator], :html => {:class => 'form-horizontal', multipart: true} do |f| %>
+    <%= f.input :emails, :as => :hidden, id:'emails' %>
+    <%= f.input :assunto, label: 'Assunto', :as => :text, :required => true %>
+    <%= f.input :mensagem, label: 'Mensagem', :as => :text, :required => true %>
+    <div>
+      </br>
+      <%= f.button :submit, 'Enviar', :class=> "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
+<script>
+
+  $( document ).ready(function() {
+    if($('#all_ongs').prop('checked')) {
+      $('#comunicator_emails').val('all');
+    } else {
+      $('#comunicator_emails').val('');
+    }
+  });
+
+  $("#all_ongs").click( function(){
+    if($(this).prop('checked')) {
+      $('#comunicator_emails').val('all');
+    } else {
+      $('#comunicator_emails').val('');
+    }
+  });
+
+  $(".btn btn-primary").click( function(){
+    if($('#all_ongs').prop('checked')) {
+      $('#comunicator_emails').val('all');
+    } else {
+      $('#comunicator_emails').val('');
+    }
+  });
+
+</script>

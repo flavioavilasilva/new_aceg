@@ -56,10 +56,10 @@ Rails.application.configure do
 
   ActionMailer::Base.smtp_settings = {
     :port           => 587,
-    :address        => 'smtp.gmail.com',
-    :user_name      => 'contato@adotarpets.com.br',
-    :password       => 'adotarpets@120986',
-    :domain         => 'gmail.com',
+    :address        => 'smtp-mail.outlook.com',
+    :user_name      => 'flavio.avila.silva@outlook.com',
+    :password       => 'fl@v!o@120986',
+    :domain         => 'outlook.com',
     :authentication => :plain,
   }
 

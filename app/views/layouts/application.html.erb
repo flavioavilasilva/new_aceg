@@ -238,12 +238,13 @@
             <% end %>
           <% end %>
         </li>
-        <li role="presentation">
-          <%= link_to root_path do %>
-            <span class="glyphicon glyphicon-comment"></span> Mensagens
-          <% end %>
-        </li>
-
+        <% if ong_signed_in? %>
+          <li role="presentation">
+            <%= link_to new_ong_comunicator_path(current_ong) do %>
+              <span class="glyphicon glyphicon-comment"></span> Mensagens
+            <% end %>
+          </li>
+        <% end %>
       </ul>
     </div>
 

@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       resources :adoptions, only: [:create]
       resources :photos
     end
+    resources :comunicators, only: [:new, :create]
   end
 
   resources :events, only: [:show]
