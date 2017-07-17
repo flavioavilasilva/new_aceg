@@ -90,12 +90,9 @@ Rails.application.configure do
     :user_name => 'contato@adotarpets.com.br',
     :password => 'adotarpets120986',
     :domain         => 'gmail.com',
-    :authentication => 'plain',
-    :enable_starttls_auto => true
+    :authentication => 'plain'
   }
   ActionMailer::Base.delivery_method = :smtp
-
-  config.action_mailer.default_url_options = { :host => 'www.adotarpets.com.br' }
 
   # config/environments/production.rb
   config.paperclip_defaults = {
