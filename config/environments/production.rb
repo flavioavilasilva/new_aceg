@@ -95,7 +95,7 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   ActionMailer::Base.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => 'adotarpets.com.br' }
+  config.action_mailer.default_url_options = { :host => 'www.adotarpets.com.br' }
 
   # config/environments/production.rb
   config.paperclip_defaults = {
