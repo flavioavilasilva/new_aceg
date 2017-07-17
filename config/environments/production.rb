@@ -89,7 +89,7 @@ Rails.application.configure do
     :address        => 'smtp.gmail.com',
     :user_name      => 'contato@adotarpets.com.br',
     :password       => 'adotarpets@120986',
-    :domain         => 'gmail.com',
+    :domain         => 'adotarpets.com.br',
     :authentication => :plain,
   }
   ActionMailer::Base.delivery_method = :smtp
