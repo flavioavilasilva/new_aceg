@@ -89,10 +89,11 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
     :port           => 587,
     :address        => 'smtp.gmail.com',
-    :user_name      => 'contato@adotarpets.com.br',
-    :password       => 'adotarpets@120986',
+    :user_name => ENV['GMAIL_USER_NAME'],
+    :password => ENV['GMAIL_PASSWORD'],
     :domain         => 'gmail.com',
-    :authentication => :login,
+    :authentication => 'plain',
+    :enable_starttls_auto => true
   }
   ActionMailer::Base.delivery_method = :smtp
 
