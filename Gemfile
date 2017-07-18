@@ -12,13 +12,13 @@ gem 'paperclip'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'social-share-button'
 gem 'geocoder'
 gem "therubyracer"
 gem "twitter-bootstrap-rails"
 gem 'mail_form'
 gem 'pg'
 gem 'aws-sdk'
+gem 'social-share-button'
 
 group :assets do
   gem 'uglifier'

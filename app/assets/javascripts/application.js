@@ -18,8 +18,8 @@
 //= require turbolinks
 //= require jquery.cookie
 //= require bootstrap-hover-dropdown
-//= require social-share-button
 //= require application
+//= require social-share-button
 
 $( document ).ready(function() {
   geolocation();
