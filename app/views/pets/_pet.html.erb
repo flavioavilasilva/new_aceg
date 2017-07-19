@@ -1,7 +1,6 @@
-
-<% # Meta information for the <head> section %>
-<% title pet.name %>
-<% meta_tag :description, pet.description %>
+<meta property="og:title" content="<%= pet.name %>" />
+<meta property="og:description" content="<%= pet.description %>" />
+<meta property="og:image" content="<%= pet.avatar.url(:thumb) %>" />
 
 <div class="col-md-3">
   <h4 class="card-title"><%= pet.name %></h4>
