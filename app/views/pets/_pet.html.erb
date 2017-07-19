@@ -26,5 +26,5 @@
     <% end %>
   </div>
   <hr>
-  <%= social_share_button_tag("Adote", url: "#{ong_pet_url(pet.ong, pet)}", desc: "#{pet.description}", image: "#{pet.avatar.url(:thumb)}", via: "AdotarPets", :'data-quote' => "#{pet.description}") %>
+  <%= social_share_button_tag("Adote", url: "#{ong_pet_url(pet.ong, pet)}", image: "#{pet.avatar.url(:thumb)}", via: "AdotarPets") %>
   </div>
