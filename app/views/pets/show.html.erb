@@ -5,7 +5,7 @@
   <meta property="fb:app_id" content="156540017882716" />
   <meta property="og:url"   content="<%= ong_pet_url(@pet.ong, @pet) %>" />
   <meta property="og:title" content="<%= @pet.name %>" />
-  <meta property="og:description" content="<%= @pet.description.first(30) %><br><%= @pet.breed %><br><%= @pet.size %><br><%= @pet.age %>" />
+  <meta property="og:description" content="<%= @pet.description.first(30) %>, <%= @pet.breed %>, porte <%= @pet.size %>,<%= @pet.age %> de idade." />
   <meta property="og:image" content="<%= @pet.avatar.url(:thumb) %>" />
 <% end %>
 
