@@ -86,8 +86,7 @@
             <% end %>
           </div>
           <hr>
-          <%= social_share_button_tag("Adote", :url => "#{ong_pet_url(pet.ong, pet)}") %>
-          <%= social_share_button_tag(@pet.name, url: ong_url(@pet), desc: @pet.ong.site) %>
+          <%= social_share_button_tag("Adote", url: "#{ong_pet_url(@pet.ong, @pet)}", image: "#{@pet.avatar.url(:thumb)}", via: "AdotarPets") %>
         </div>
       </div>
     </div>
