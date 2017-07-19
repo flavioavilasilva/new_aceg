@@ -12,7 +12,7 @@
     <%= pet.gender %><br>
     <%= pet.breed %>
     <br><br>
-    <%= link_to "Ver", pet, class: "btn btn-primary" %>
+    <%= link_to "Ver", ong_pet_url(pet.ong, pet), class: "btn btn-primary" %>
     <br>
     <br>
     <% if ong_signed_in? && !@ong.nil? %>
