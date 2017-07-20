@@ -11,13 +11,10 @@
 // about supported directives.
 //
 
-
+//= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
 //= require bootstrap-sprockets
 //= require turbolinks
-//= require bootstrap-hover-dropdown
-//= require application
 //= require social-share-button
 
 $( document ).ready(function() {
