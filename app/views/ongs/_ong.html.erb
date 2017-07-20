@@ -1,5 +1,4 @@
 <% if ong.pets.count > 0 %>
-
     <div class="col-md-12">
       <%= link_to ong_path ong do %>
         <h4 class="card-title"><%= ong.name %> - (<%= ong.pets.count %>) Pets</h4>
@@ -33,10 +32,8 @@
         <%= link_to "Ver +", ong, class: "btn btn-primary" %>
         <br>
         <br>
-        <%= social_share_button_tag(ong.name, url: ong_url(ong), desc: ong.description) %>
       </div>
       <hr>
-
     </div>
 <% end %>
 <br>
