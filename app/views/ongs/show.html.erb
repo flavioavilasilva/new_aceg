@@ -1,3 +1,10 @@
+<% content_for :head do %>
+  <meta property="fb:app_id" content="156540017882716" />
+  <meta property="og:url"   content="<%= ong_url(@ong) %>" />
+  <meta property="og:title" content="<%= @ong.name %>" />
+  <meta property="og:description" content="<%= @ong.description.truncate(50) %>" />
+  <meta property="og:image" content="<%= @ong.avatar.url(:thumb) %>" />
+<% end %>
 <!-- nav bar -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -69,7 +76,7 @@
                </div>
           <% end %>
           <hr>
-          <%= social_share_button_tag(@ong.name, url: ong_url(@ong), desc: @ong.site) %>
+          <%= social_share_button_tag("ONG", url: "#{ong_url(@ong)}", image: "#{@ong.avatar.url(:thumb)}", via: "AdotarPets") %>
         </div>
       </div>
     </div>
