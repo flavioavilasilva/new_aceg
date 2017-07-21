@@ -11,7 +11,9 @@
 // about supported directives.
 //
 
-
+//= require bootstrap.min
+//= require jquery2
+//= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require social-share-button

@@ -17,6 +17,7 @@ gem 'mail_form'
 gem 'pg'
 gem 'aws-sdk'
 gem 'social-share-button'
+gem 'jquery-rails'
 
 group :assets do
   gem 'uglifier'
