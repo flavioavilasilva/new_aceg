@@ -11,13 +11,11 @@
 // about supported directives.
 //
 
-//= require jquery
-//= require jquery_ujs
-//= require twitter/bootstrap
+
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require social-share-button
-//= require_tree
+//= require_tree .
 
 $( document ).ready(function() {
   geolocation();
