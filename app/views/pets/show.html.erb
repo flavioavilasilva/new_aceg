@@ -46,7 +46,7 @@
               </li>
               <li class="list-group-item">
                 <address>
-                  <%= link_to 'http://www.google.com.br/maps?'+ @pet.ong.address.postal_code + ',' + @pet.ong.address.address + ',' + @pet.ong.address.address_number + ',' + @pet.ong.address.state + ',' + @pet.ong.address.city , target: '_blank' do %>
+                  <%= link_to 'http://maps.google.com/?q='+ @pet.ong.address.postal_code + ',' + @pet.ong.address.address + ',' + @pet.ong.address.address_number + ',' + @pet.ong.address.state + ',' + @pet.ong.address.city , target: '_blank' do %>
                     <%= @pet.ong.address.address %>, <%= @pet.ong.address.address_number %>,
                     <%= @pet.ong.address.neighborhood %><br><%= @pet.ong.address.state %> - <%= @pet.ong.address.city %><br><%= @pet.ong.address.postal_code %>
                   <% end %>

@@ -31,7 +31,7 @@
               <li class="list-group-item"><h3><%= @ong.name %></h3></li>
               <li class="list-group-item">
                 <address>
-                  <%= link_to 'http://www.google.com.br/maps?'+ @ong.address.postal_code + ',' + @ong.address.address + ',' + @ong.address.address_number + ',' + @ong.address.state + ',' + @ong.address.city , target: '_blank' do %>
+                  <%= link_to 'http://maps.google.com/?q='+ @ong.address.postal_code + ',' + @ong.address.address + ',' + @ong.address.address_number + ',' + @ong.address.state + ',' + @ong.address.city , target: '_blank' do %>
                     <%= @ong.address.address %>, <%= @ong.address.address_number %>,
                     <%= @ong.address.neighborhood %><br><%= @ong.address.state %> - <%= @ong.address.city %><br><%= @ong.address.postal_code %>
                   <% end %>
