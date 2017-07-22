@@ -52,7 +52,7 @@
                 </li>
               <% end %>
            </ul>
-           <% if user_signed_in? && current_user.id == @user.id %>
+           <% if user_admin(current_user)? %>
               <div class="btn-group">
                  <%= link_to edit_user_registration_path(current_user), class: 'btn btn-primary' do %>
                     <span class="glyphicon glyphicon-pencil"></span> Editar Perfil
@@ -65,7 +65,7 @@
     </div>
   </div>
 
- <% if user_signed_in? && @adoptions.count > 0 %>
+ <% if user_admin(@user)? && @adoptions.count > 0 %>
   <div class="bs-callout bs-callout-danger">
       <h4>Solicitações de adoção</h4>
       <hr>
@@ -89,7 +89,7 @@
         </div>
       </div>
       <br>
-      <% if user_signed_in? && adoption.user.id == current_user.id %>
+      <% if user_admin(@user)? && adoption.user.id == current_user.id %>
         <div class="col-xs-12 col-md-12">
           <%= button_to 'Cancelar', adoption_path(adoption, :adoption => { status: 'Cancelada'}), method: 'put', class: 'btn btn-danger' %>
         </div>

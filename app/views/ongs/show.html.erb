@@ -63,7 +63,7 @@
                 </li>
               <% end %>
            </ul>
-           <% if ong_signed_in? && current_ong.id == @ong.id %>
+           <% if ong_admin?(@ong) %>
               <div class="btn-group">
                  <%= link_to edit_ong_registration_path(current_ong), class: 'btn btn-primary' do %>
                     <span class="glyphicon glyphicon-pencil"></span> Editar
@@ -83,7 +83,7 @@
     </div>
   </div>
 
-  <% if ong_signed_in? && current_ong.id == @ong.id && @adoptions.count > 0 %>
+  <% if ong_admin?(@ong) && @adoptions.count > 0 %>
    <div class="bs-callout bs-callout-danger">
        <h4>Solicitações de adoção</h4>
        <hr>
@@ -133,7 +133,7 @@
           </li>
         </ul>
     </p>
-    <% if ong_signed_in? && current_ong.id == @ong.id %>
+    <% if ong_admin?(@ong) %>
       <%= link_to 'Promover doação de ração', '#', class: "btn btn-primary" %>
     <% end %>
  </div>
@@ -153,4 +153,4 @@
 <h3>Pet's (<%= @ong.pets.count %>)</h3>
 <hr>
 
-<%= render ong_signed_in? && current_ong.id == @ong.id ? @ong.pets.all : @ong.available_pets %>
+<%= render ong_admin?(@ong) ? @ong.pets.all : @ong.available_pets %>
