@@ -15,7 +15,9 @@ class Ong < ApplicationRecord
                              default_url: '/images/:style/missing_ong.png'
   validates_attachment_content_type :avatar, content_type: %r{\Aimage\/.*\z}
 
-  validates :name, :email, :phone, :address, presence: true
+  validates :name, :email, :phone, :description, presence: true
+  validates_associated :address, presence: true
+
 
   scope :city, -> (city) { where(addresses: { city: city } ) }
   scope :starts_with, -> (name) { where("name like ?", "#{name}%")}

@@ -24,4 +24,11 @@ class Ongs::RegistrationsController < Devise::RegistrationsController
     allow = [:facebook_url, :avatar, :cnpj, :email, :password, :password_confirmation, :name, :phone, :contact, :pet_capacity, :site, :description, [address_attributes: [:postal_code, :address_number, :state, :city, :address, :neighborhood]] ]
     params.require(:ong).permit(allow)
   end
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:facebook_url, :avatar, :cnpj, :email, :password, :password_confirmation, :name, :phone, :contact, :pet_capacity, :site, :description, [address_attributes: [:postal_code, :address_number, :state, :city, :address, :neighborhood]] ) }
+    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:current_password, :facebook_url, :avatar, :cnpj, :email, :password, :password_confirmation, :name, :phone, :contact, :pet_capacity, :site, :description, [address_attributes: [:postal_code, :address_number, :state, :city, :address, :neighborhood]] ) }
+  end
 end
