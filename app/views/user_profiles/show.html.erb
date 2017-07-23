@@ -25,7 +25,7 @@
               <% if !@user.address.state.nil? %>
                 <li class="list-group-item">
                   <address>
-                    <%= link_to 'http://www.google.com.br/maps?'+ @user.address.postal_code + ',' + @user.address.address + ',' + @user.address.address_number + ',' + @user.address.state + ',' + @user.address.city , target: '_blank' do %>
+                    <%= link_to 'http://maps.google.com/?q='+ @user.address.postal_code + ',' + @user.address.address + ',' + @user.address.address_number + ',' + @user.address.state + ',' + @user.address.city , target: '_blank' do %>
                       <%= @user.address.address %>, <%= @user.address.address_number %>,
                       <%= @user.address.neighborhood %><br><%= @user.address.state %> - <%= @user.address.city %><br><%= @user.address.postal_code %>
                     <% end %>
