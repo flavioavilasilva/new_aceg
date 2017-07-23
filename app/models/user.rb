@@ -14,8 +14,7 @@ class User < ApplicationRecord
                              default_url: '/images/:style/missing_ong.png'
   validates_attachment_content_type :avatar, content_type: %r{\Aimage\/.*\z}
 
-  validates :name, :email, :phone, :address, presence: true
-  validates_associated :address, presence: true
+  validates :name, :email, :phone, presence: true
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -26,7 +25,7 @@ class User < ApplicationRecord
       user.uid = auth.uid
       user.provider = auth.provider
       user.facebook_url = auth.info.urls['Facebook'].remove("https://")
-      user.address = Address.new(city: (auth.info.location.split ',')[0])
+      user.address = Address.new(city: (auth.info.location.split ',')[0]) unless auth.info.location.nil?
       user.save!
     end
   end
