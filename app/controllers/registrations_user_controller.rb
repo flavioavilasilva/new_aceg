@@ -3,7 +3,6 @@ class RegistrationsUserController < Devise::RegistrationsController
 
   def new
     build_resource({})
-    binding.pry
     self.resource.address = Address.new
     respond_with self.resource
   end
