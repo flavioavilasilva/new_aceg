@@ -51,4 +51,14 @@ class Ong < ApplicationRecord
     end
     array_emails.join(",")
   end
+
+  def friendly_name
+    name_array = name.split " "
+    name_array.size >= 2 ? name_array[0] + name_array[1] : name_array[0]
+  end
+
+  def friendly_address
+    (address.address + ', ' + address.address_number + ', ' +
+    address.neighborhood + '<br>' + address.state + ' - ' + address.city + "<br>" + address.postal_code).html_safe
+  end
 end

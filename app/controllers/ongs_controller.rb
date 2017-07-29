@@ -10,6 +10,8 @@ class OngsController < ApplicationController
   def show
     @ong = Ong.find params[:id]
     @adoptions = @ong.adoptions.where(status: 0, ong: @ong.id)
+    @information_bank = InformationBank.new
+    @information_banks = InformationBank.where(ong: @ong.id)
   end
 
   private

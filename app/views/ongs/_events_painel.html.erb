@@ -1,0 +1,20 @@
+<div class="bs-callout bs-callout-danger">
+  <h3><span class="glyphicon glyphicon-calendar"></span></h3>
+  <hr>
+  <% if ong_admin?(@ong) %>
+    <%= link_to new_ong_event_path(current_ong), class: 'btn btn-primary' do %>
+       <span class="glyphicon glyphicon-plus"></span> Incluir Evento
+    <% end %>
+    <hr>
+  <% end %>
+
+  <% if @ong.events.count > 0 %>
+     <div class="row">
+       <%= render @ong.events %>
+     </div>
+  <% else %>
+    <div class="row">
+      Não há eventos para essa ong.
+    </div>
+  <% end %>
+</div>

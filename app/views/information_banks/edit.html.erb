@@ -1,0 +1,26 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <%= link_to 'Início', root_path %>
+  </li>
+  <li class="breadcrumb-item">
+    <%= link_to @ong.name, ong_path(@ong) %>
+  </li>
+  <li class="breadcrumb-item active">
+    Cadastrar conta
+  </li>
+</ol>
+<h3>Cadastro de conta para doações</h3>
+<hr>
+<%= simple_form_for [@ong, @information_bank], html: {multipart: true, method: :put} do |f| %>
+  <div class="form-inputs">
+    <%= f.hidden_field :ong_id, value: @ong.id %>
+    <%= f.input :cnpj, label: 'CNPJ', equired: true, autofocus: true %>
+    <%= f.input :bank, label: 'Banco', required: true, autofocus: true %>
+    <%= f.input :agency, label: 'Agencia', required: true, autofocus: true %>
+    <%= f.input :account_number, label: 'Conta', required: true, autofocus: true %>
+  </div>
+  <br>
+  <div class="form-actions">
+    <%= f.submit "Salvar", class: "btn btn-primary"  %>
+  </div>
+<% end %>

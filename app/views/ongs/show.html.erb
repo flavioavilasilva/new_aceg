@@ -1,11 +1,10 @@
 <% content_for :head do %>
   <meta property="fb:app_id" content="156540017882716" />
   <meta property="og:url"   content="<%= ong_url(@ong) %>" />
-  <meta property="og:title" content="<%= @ong.name %>" />
-  <meta property="og:description" content="<%= @ong.description.truncate(50) %>" />
+  <meta property="og:title" content="<%= @ong.friendly_name %>" />
+  <meta property="og:description" content="<%= @ong.description.truncate(300) %>" />
   <meta property="og:image" content="<%= @ong.avatar.url(:thumb) %>" />
 <% end %>
-
 <%= stylesheet_link_tag 'perfil' %>
 
 <!-- nav bar -->
@@ -13,7 +12,7 @@
   <li class="breadcrumb-item">
     <%= link_to 'Início', root_path %>
   </li>
-  <li class="breadcrumb-item active"><%= @ong.name %></li>
+  <li class="breadcrumb-item active"><%= @ong.friendly_name %></li>
 </ol>
 
 <!-- resumt -->
@@ -28,12 +27,11 @@
         </div>
         <div class="col-xs-12 col-sm-8">
            <ul class="list-group">
-              <li class="list-group-item"><h3><%= @ong.name %></h3></li>
+              <li class="list-group-item"><h3><%= @ong.friendly_name %></h3></li>
               <li class="list-group-item">
                 <address>
                   <%= link_to 'http://maps.google.com/?q='+ @ong.address.postal_code + ',' + @ong.address.address + ',' + @ong.address.address_number + ',' + @ong.address.state + ',' + @ong.address.city , target: '_blank' do %>
-                    <%= @ong.address.address %>, <%= @ong.address.address_number %>,
-                    <%= @ong.address.neighborhood %><br><%= @ong.address.state %> - <%= @ong.address.city %><br><%= @ong.address.postal_code %>
+                    <%= @ong.friendly_address %>
                   <% end %>
                 </address>
               </li>
@@ -71,9 +69,6 @@
                  <%= link_to new_ong_pet_path(current_ong), class: 'btn btn-primary' do %>
                     <span class="glyphicon glyphicon-plus"></span> Incluir Pet
                  <% end %>
-                 <%= link_to new_ong_event_path(current_ong), class: 'btn btn-primary' do %>
-                    <span class="glyphicon glyphicon-calendar"></span> Incluir Evento
-                 <% end %>
                </div>
           <% end %>
           <hr>
@@ -83,74 +78,83 @@
     </div>
   </div>
 
-  <% if ong_admin?(@ong) && @adoptions.count > 0 %>
-   <div class="bs-callout bs-callout-danger">
-       <h4>Solicitações de adoção</h4>
-       <hr>
-       <% @adoptions.each do |adoption| %>
-         <div class="row">
-           <div class="col-xs-2 col-md-2"><%= adoption.pet.name %><%= image_tag adoption.pet.avatar.url(:thumb), class: 'img-responsive' %></div>
-           <div class="col-xs-6 col-md-6">
-             <%= link_to user_profile_path(adoption.user) do %>
-              <%= adoption.user.name %>
-             <% end %>
-             <hr>
-             <%= link_to 'mailto:' + adoption.user.email do %>
-              <%= adoption.user.email %>
-             <% end %>
-             <br>
-             <%= link_to 'tel:' + adoption.user.phone do %>
-              <%= adoption.user.phone %>
+  <ul class="nav nav-pills">
+    <li class="active"><a data-toggle="pill" href="#home">Sobre nós</a></li>
+    <li><a data-toggle="pill" href="#donations">Doações</a></li>
+    <li><a data-toggle="pill" href="#be_voluntary">Voluntário</a></li>
+    <li><a data-toggle="pill" href="#events">Eventos</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <%= render 'ong_painel', ong: @ong %>
+    </div>
+
+    <div id="donations" class="tab-pane fade">
+      <div class="bs-callout bs-callout-danger">
+        <h3><span class="glyphicon glyphicon-heart-empty"></span></h3>
+        <hr>
+        <p>Existem diversas formas de ajudar a <%= @ong.friendly_name %>, veja itens importantes em nosso dia à dia.<br>
+          <ul class="ul_destac">
+            <li>Ração</li>
+            <li>Medicamentos</li>
+            <li>Material de limpeza e de procedimento</li>
+            <li>Cobertores</li>
+          </ul>
+        <p>Essas doações podem ser entregues no endereço físico da <%= @ong.friendly_name %>, ou mesmo solicitando retirada entrando em contato conosco.</p>
+        <hr>
+        <% if @information_banks.count > 0 %>
+          <p>Pode também efetivar uma doação financeira fazendo um depósito em uma de nossas contas listada à baixo.</p>
+          <% @information_banks.each do |i| %>
+            CNPJ: <%= i.cnpj %>  <br>
+            Banco: <%= i.bank %>  <br>
+            Agência: <%= i.agency %>  <br>
+            Agência: <%= i.account_number %>  <br>
+            <br>
+            <% if ong_admin?(@ong) %>
+              <%= link_to "Editar conta", edit_ong_information_bank_path(@ong, i), class: "btn btn-primary" %>
             <% end %>
-           </div>
-           <br>
-           <div class="row">
-             <div class="col-xs-6 col-md-6">
-               <%= simple_form_for adoption do |f| %>
-                 <%= f.select :status, Adoption.statuses.keys, {}, class: "form-control" %>
-                 <br>
-                 <%= f.submit "Salvar", class: 'btn btn-success' %>
-               <% end %>
-             </div>
-           </div>
-         </div>
-         <hr>
-       <% end %>
-   </div>
-  <% end %>
- <div class="bs-callout bs-callout-danger">
-    <h3>Sobre a ONG</h3>
-    <hr>
-    <p>
-       <%= @ong.description %>
-    </p>
-    <br>
-    <p>
-      <h5>Dados mensais sobre a <%= @ong.name %>:
-        <ul>
-          <li>
-            Estima-se que gasta cerca de <%= @ong.estimate_dogs_food_month.to_s %>.
-          </li>
-        </ul>
-    </p>
-    <% if ong_admin?(@ong) %>
-      <%= link_to 'Promover doação de ração', '#', class: "btn btn-primary" %>
-    <% end %>
- </div>
+            <hr>
+          <% end %>
+        <% end %>
+        <% if ong_admin?(@ong) %>
+          <%= link_to "Informar conta", new_ong_information_bank_path(@ong), class: "btn btn-primary" %>
+          <hr>
+        <% end %>
+        <p>Toda e qualquer ajuda é muito bem vinda, e todos envolvidos na causa para ajudar desses seres incríveis, agradecem de coração sua colaboração.
+      </div>
+    </div>
 
-<% if @ong.events.count > 0 %>
- <div class="bs-callout bs-callout-danger">
-     <h4><span class="glyphicon glyphicon-calendar" ></span> Eventos da ONG</h4>
-     <hr>
-     <div class="row">
-       <%= render @ong.events %>
-     </div>
- </div>
-<% end %>
+    <div id="be_voluntary" class="tab-pane fade">
+      <div class="bs-callout bs-callout-danger">
+        <h3><span class="glyphicon glyphicon-grain"></span></h3>
+        <hr>
+          <p>
+            Para manter a <%= @ong.friendly_name %> em bom funcionamento, dependemos da ajuda de muitos envolvidos, quanto mais gente envolvida nesse propósito,
+            maior nossas chances de alcançar nossos objetivos, contamos com diversas atividades que você pode ajudar, sendo presencial ou online.
+            <hr>
+            Quer ser um voluntário? <br>
+            Entre em contato conosco por <b><%= link_to 'e-mail', "mailto:#{@ong.email}" %></b> ou no <b><%= link_to "#{@ong.phone}", "tel:#{@ong.phone}" %></b> que estaremos anciosos em responde-lo.
+          </p>
 
+      </div>
+    </div>
+
+    <div id="events" class="tab-pane fade">
+      <%= render 'events_painel', ong: @ong %>
+    </div>
+  </div>
 </div>
 
 <h3>Pet's (<%= @ong.pets.count %>)</h3>
 <hr>
-
 <%= render ong_admin?(@ong) ? @ong.pets.all : @ong.available_pets %>
+
+<style>
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    color: #8b0042;
+    background-color: #fff;
+}
+
+</style>

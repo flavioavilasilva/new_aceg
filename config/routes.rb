@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   resources :ongs do
     resources :events, only: [:new, :create]
+    resources :information_banks, only: [:new, :edit, :create, :update]
     resources :pets, only: [:new, :create, :show, :index, :edit, :update] do
       resources :adoptions, only: [:create]
       resources :photos

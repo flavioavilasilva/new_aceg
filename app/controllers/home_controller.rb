@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   LATITUDE_DEFAULT = -23.550756.freeze
   LONGITUDE_DEFAULT = -46.632970.freeze
   def index
-    addresses = Address.near("#{latitude}, #{longitude}", 10000)
+    addresses = Address.near("#{latitude}, #{longitude}", 30)
     @ongs = []
     addresses.map do |address|
       @ongs << address.ong if address.ong.present?
