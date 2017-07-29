@@ -64,7 +64,7 @@
         <% elsif ong_signed_in?  %>
           <li>
             <%= link_to current_ong do %>
-              <span class="glyphicon glyphicon-user"></span> <%= current_ong.name.upcase %>
+              <span class="glyphicon glyphicon-user"></span> <%= current_ong.friendly_name.upcase %>
             <% end %>
           </li>
           <li>

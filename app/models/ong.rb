@@ -54,7 +54,7 @@ class Ong < ApplicationRecord
 
   def friendly_name
     name_array = name.split " "
-    name_array.size >= 2 ? name_array[0] + name_array[1] : name_array[0]
+    name_array.size >= 2 ? name_array[0] + ' ' + name_array[1] : name_array[0]
   end
 
   def friendly_address
