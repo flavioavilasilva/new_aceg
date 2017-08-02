@@ -88,7 +88,7 @@ Rails.application.configure do
     :port           => 587,
     :address        => 'smtp.gmail.com',
     :user_name => 'contato@adotarpets.com.br',
-    :password => 'adotarpets120986',
+    :password => ENV.fetch('PASSWORD_GMAIL'), 
     :domain         => 'gmail.com',
     :authentication => 'plain'
   }
