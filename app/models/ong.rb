@@ -53,6 +53,7 @@ class Ong < ApplicationRecord
   end
 
   def friendly_name
+    return name if name.size < 15
     name_array = name.split " "
     name_array.size >= 2 ? name_array[0] + ' ' + name_array[1] : name_array[0]
   end
