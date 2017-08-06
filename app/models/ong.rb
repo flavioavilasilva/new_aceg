@@ -23,7 +23,7 @@ class Ong < ApplicationRecord
   scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
 
   def featured_pets
-    available_pets.limit(4)
+    available_pets.limit(3)
   end
 
   def available_pets
