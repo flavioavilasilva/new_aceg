@@ -47,7 +47,7 @@ class Pet < ApplicationRecord
     return if @age.nil?
     pet_age = Age.where(pet_id: self.id).first
     if pet_age.nil?
-      Age.save(pet_id: self.id, age: @age['age'], scala: @age['scala'])
+      Age.create(pet_id: self.id, age: @age['age'], scala: @age['scala'])
     else
       pet_age.update(age: @age['age'], scala: @age['scala'])
     end
