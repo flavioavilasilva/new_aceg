@@ -21,7 +21,7 @@
     <p><%= f.input :cnpj, label: 'CNPJ', input_html: {id: "cnpj"}, placeholder: 'SP''XX.XXX.XXX/0001-ZZ' %></p>
     <p><%= f.input :name, label: 'Nome', required: true %></p>
     <p><%= f.input :email, label: 'E-mail', placeholder: 'seuemail@ong.com.br' %></p>
-    <p><%= f.input :phone, label: 'Telefone', placeholder: '(11)55555-5555', required: true, input_html: { maxlength: 14, 'data-mask':"(99)99999999"} %></p>
+    <p><%= f.input :phone, label: 'Telefone', placeholder: '(11)55555-5555', input_html: { maxlength: 14, 'data-mask':"(99)99999999"} %></p>
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
