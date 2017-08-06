@@ -7,5 +7,6 @@ FactoryGirl.define do
     city Faker::Address.city
     address Faker::Address.street_name
     address_number "186"
+    neighborhood "Bela vista"
   end
 end

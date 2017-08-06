@@ -10,6 +10,7 @@ module TestHelper
 
   def ong_login
     ong = create(:ong)
+    binding.pry
     visit new_ong_session_path
     find('input#ong_email').set ong.email
     find('input#ong_password').set ong.password

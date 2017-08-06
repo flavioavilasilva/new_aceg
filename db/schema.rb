@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170706163644) do
+ActiveRecord::Schema.define(version: 20170806030916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 20170706163644) do
     t.index ["user_id"], name: "index_adoptions_on_user_id", using: :btree
   end
 
+  create_table "ages", force: :cascade do |t|
+    t.string   "scala"
+    t.string   "age"
+    t.integer  "pet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_ages_on_pet_id", using: :btree
+  end
+
   create_table "authorizations", force: :cascade do |t|
     t.string   "provider"
     t.string   "uid"
@@ -57,6 +66,17 @@ ActiveRecord::Schema.define(version: 20170706163644) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ong_id"], name: "index_events_on_ong_id", using: :btree
+  end
+
+  create_table "information_banks", force: :cascade do |t|
+    t.integer  "ong_id"
+    t.string   "cnpj"
+    t.string   "bank"
+    t.string   "agency"
+    t.string   "account_number"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["ong_id"], name: "index_information_banks_on_ong_id", using: :btree
   end
 
   create_table "ongs", force: :cascade do |t|
@@ -96,7 +116,6 @@ ActiveRecord::Schema.define(version: 20170706163644) do
 
   create_table "pets", force: :cascade do |t|
     t.string   "name"
-    t.integer  "age"
     t.string   "size"
     t.string   "pet_type"
     t.string   "breed"
@@ -159,8 +178,10 @@ ActiveRecord::Schema.define(version: 20170706163644) do
   add_foreign_key "adoptions", "ongs"
   add_foreign_key "adoptions", "pets"
   add_foreign_key "adoptions", "users"
+  add_foreign_key "ages", "pets"
   add_foreign_key "authorizations", "users"
   add_foreign_key "events", "ongs"
+  add_foreign_key "information_banks", "ongs"
   add_foreign_key "ongs", "addresses"
   add_foreign_key "ongs", "users"
   add_foreign_key "pets", "ongs"

@@ -12,6 +12,7 @@ class PetsController < ApplicationController
   def new
     fill_ong
     @pet = @ong.pets.build
+    @pet.age = Age.new
   end
 
   def edit
@@ -22,6 +23,7 @@ class PetsController < ApplicationController
   def create
     fill_ong
     @pet = @ong.pets.new(pets_params)
+    @pet.age = params[:pet][:age]
     @pet.photos = params[:photos]
     if @pet.save
       redirect_to @pet
@@ -33,6 +35,7 @@ class PetsController < ApplicationController
 
   def update
     fill_pet
+    @pet.age = params[:pet][:age]
     @pet.photos = params[:photos]
     if @pet.update pets_params
       redirect_to @pet
@@ -65,8 +68,8 @@ class PetsController < ApplicationController
   end
 
   def pets_params
-    params.require(:pet).permit(:name, :age, :size, :pet_type, :breed, :gender,
+    params.require(:pet).permit(:name, :size, :pet_type, :breed, :gender,
                                 :vaccined, :deficiency, :castrated,
-                                :description,:avatar, :photos, :available)
+                                :description,:avatar, :photos, :available, [age_attributes: [:scala, :age]])
   end
 end

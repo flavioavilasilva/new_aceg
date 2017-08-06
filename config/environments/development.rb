@@ -57,7 +57,7 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
     :port           => 587,
     :address        => 'smtp-mail.outlook.com',
-    :user_name      => 'flavio.avila.silva@outlook.com'
+    :user_name      => 'flavio.avila.silva@outlook.com',
     :domain         => 'outlook.com',
     :authentication => :plain,
   }

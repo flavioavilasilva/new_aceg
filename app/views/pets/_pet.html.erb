@@ -3,7 +3,9 @@
   <%= image_tag pet.avatar.url(:thumb), class: 'img-responsive' %>
   <div class="card-block">
     <hr>
-    <%= pet.age %> anos <br>
+    <% if pet.age %>
+      <%= pet.age.age %> <%= pet.age.scala %><br>
+    <% end %>
     Porte <%= pet.size %><br>
     <%= pet.gender %><br>
     <%= pet.breed %>

@@ -17,7 +17,16 @@
 <%= simple_form_for([@ong, @pet], html: {multipart: true, method: :put}) do |f| %>
   <%= f.input :avatar, as: :file %>
   <%= f.input :name, label: 'Nome' %>
-  <%= f.input :age, label: 'Idade' %>
+  <%= f.simple_fields_for :age, @pet.age do |a| %>
+    <div class="row">
+      <div class="col-xs-6 col-md-6">
+        <%= a.input :age, label: 'Idade', required: true %>
+      </div>
+      <div class="col-xs-6 col-md-6">
+        <%= a.input :scala, collection: ['Mês', 'Meses', 'Ano', 'Anos'], label: 'Escala de idade', as: :select, required: true %>
+      </div>
+    </div>
+  <% end %>
   <%= f.input :size, collection: @sizes, label: 'Porte', as: :select%>
   <%= f.input :pet_type, collection: @pet_types, label: 'Tipo', as: :radio_buttons %>
   <%= f.input :breed, label: 'Raça' %>

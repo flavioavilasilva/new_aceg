@@ -1,16 +1,17 @@
 require 'rails_helper'
 
-feature 'user provide pet' do
+feature 'ong provide pet' do
   scenario 'successfully' do
     ong = ong_login
     pet = build(:pet, ong: ong)
 
     visit ong_path ong
 
-    click_on 'Cadastrar Pets'
+    click_on 'Incluir Pet'
 
     fill_in 'Nome',        with: pet.name
     fill_in 'Idade',       with: pet.age
+    select 'Mes/Meses',    from: 'scala_idade'
     select 'Grande',       from: 'Porte'
     choose 'Cachorro'
     fill_in 'Raça', with: pet.breed

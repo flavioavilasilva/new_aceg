@@ -12,6 +12,8 @@ class OngsController < ApplicationController
     @adoptions = @ong.adoptions.where(status: 0, ong: @ong.id)
     @information_bank = InformationBank.new
     @information_banks = InformationBank.where(ong: @ong.id)
+    @events = Event.where('datetime > :date', date: DateTime.now.in_time_zone, ong_id: @ong.id)
+                   .order(:datetime).limit(3)
   end
 
   private
