@@ -40,7 +40,7 @@ class Ong < ApplicationRecord
     media_grandes  =  0.354 * pets.where(size: 'Grande').count
 
     media_total = (media_pequenos + media_medios + media_grandes) * 30
-    media_total.to_s + " Kg de ração por mês"
+    media_total.round.to_s + " Kg de ração por mês"
   end
 
   def self.all_emails_text
