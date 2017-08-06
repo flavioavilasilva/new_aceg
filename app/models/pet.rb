@@ -46,7 +46,6 @@ class Pet < ApplicationRecord
   def save_age
     return if @age.nil?
     pet_age = Age.where(pet_id: self.id).first
-    binding.pry
     if pet_age.nil?
       Age.save(pet_id: self.id, age: @age['age'], scala: @age['scala'])
     else
