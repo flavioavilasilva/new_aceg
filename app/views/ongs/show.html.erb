@@ -136,7 +136,7 @@
             maior nossas chances de alcançar nossos objetivos, contamos com diversas atividades que você pode ajudar, sendo presencial ou online.
             <hr>
             Quer ser um voluntário? <br>
-            Entre em contato conosco por <b><%= link_to 'e-mail', "mailto:#{@ong.email}" %></b> ou no <b><%= link_to "#{@ong.phone}", "tel:#{@ong.phone}" %></b> que estaremos anciosos em respondê-lo.
+            Entre em contato conosco por <b><%= link_to 'e-mail', "mailto:#{@ong.email}" %></b><% if @ong.phone.present? %> ou no <b><%= link_to "#{@ong.phone}", "tel:#{@ong.phone}" %> <% end %></b> que estaremos anciosos em respondê-lo.
           </p>
 
       </div>
