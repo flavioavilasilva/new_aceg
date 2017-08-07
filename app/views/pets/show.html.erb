@@ -54,12 +54,14 @@
                   <% end %>
                 </address>
               </li>
-              <li class="list-group-item"><i class="fa fa-phone"></i>
-                <%= link_to 'tel:'+ @pet.ong.phone do %>
-                  <span class="bfh-phone" data-format="+55 (dd) ddddd-dddd" data-number="15555555555"></span>
-                  <%= @pet.ong.phone %>
-                <% end %>
-              </li>
+              <% if @pet.ong.phone.present? %>
+                <li class="list-group-item"><i class="fa fa-phone"></i>
+                  <%= link_to 'tel:'+ @pet.ong.phone do %>
+                    <span class="bfh-phone" data-format="+55 (dd) ddddd-dddd" data-number="15555555555"></span>
+                    <%= @pet.ong.phone %>
+                  <% end %>
+                </li>
+              <% end %>
               <% if @pet.ong.site.present? %>
                 <li class="list-group-item">
                   <%= link_to 'http://'+ @pet.ong.site, target: '_blank' do %>
