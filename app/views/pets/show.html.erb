@@ -40,7 +40,8 @@
               <% if @pet.age %>
                 <li class="list-group-item"><%= @pet.age.age  %> <%= @pet.age.scala  %></li>
               <% end %>
-              <li class="list-group-item"><%= @pet.castrated %></li>
+              <li class="list-group-item"><%= @pet.friendly_text_castrated %></li>
+              <li class="list-group-item"><%= @pet.friendly_text_vaccined %></li>
               <li class="list-group-item">
                 <%= link_to ong_path(@pet.ong) do %>
                   <%= @pet.ong.name %>

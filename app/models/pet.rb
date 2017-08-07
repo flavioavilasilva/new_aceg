@@ -30,8 +30,12 @@ class Pet < ApplicationRecord
     available? ? 'Disponível para adoção' : 'Indisponível para adoção'
   end
 
-  def castrated
+  def friendly_text_castrated
     castrated? ? 'Castrado' : 'Não castrado'
+  end
+
+  def friendly_text_vaccined
+    vaccined? ? 'Vacinado' : 'Não Vacinado'
   end
 
   private
