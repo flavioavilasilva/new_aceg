@@ -2,7 +2,7 @@ class PetsController < ApplicationController
   before_action :load_constants, only: [:new, :create, :edit, :index]
   before_action :authenticate_ong!, only: [:new]
   def index
-      @pets = Pet.joins(ong: :address).where nil
+      @pets = Pet.joins(ong: :address).where(available: true)
       @pets = @pets.city(params[:city]) if params[:city].present?
       @pets = @pets.type(params[:pet_type]) if params[:pet_type].present?
       @pets = @pets.gender(params[:gender]) if params[:gender].present?
