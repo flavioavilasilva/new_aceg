@@ -150,6 +150,41 @@
 
 <h3>Pet's (<%= @ong.pets.count %>)</h3>
 <hr>
+<% if ong_admin?(@ong) && @ong.adoptions.count > 0 %>
+<div class="bs-callout bs-callout-danger">
+      <h4>Solicitações de adoção</h4>
+      <hr>
+      <% @ong.adoptions.each do |adoption| %>
+        <div class="row">
+          <div class="col-xs-2 col-md-2"><%= adoption.pet.name %><%= image_tag adoption.pet.avatar.url(:thumb), class: 'img-responsive' %></div>
+          <div class="col-xs-6 col-md-6">
+           <%= link_to user_profile_path(adoption.user) do %>
+            <%= adoption.user.name %>
+           <% end %>
+           <hr>
+           <%= link_to 'mailto:' + adoption.user.email do %>
+            <%= adoption.user.email %>
+           <% end %>
+           <br>
+           <%= link_to 'tel:' + adoption.user.phone do %>
+            <%= adoption.user.phone %>
+          <% end %>
+         </div>
+         <br>
+         <div class="row">
+           <div class="col-xs-6 col-md-6">
+             <%= simple_form_for adoption do |f| %>
+               <%= f.select :status, Adoption.statuses.keys, {}, class: "form-control" %>
+               <br>
+               <%= f.submit "Salvar", class: 'btn btn-success' %>
+             <% end %>
+           </div>
+         </div>
+       </div>
+       <hr>
+     <% end %>
+<% end %>
+</div>
 <%= render ong_admin?(@ong) ? @ong.pets.all : @ong.available_pets %>
 
 <style>

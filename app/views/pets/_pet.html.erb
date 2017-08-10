@@ -1,6 +1,8 @@
 <div class="col-md-3">
-  <h4 class="card-title"><%= pet.name %></h4>
-  <%= image_tag pet.avatar.url(:thumb), class: 'img-responsive' %>
+  <%= link_to ong_pet_url(pet.ong, pet) do %>
+    <h4 class="card-title"><%= pet.name %></h4>
+    <%= image_tag pet.avatar.url(:thumb), class: 'img-responsive' %>
+  <% end %>
   <div class="card-block">
     <hr>
     <% if pet.age %>
@@ -18,7 +20,7 @@
         <%= simple_form_for pet, html: { method: :put } do |f| %>
           <%= f.hidden_field :available, value: pet.available? ? false : true, class: "form-control" %>
           <br>
-          <%= f.submit pet.available? ? "Remover da adoção" : "Incluir para adoção" , class: pet.available? ? 'btn btn-danger' : 'btn btn-success' %>
+          <%= f.submit pet.available? ? "Remover" : "Incluir" , class: pet.available? ? 'btn btn-danger' : 'btn btn-success' %>
         <% end %>
       <% end %>
     <% end %>
