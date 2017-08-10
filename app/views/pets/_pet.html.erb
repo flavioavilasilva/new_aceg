@@ -6,12 +6,16 @@
   <% end %>
   <div class="card-block">
     <hr>
-    <% if pet.age %>
-      <%= pet.age.age %> <%= pet.age.scala %><br>
-    <% end %>
-    Porte <%= pet.size %><br>
-    <%= pet.gender %><br>
-    <%= pet.breed %>
+    <div class="row">
+      <div class="col-xs-12 col-md-12">
+        <% if pet.age %>
+          <%= pet.age.age %> <%= pet.age.scala %><br>
+        <% end %>
+        Porte <%= pet.size %><br>
+        <%= pet.gender %><br>
+        <%= pet.breed %>
+      </div>
+    </div>
     <hr>
     <%= link_to "Ver", ong_pet_url(pet.ong, pet), class: "btn btn-primary" %>
     <br>
