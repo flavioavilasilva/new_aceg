@@ -80,10 +80,11 @@
               <%= link_to ong do %>
               <div class="row">
                 <div class="col-xs-12 col-md-12">
-                <%= image_tag ong.avatar.url(:thumb), class: 'img-circle img-responsive' %>
+                  <%= image_tag ong.avatar.url(:thumb), class: 'img-circle img-responsive' %>
+                </div>
               </div>
               <div class="row">
-                <div class="col-xs-3 col-md-3">
+                <div class="col-xs-12 col-md-12">
                 <h3><%= ong.name %></h3>
                 </div>
               </div>
@@ -94,7 +95,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-8 col-md-10">
+        <div class="col-xs-12 col-md-12">
           <%= render ong.featured_pets %>
         </div>
       </div>
