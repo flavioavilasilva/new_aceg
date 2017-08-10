@@ -186,7 +186,11 @@
 <% end %>
 </div>
 
-<%= render ong_admin?(@ong) ? @ong.pets.all : @ong.available_pets %>
+<div class="row">
+  <div class="col-xs-12 col-md-12">
+    <%= render ong_admin?(@ong) ? @ong.pets.all : @ong.available_pets %>
+  </div>
+</div>
 
 <style>
 
