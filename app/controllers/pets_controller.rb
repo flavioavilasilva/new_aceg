@@ -47,6 +47,7 @@ class PetsController < ApplicationController
 
   def show
     @pet = Pet.find(params[:id])
+    @pet_presenter = PetPresenter.new(@pet)
     @adoption = Adoption.new
   end
 
