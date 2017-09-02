@@ -2,10 +2,10 @@
     <div class="col-md-12">
       <%= link_to ong_path ong do %>
         <h4 class="card-title"><%= ong.name %> - (<%= ong.pets.count %>) Pets</h4>
+        <figure>
+           <%= image_tag ong.avatar.url(:thumb), class: 'img-circle img-responsive' %>
+        </figure>
       <% end %>
-      <figure>
-         <%= image_tag ong.avatar.url(:thumb), class: 'img-circle img-responsive' %>
-      </figure>
       <div class="card-block">
         <%= render 'data_ong', ong: ong %>
         <%= link_to "Ver +", ong, class: "btn btn-primary" %>
