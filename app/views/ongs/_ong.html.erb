@@ -7,28 +7,7 @@
          <%= image_tag ong.avatar.url(:thumb), class: 'img-circle img-responsive' %>
       </figure>
       <div class="card-block">
-        <ul class="list-group">
-          <li class="list-group-item"><%= ong.description%></li>
-          <li class="list-group-item">
-            <address>
-              <%= link_to 'http://www.google.com.br/maps?'+ ong.address.postal_code + ',' + ong.address.address + ',' + ong.address.address_number + ',' + ong.address.state + ',' + ong.address.city , target: '_blank' do %>
-                <%= ong.address.address %>, <%= ong.address.address_number %>,
-                <%= ong.address.neighborhood %><br><%= ong.address.state %> - <%= ong.address.city %><br><%= ong.address.postal_code %>
-              <% end %>
-            </address>
-          </li>
-          <li class="list-group-item"><i class="fa fa-phone"></i>
-            <%= link_to 'tel:'+ ong.phone do %>
-              <span class="bfh-phone" data-format="+55 (dd) ddddd-dddd" data-number="15555555555"></span>
-              <%= ong.phone %>
-            <% end %>
-          </li>
-          <li class="list-group-item">
-            <%= link_to 'mailto:'+ ong.email do %>
-              <i class="fa fa-envelope"></i> <%= ong.email %>
-            <% end %>
-          </li>
-        </ul>
+        <%= render 'data_ong', ong: ong %>
         <%= link_to "Ver +", ong, class: "btn btn-primary" %>
         <br>
         <br>

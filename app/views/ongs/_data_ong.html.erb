@@ -1,0 +1,37 @@
+<ul class="list-group">
+   <li class="list-group-item"><h3><%= ong.friendly_name %></h3></li>
+   <li class="list-group-item">
+     <address>
+       <%= link_to 'http://maps.google.com/?q='+ ong.address.postal_code + ',' + ong.address.address + ',' + ong.address.address_number + ',' + ong.address.state + ',' + ong.address.city , target: '_blank' do %>
+         <%= ong.friendly_address %>
+       <% end %>
+     </address>
+   </li>
+   <% if ong.phone.present? %>
+     <li class="list-group-item"><i class="fa fa-phone"></i>
+       <%= link_to 'tel:'+ ong.phone do %>
+         <span class="bfh-phone" data-format="+55 (dd) ddddd-dddd" data-number="15555555555"></span>
+         <%= ong.phone %>
+       <% end %>
+     </li>
+   <% end %>
+   <% if ong.site.present? %>
+     <li class="list-group-item">
+       <%= link_to 'http://'+ ong.site, target: '_blank' do %>
+         <%= ong.site %>
+       <% end %>
+     </li>
+   <% end %>
+   <li class="list-group-item">
+     <%= link_to 'mailto:'+ ong.email do %>
+       <i class="fa fa-envelope"></i> <%= ong.email %>
+     <% end %>
+   </li>
+   <% if ong.facebook_url.present? %>
+     <li class="list-group-item">
+       <%= link_to 'http://'+ ong.facebook_url, target: '_blank' do %>
+         <i class="fa fa-facebook"></i> Facebook
+       <% end %>
+     </li>
+   <% end %>
+</ul>
