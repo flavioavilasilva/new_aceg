@@ -2,7 +2,7 @@
   <meta property="fb:app_id" content="156540017882716" />
   <meta property="og:url"   content="<%= ong_url(@ong) %>" />
   <meta property="og:title" content="<%= @ong.friendly_name %>" />
-  <meta property="og:description" content="<%= @ong.description.truncate(300) %>" />
+  <meta property="og:description" content="<%= @ong.description %>" />
   <meta property="og:image" content="<%= @ong.avatar.url(:thumb) %>" />
 <% end %>
 <%= stylesheet_link_tag 'perfil' %>
